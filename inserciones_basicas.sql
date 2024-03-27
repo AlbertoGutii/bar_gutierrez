@@ -139,19 +139,19 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
 
     -- POSTRES
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Flan de huevo', 'Flan de huevo casero', './imagenes/flan_huevo.png', 18);
+    VALUES ('Flan de huevo', 'Flan de huevo casero', './imagenes/flan_huevo.png', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Flan de queso', 'Flan de queso casero', './imagenes/flan_queso.png', 18);
+    VALUES ('Flan de queso', 'Flan de queso casero', './imagenes/flan_queso.png', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Cuajada', 'Cuajada casera', './imagenes/cuajada.png', 18);
+    VALUES ('Cuajada', 'Cuajada casera', './imagenes/cuajada.png', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Natillas', 'Natillas caseras', './imagenes/natillas.png', 18);
+    VALUES ('Natillas', 'Natillas caseras', './imagenes/natillas.png', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Crema Catalana', 'Crema Catalana casera', './imagenes/crema_catalana.png', 18);
+    VALUES ('Crema Catalana', 'Crema Catalana casera', './imagenes/crema_catalana.png', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Arroz con leche', 'Arroz con leche casero', './imagenes/arroz_leche.png', 18);
+    VALUES ('Arroz con leche', 'Arroz con leche casero', './imagenes/arroz_leche.png', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Tarta de queso', 'Tarta de queso casera', './imagenes/tarta_queso.png', 18);
+    VALUES ('Tarta de queso', 'Tarta de queso casera', './imagenes/tarta_queso.png', 5);
     -- BUSCAR SI QUEDA ALGUN POSTRE MAS
 
 -- TABLA CATEGORIAS_PRODUCTOS
