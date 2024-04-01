@@ -1,0 +1,88 @@
+
+
+/* Estilo para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Estilo para el encabezado */
+header {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para la barra de navegación */
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar li input[type="button"] {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón de la cesta */
+#puta-cesta {
+    position: relative;
+}
+
+#puta-cesta a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+#puta-cesta img {
+    width: 30px;
+    margin-left: 5px;
+}
+
+#puta-cesta label {
+    margin-right: 5px;
+}
+
+/* Estilo para el carrousel */
+#carousel {
+    /* Agrega aquí tus estilos para el carrusel */
+}
+
+/* Estilo para la información del negocio */
+#info {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+}
+
+#info div {
+    flex: 1;
+    margin: 0 20px;
+}
+
+#info h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#info p {
+    line-height: 1.6;
+}
