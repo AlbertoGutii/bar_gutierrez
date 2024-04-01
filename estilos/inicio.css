@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--body-color);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para la barra de navegación */
+.container2 {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar ul li input[type="button"] {
+    background: none;
+    border: none;
+    color: #fff; /* Color del texto del botón */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar ul li input[type="button"]:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón sobre los botones */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333; /* Color de fondo del menú desplegable */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: #fff; /* Color del texto de los elementos del menú */
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+.dropdown-menu a:hover {
+    background-color: #444; /* Color de fondo al pasar el ratón sobre los elementos del menú */
+}
+
+#botonPersona {
+    background: none;
+    border: none;
+    color: #fff; /* Color del texto del botón */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#puta-cesta a {
+    color: #fff; /* Color del texto del enlace */
+    text-decoration: none;
+}
+
+#puta-cesta img {
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+}
+
+/* Estilos para la sección de 'botoncitos' */
+#botoncitos {
+    /* Espacio entre la barra de navegación y 'botoncitos' */
+    margin-top: 20px; 
+}
+
+#botoncitos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+#botoncitos ul li {
+    /* display: inline; */
+    margin-right: 20px;
+}
+
+.change-theme-button {
+    background: none;
+    border: none;
+    color: #fff; /* Color del texto del botón */
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.change-theme-button:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón sobre el botón */
+}
