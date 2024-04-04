@@ -25,6 +25,16 @@ header {
     transition: 0.3s ease all;
 }
 
+.logo {
+    height: 90px;
+    padding-right: 50px;
+}
+
+#logito {
+    width: 100px;
+    height: 70px;
+}
+
 .menu {
     position: absolute;
     top: 20px;
@@ -181,9 +191,10 @@ header img {
 }
 
 /* CARROUSELL */
-#carousel {
-    /* Agrega aquí tus estilos para el carrusel */
-}
+/* #carrusel img {
+    width: 75%;
+    height: 70%;
+} */
 
 /* INFORMACION DE NEGOCIO */
 #info {
