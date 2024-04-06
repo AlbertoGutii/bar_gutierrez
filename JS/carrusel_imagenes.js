@@ -1,31 +1,26 @@
 window.onload = principal;
 
 function principal()
-{   
-    let slideIndex = 0;
-
-    let ocultar = document.getElementsByClassName('slide');
-        console.log(slideIndex);
-
-        for(let i = 1; i <ocultar.length; i++) {
-            ocultar[i].style.display = "none";
-        }
-
-    let miIntervalo = setInterval(function() {
-        let slides = document.getElementsByClassName('slide');
-        console.log(slideIndex);
-
-        for(let i = 0; i <slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        
-        if(slideIndex >= slides.length) {
-            slideIndex = 0;
-        }
-        
-        slides[slideIndex].style.display = "flex";
-        slideIndex++;
-        console.log(slideIndex);
-    },3000);
+{
+    iniciarCarrusel();
 }
 
+function iniciarCarrusel() {
+    let slideIndex = 0;
+    let slides = document.getElementsByClassName('slide');
+
+    // Ocultar todos los slides excepto el primero
+    for (let i = 1; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    // Función para mostrar el próximo slide
+    function mostrarSiguienteSlide() {
+        slides[slideIndex].style.display = "none";
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].style.display = "flex";
+    }
+
+    // Iniciar el carrusel automáticamente
+    setInterval(mostrarSiguienteSlide, 2500);
+}
