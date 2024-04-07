@@ -193,7 +193,7 @@ header img {
 }
 
 /* CARRUSELL */
-#carrusel {
+/* #carrusel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,6 +207,26 @@ header img {
     align-content: center;
     justify-content: center;
     padding: 20px;
+} */
+
+/* estilo ia */
+#carrusel {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    /* margin-bottom: 20px; */
+    padding-top: 20px;
+}
+
+#carrusel .slide {
+    width: 100%; 
+    height: 100%;
+}
+
+#carrusel .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* INFORMACION DE NEGOCIO */
@@ -214,7 +234,7 @@ header img {
     display: flex;
     justify-content: space-around;
     padding: 50px 0;
-    position: absolute;
+    position: relative;
 }
 
 #info div {
@@ -229,4 +249,48 @@ header img {
 
 #info p {
     line-height: 1.6;
+}
+
+/* ESTILO FOOTER */
+#pie_pagina {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: justify;
+}
+
+#datos_bar, #enlaces_legales {
+    margin-bottom: 20px;
+}
+
+#datos_bar h3, #enlaces_legales h3 {
+    font-size: 1.2em;
+}
+
+#datos_bar ul, #enlaces_legales ul {
+    list-style: none;
+    padding: 0;
+}
+
+#datos_bar li, #enlaces_legales li {
+    margin-bottom: 5px;
+}
+
+#datos_bar li:last-child, #enlaces_legales li:last-child {
+    margin-bottom: 0;
+}
+
+#enlaces_legales a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#enlaces_legales a:hover {
+    color: #ffd700;
+}
+
+#pie_pagina p {
+    margin-top: 20px;
+    font-size: 0.8em;
 }
