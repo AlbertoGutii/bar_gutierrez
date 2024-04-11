@@ -107,11 +107,12 @@ header img {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    /* margin-right: 350px; */
+    /* margin-right: 300px; */
 }
 
 #barraNav li {
-    justify-content: space-around;
+    position: relative;
+    justify-content: center;
     display: inline;
     margin-right: 10px;
 }
