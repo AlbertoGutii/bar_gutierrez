@@ -14,15 +14,11 @@
     <link rel="stylesheet" href="../bar_gutierrez/estilos/inicio_2.css">
 </head>
 <body>
-    <div>
         <!-- BARRA DE NAVEGACION -->
         <header>
             <div class="back">
                 <div class="menu container2">
-                    <!-- LOGO PENDIENTE PENSAR SI PONERLO -->
-                    <a href="#" class="logo">
-                        <img src="./imagenes/pagina/logo.jpg" id="logito" alt="logo">
-                    </a>
+                    <!-- AQUI IBA EL LOGO -->
                     <input type="checkbox" id="menu"/>
                     <label for="menu">
                         <!-- imagen para cuando se vea en movil y poder esconder el menu -->
@@ -31,11 +27,17 @@
                     <nav class="navbar">
                         <ul id="barraNav">
                             <li>
+                                <!-- LOGO PENDIENTE PENSAR SI PONERLO -->
+                                <a href="#" class="logo">
+                                    <img src="./imagenes/pagina/logo.jpg" alt="logo">
+                                </a>
+                            </li>
+                            <li>
                                 <input type="button" id="btnInicio" value="Inicio">
                             </li>
                             <li>
                                 <input type="button" value="Carta">
-                                    <ul id="submenu_carta">
+                                    <ul id="submenu">
                                         <li>
                                             <input type="button" id="btnCarta" value="Carta">
                                         </li>
@@ -73,7 +75,6 @@
                                         </ul>
                                     </div>
                                 </li>
-        
                                 <li id="puta-cesta">
                                     <!-- FALTA PONER EL ENLACE DE LA PAGINA DE LA CESTA -->
                                     <a href="">
@@ -97,7 +98,9 @@
                 </div>
             </div>
         </header>
-        
+    
+    
+    <div>    
         <!-- AQUI IRA UN CARRUSEL CON IMAGENES -->
         <div id="carrusel">
             <div class="slide">
@@ -141,7 +144,7 @@
 
         <!-- PIE DE PAGINA -->
         <footer id="pie_pagina">
-            <div id="datos_bar">
+            <div class="datos_enlaces_bar">
                 <h3>Contacta con nosotros</h3>
                 <ul>
                     <li>947 511 213</li>
@@ -149,7 +152,7 @@
                     <li>Calle San Bartolomé, 09400 Aranda de Duero, Burgos</li>
                 </ul>
             </div>
-            <div id="enlaces_legales">
+            <div class="datos_enlaces_bar">
                 <h3>Enlaces legales</h3>
                 <ul>
                     <!-- IGUAL MEJOR PONERLO COMO UN BOTON -->
