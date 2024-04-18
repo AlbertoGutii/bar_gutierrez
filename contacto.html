@@ -14,116 +14,125 @@
 </head>
 <body>
     <div>
-        <!-- BARRA DE NAVEGACION -->
+        <!--* BARRA DE NAVEGACION -->
         <header>
             <div class="back">
                 <div class="menu container2">
-                    <!-- LOGO PENDIENTE PENSAR SI PONERLO -->
-                    <a href="#" class="logo">
-                        <img src="./imagenes/pagina/logo.jpg" id="logito" alt="logo">
-                    </a>
-                    <input type="checkbox" id="menu"/>
-                    <label for="menu">
-                        <!-- imagen para cuando se vea en movil y poder esconder el menu -->
-                        <img src="../bar_gutierrez/imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
-                    </label>
                     <nav class="navbar">
-                        <ul id="barraNav">
-                            <li>
-                                <input type="button" id="btnInicio" value="Inicio">
-                            </li>
-                            <li>
-                                <input type="button" value="Carta">
-                                    <ul id="submenu_carta">
-                                        <li>
-                                            <input type="button" id="btnCarta" value="Carta">
-                                        </li>
-                                        <li>
-                                            <input type="button" id="btnMenu" value="Menú">
-                                        </li>
-                                        <li>
-                                            <input type="button" id="btnVinos" value="Vinos">
-                                        </li>
-                                    </ul>
-                                </input>
-                            </li>
-                            <li>
-                                <input type="button" id="btnReserva" value="Reserva">
-                            </li>
-                            <li>
-                                <input type="button" id="btnContacto" value="Contacto">
-                            </li>
-                        </ul>
-                        <div id="botoncitos">
-                            <ul>
+                        <div>
+                            <ul id="barraNav">
                                 <li>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" id="botonPersona" type="button" data-bs-toggle="dropdown" >
-                                            <label for="Configuración" id="configLabel" >Configuración/Usuario</label>
-                                          <img src="../bar_gutierrez/imagenes/pagina/icono_persona.png" id="icono_persona" alt="icoPersona">
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><h6 class="dropdown-header">Usuario/Configuración</h6></li>
-                                            <!-- FALTA PONER EL ENLACE -->
-                                            <li><a href="" class="dropdown-item" href="">Historial de pedidos</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <!-- FALTA PONER EL ENLACE -->
-                                            <li><a href="" class="dropdown-item" style="padding-right: 70px" href="">Cerrar sesión</a></li>
-                                        </ul>
-                                    </div>
+                                    <!--? AQUI IBA EL LOGO -->
+                                    <input type="checkbox" id="menu"/>
+                                    <label for="menu">
+                                        <!--? imagen para cuando se vea en movil y poder esconder el menu -->
+                                        <img src="../../bar_gutierrez/imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
+                                    </label>
                                 </li>
-        
-                                <li id="puta-cesta">
-                                    <!-- FALTA PONER EL ENLACE DE LA PAGINA DE LA CESTA -->
-                                    <a href="">
-                                        <label for="cesta">Cesta</label>
-                                        <img src="./imagenes/pagina/carro-de-la-compra.png" alt="icoCesta">
-                                        <span id="circulo"></span>
+                                <li>
+                                    <!--! LOGO PENDIENTE PENSAR SI PONERLO -->
+                                    <a href="#" class="logo">
+                                        <img src="../imagenes/pagina/logo.jpg" alt="logo">
                                     </a>
                                 </li>
-                            </ul>
-                            <!-- MODO OSCURO -->
-                            <ul>
                                 <li>
-                                    <button class="change-theme-button" id="theme-button">
-                                        <span><i class="fas fa-sun"></i></span>
-                                        <span><i class="fas fa-moon"></i></span>
-                                    </button>
+                                    <input type="button" id="btnInicio" value="Inicio">
+                                </li>
+                                <li class="dropdown">
+                                    <input type="button" value="Carta">
+                                        <ul id="submenu">
+                                            <li>
+                                                <input type="button" id="btnCarta" value="Carta">
+                                            </li>
+                                            <li>
+                                                <input type="button" id="btnMenu" value="Menú">
+                                            </li>
+                                            <li>
+                                                <input type="button" id="btnVinos" value="Vinos">
+                                            </li>
+                                        </ul>
+                                    </input>
+                                </li>
+                                <li>
+                                    <input type="button" id="btnReserva" value="Reserva">
+                                </li>
+                                <li>
+                                    <input type="button" id="btnContacto" value="Contacto">
                                 </li>
                             </ul>
+                            <!--! PENSAR SI QUITAR ESTO -->
+                            <div id="botoncitos">
+                                <ul>
+                                    <li>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" id="botonPersona" type="button" data-bs-toggle="dropdown" >
+                                                <label for="Configuración" id="configLabel" >Configuración/Usuario</label>
+                                                <img src="../../bar_gutierrez/imagenes/pagina/icono_persona.png" id="icono_persona" alt="icoPersona">
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><h6 class="dropdown-header">Usuario/Configuración</h6></li>
+                                                <!--! FALTA PONER EL ENLACE -->
+                                                <li><a class="dropdown-item" href="">Historial de pedidos</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <!--! FALTA PONER EL ENLACE -->
+                                                <li><a class="dropdown-item" style="padding-right: 70px" href="">Cerrar sesión</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li id="puta-cesta">
+                                        <!--! FALTA PONER EL ENLACE DE LA PAGINA DE LA CESTA -->
+                                        <a href="">
+                                            <label for="cesta">Cesta</label>
+                                            <img src="../imagenes/pagina/carro-de-la-compra.png" alt="icoCesta">
+                                            <span id="circulo"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--* MODO OSCURO -->
+                                <ul>
+                                    <li>
+                                        <button class="change-theme-button" id="theme-button">
+                                            <span><i class="fas fa-sun"></i></span>
+                                            <span><i class="fas fa-moon"></i></span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </nav>
                 </div>
             </div>
         </header>
+        <div>    
+            </div>
+        
+            <!--* INFORMACION DEL NEGOCIO -->
+            <div id="info">
+            </div>
     
-        <!-- INFORMACION DEL NEGOCIO -->
-        <div>
+            <!--* PIE DE PAGINA -->
+            <footer id="pie_pagina">
+                <div class="datos_enlaces_bar">
+                    <h3>Contacta con nosotros</h3>
+                    <ul>
+                        <li>947 511 213</li>
+                        <li>info@restaurantebargutierrez.com</li>
+                        <li>Calle San Bartolomé, 09400 Aranda de Duero, Burgos</li>
+                    </ul>
+                </div>
+                <div class="datos_enlaces_bar">
+                    <h3>Enlaces legales</h3>
+                    <ul>
+                        <!--? IGUAL MEJOR PONERLO COMO UN BOTON -->
+                        <li><a href="../bar_gutierrez/avisos_legales/aviso_legal.html">Aviso Legal</a></li>
+                        <li><a href="../bar_gutierrez/avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="../bar_gutierrez/avisos_legales/politica_cookies.html">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <hr>
+                <p>&copy; 2024 RESTAURANTE BAR GUTIÉRREZ. Todos los derechos reservados.</p>
+            </footer>
         </div>
-
-        <!-- PIE DE PAGINA -->
-        <footer id="pie_pagina">
-            <div id="datos_bar">
-                <h3>Contacta con nosotros</h3>
-                <ul>
-                    <li>947 511 213</li>
-                    <li>info@restaurantebargutierrez.com</li>
-                    <li>Calle San Bartolomé, 09400 Aranda de Duero, Burgos</li>
-                </ul>
-            </div>
-            <div id="enlaces_legales">
-                <h3>Enlaces legales</h3>
-                <ul>
-                    <!-- IGUAL MEJOR PONERLO COMO UN BOTON -->
-                    <li><a href="../bar_gutierrez/avisos_legales/aviso_legal.html">Aviso Legal</a></li>
-                    <li><a href="../bar_gutierrez/avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
-                    <li><a href="../bar_gutierrez/avisos_legales/politica_cookies.html">Política de Cookies</a></li>
-                </ul>
-            </div>
-            <hr>
-            <p>&copy; 2024 RESTAURANTE BAR GUTIÉRREZ. Todos los derechos reservados.</p>
-        </footer>
     </div>
-
 </body>
 </html>

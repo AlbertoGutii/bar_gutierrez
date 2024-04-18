@@ -1,8 +1,10 @@
-/* Estilos generales */
+/** ESTILOS GENERALES */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* a {
@@ -10,10 +12,9 @@ body {
 } */
 
 header {
-    background-color: gray;
-    /* padding: 10px; */
-    /* padding-bottom: 0px; */
     display: flex;
+    background-color: gray;
+    padding: 5px 0;
     justify-content: center;
     align-items: center; 
 }
@@ -86,7 +87,7 @@ header img {
 
 
 .dropdown-menu {
-    background-color: var(--body-color);
+    background-color: aliceblue;
 }
 
 .navbar ul li #icoPersona:hover label {
@@ -123,6 +124,36 @@ header img {
     text-decoration: underline;
 }
 
+/** SUBMENU CARTA */
+#submenu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#submenu input[type="button"] {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+#submenu input[type="button"]:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover #submenu {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+
 #iconos {
     list-style-type: none;
     /* margin-right: 40px; */
@@ -144,57 +175,22 @@ header img {
 }
 
 #iconos img {
-    width: 50px; /* Tamaño ajustable según tu preferencia */
-    height: 50px; /* Tamaño ajustable según tu preferencia */
+    width: 50px;
+    height: 50px;
 }
 
 #botonPersona {
     background-color: transparent;
     border: none;
-    /* padding-left: 5px; */
-    /* margin-top: 20px; */
 }
 
-/* MIRAR PARA QUE SIRVE Y ARREGLARLO PARA EL SUBMENU QUE NECESITO */
-/* #submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: var(--body-color);
-    border-radius: 5px;
-    padding: 10px;
-}
-
-#submenu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-#submenu ul li {
-    padding: 5px 0;
-}
-
-#submenu ul li input[type=button] {
-    background-color: transparent;
-    border: none;
-    color: var(--main-color);
-    font-size: 14px;
-    cursor: pointer;
-}
-
-#submenu ul li input[type=button]:hover {
-    text-decoration: underline;
-} */
-
-/* CARRUSELL */
+/** CARRUSELL */
 #carrusel {
     width: 100%;
     height: 600px;
     overflow: hidden;
     /* margin-bottom: 20px; */
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 #carrusel .slide {
@@ -208,7 +204,7 @@ header img {
     object-fit: cover;
 }
 
-/* INFORMACION DE NEGOCIO */
+/** INFORMACION DE NEGOCIO */
 #info {
     display: flex;
     justify-content: space-around;
@@ -230,7 +226,7 @@ header img {
     line-height: 1.6;
 }
 
-/* ESTILO FOOTER */
+/** ESTILO FOOTER */
 #pie_pagina {
     background-color: #333;
     color: white;
