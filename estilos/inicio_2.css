@@ -7,10 +7,7 @@ body {
   height: 100vh;
 }
 
-/* a {
-  padding: 0;
-} */
-
+/** INICIO HEADER */
 header {
     display: flex;
     background-color: gray;
@@ -25,9 +22,8 @@ header img {
 }
 
 .back {
-    /* padding: 50px 0; */
-    /* margin-bottom: 40px; */
-    /* background-color: var(--container-color); */
+    padding: 10px 0;
+    margin-bottom: 10px;
     transition: 0.3s ease all;
 }
 
@@ -53,18 +49,10 @@ header img {
     padding: 0;
 }
 
-/* Otros estilos existentes... */
+/* MUEVE LOS ELEMENTOS DE LA BARRA */
 .menu .navbar ul li {
     position: relative;
     float: left;
-}
-
-.menu .navbar ul li a {
-    font-size: 18px;
-    /* padding: 20px; */
-    display: block;
-    color: var(--main-color);
-    text-decoration: none;
 }
 
 .menu .navbar ul li a:hover {
@@ -85,24 +73,14 @@ header img {
     display: none;
 }
 
-
-.dropdown-menu {
-    background-color: aliceblue;
-}
-
 .navbar ul li #icoPersona:hover label {
     display: flex;
-}
-
-.btn:hover {
-    color: var(--light-text-color);
 }
 
 #barraNav {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    /* margin-right: 300px; */
 }
 
 #barraNav li {
@@ -183,6 +161,7 @@ header img {
     background-color: transparent;
     border: none;
 }
+/** FIN DEL HEADER */
 
 /** CARRUSELL */
 #carrusel {
