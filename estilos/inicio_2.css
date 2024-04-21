@@ -17,9 +17,26 @@ header {
     transition: 0.3s ease all;
 }
 
+.logo {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.logo:active > img{
+    transform: scale(0.95);
+}
+
+.logo:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .logo img {
     width: 80px;
-    height: 70px;
+    height: auto;
+    display: block;
 }
 
 /*? MENU CONTAINER2 */

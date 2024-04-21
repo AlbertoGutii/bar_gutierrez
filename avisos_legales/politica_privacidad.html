@@ -5,154 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politica de privacidad</title>
     <link rel="stylesheet" href="../estilos/inicio_2.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-    <div>
-        <!--* BARRA DE NAVEGACION -->
-        <header>
-            <div class="back">
-                <div class="menu container2">
-                    <nav class="navbar">
-                        <div>
-                            <ul id="barraNav">
+    <!--* BARRA DE NAVEGACION -->
+    <header>
+        <div class="menu container2">
+            <nav class="navbar">
+                <ul id="barraNav">
+                    <li>
+                        <!--? AQUI IBA EL LOGO -->
+                        <input type="checkbox" id="menu"/>
+                        <label for="menu">
+                            <!--? imagen para cuando se vea en movil y poder esconder el menu -->
+                            <img src="../bar_gutierrez/imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
+                        </label>
+                    </li>
+                    <li>
+                        <!--! LOGO PENDIENTE PENSAR SI DEJARLO AQUI -->
+                        <button class="logo">
+                            <img src="./imagenes/pagina/logo.jpg" alt="logo">
+                        </button>
+                    </li>
+                    <li>
+                        <input type="button" id="btnInicio" value="Inicio">
+                    </li>
+                    <li class="dropdown">
+                        <input type="button" value="Carta">
+                            <ul id="submenu">
                                 <li>
-                                    <!--? AQUI IBA EL LOGO -->
-                                    <input type="checkbox" id="menu"/>
-                                    <label for="menu">
-                                        <!--? imagen para cuando se vea en movil y poder esconder el menu -->
-                                        <img src="../../bar_gutierrez/imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
-                                    </label>
+                                    <input type="button" id="btnCarta" value="Carta">
                                 </li>
                                 <li>
-                                    <!--! LOGO PENDIENTE PENSAR SI PONERLO -->
-                                    <a href="#" class="logo">
-                                        <img src="../imagenes/pagina/logo.jpg" alt="logo">
-                                    </a>
+                                    <input type="button" id="btnMenu" value="Menú">
                                 </li>
                                 <li>
-                                    <input type="button" id="btnInicio" value="Inicio">
-                                </li>
-                                <li class="dropdown">
-                                    <input type="button" value="Carta">
-                                        <ul id="submenu">
-                                            <li>
-                                                <input type="button" id="btnCarta" value="Carta">
-                                            </li>
-                                            <li>
-                                                <input type="button" id="btnMenu" value="Menú">
-                                            </li>
-                                            <li>
-                                                <input type="button" id="btnVinos" value="Vinos">
-                                            </li>
-                                        </ul>
-                                    </input>
-                                </li>
-                                <li>
-                                    <input type="button" id="btnReserva" value="Reserva">
-                                </li>
-                                <li>
-                                    <input type="button" id="btnContacto" value="Contacto">
+                                    <input type="button" id="btnVinos" value="Vinos">
                                 </li>
                             </ul>
-                            <!--! PENSAR SI QUITAR ESTO -->
-                            <div id="botoncitos">
-                                <ul>
-                                    <li>
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" id="botonPersona" type="button" data-bs-toggle="dropdown" >
-                                                <label for="Configuración" id="configLabel" >Configuración/Usuario</label>
-                                                <img src="../../bar_gutierrez/imagenes/pagina/icono_persona.png" id="icono_persona" alt="icoPersona">
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><h6 class="dropdown-header">Usuario/Configuración</h6></li>
-                                                <!--! FALTA PONER EL ENLACE -->
-                                                <li><a class="dropdown-item" href="">Historial de pedidos</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <!--! FALTA PONER EL ENLACE -->
-                                                <li><a class="dropdown-item" style="padding-right: 70px" href="">Cerrar sesión</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li id="puta-cesta">
-                                        <!--! FALTA PONER EL ENLACE DE LA PAGINA DE LA CESTA -->
-                                        <a href="">
-                                            <label for="cesta">Cesta</label>
-                                            <img src="../imagenes/pagina/carro-de-la-compra.png" alt="icoCesta">
-                                            <span id="circulo"></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!--* MODO OSCURO -->
-                                <ul>
-                                    <li>
-                                        <button class="change-theme-button" id="theme-button">
-                                            <span><i class="fas fa-sun"></i></span>
-                                            <span><i class="fas fa-moon"></i></span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-
-        <!-- INFORMACION EXTRA -->
-        <div id="info">
-            <h3>Politica de privacidad</h3>
-            <div>
-                <h5>USO Y TRATAMIENTO DE DATOS DE CARÁCTER PERSONAL</h5>
-                <p>Le informamos que los datos de carácter personal que pudieran proporcionarse, a través de este sitio web, así como los que pudiera facilitar en el futuro en el marco de su relación jurídica con esta entidad, serán incorporados a nuestra base de datos.</p>
-                <p>Se informa sobre los siguientes extremos relativos a la protección de datos:</p>
-                <ol>
-                    <li><b>Responsable del tratamiento:</b> Somos responsables de los datos recogidos en el formulario correspondiente.</li>
-                    <li><b>Necesidad del tratamiento:</b> La comunicación de sus datos a través del formulario correspondiente es obligatoria para podamos contactar.</li>
-                    <li>
-                        <b>Finalidades del tratamiento y legitimación del tratamiento:</b>
-                        <ul>
-                            <li>Gestionar, administrar, prestarle los servicios o facilitarle los productos que solicite y, en su caso, para el cumplimiento y ejecución de los contratos que pudiera celebrar, conocer mejor sus gustos, adecuar los servicios a sus preferencias.</li>
-                            <li>Enviarle, por correo postal, correo electrónico y otros medios de comunicación electrónica equivalente, comunicaciones comerciales y publicitarias sobre nuestros productos y/o servicios.</li>
-                        </ul>
+                        </input>
                     </li>
-                    <li><b>Destinatarios:</b> Contratamos con alguna entidad que prestan servicios como los de mantenimiento y hosting, a través de contratos de encargo del tratamiento para dar soporte a los fines de tratamiento indicados.</li>
-                    <li><b>Plazo de conservación de datos:</b> Conservaremos sus datos mientras se mantenga el tratamiento y no solicite la supresión de los mismos.</li>
-                    <li><b>Derechos:</b> Podrá ejercitar los derechos de acceso, rectificación, supresión, limitación al tratamiento, oposición, portabilidad y derecho a no ser objeto de una decisión basada únicamente en el tratamiento automatizado, mediante comunicación escrita al domicilio indicado en el aviso legal y a revocar su consentimiento sin efectos retroactivos u oponerse a la recepción de comunicaciones comerciales publicitarias por email y otros medios de comunicación electrónica equivalente, enviando y a presentar una reclamación ante la Autoridad de control, en España, la Agencia Española de Protección de Datos.</li>
-                    <li><b>Modificación de la política de privacidad:</b> Nos reservamos el derecho a modificar su Política de Privacidad, de acuerdo a nuestro propio criterio, o motivado por un cambio doctrinal de la Autoridad competente en Protección de Datos, legislativo o jurisprudencial. El uso de la Web después de dichos cambios implicará la aceptación de éstos.</li>
-                    <li><b>Legislación aplicable:</b> Cualquier controversia que se derive del uso de este Site, será regida, interpretada y sometida de acuerdo con las leyes de España.</li>
-                </ol>
-            </div>
+                    <li>
+                        <input type="button" id="btnReserva" value="Reserva">
+                    </li>
+                    <li>
+                        <input type="button" id="btnContacto" value="Contacto">
+                    </li>
+                </ul>
+                <!--! ME FALTA PONER LOS ICONOS DE CONFIGURACION Y USUARIO -->
+            </nav>
         </div>
+    </header>
+    
 
-        <!-- PIE DE PAGINA -->
-        <footer id="pie_pagina">
-            <div id="datos_bar">
-                <h3>Contacta con nosotros</h3>
-                <ul>
-                    <li>947 511 213</li>
-                    <li>info@restaurantebargutierrez.com</li>
-                    <li>Calle San Bartolomé, 09400 Aranda de Duero, Burgos</li>
-                </ul>
-            </div>
-            <div id="enlaces_legales">
-                <h3>Enlaces legales</h3>
-                <ul>
-                    <!-- IGUAL MEJOR PONERLO COMO UN BOTON -->
-                    <li><a href="../../bar_gutierrez/avisos_legales/aviso_legal.html">Aviso Legal</a></li>
-                    <li><a href="../../bar_gutierrez/avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
-                    <li><a href="../../bar_gutierrez/avisos_legales/politica_cookies.html">Política de Cookies</a></li>
-                </ul>
-            </div>
-            <hr>
-            <p>&copy; 2024 RESTAURANTE BAR GUTIÉRREZ. Todos los derechos reservados.</p>
-        </footer>
+    <!--* INFORMACION EXTRA -->
+    <div id="info">
+        <h3>Politica de privacidad</h3>
+        <div>
+            <h5>USO Y TRATAMIENTO DE DATOS DE CARÁCTER PERSONAL</h5>
+            <p>Le informamos que los datos de carácter personal que pudieran proporcionarse, a través de este sitio web, así como los que pudiera facilitar en el futuro en el marco de su relación jurídica con esta entidad, serán incorporados a nuestra base de datos.</p>
+            <p>Se informa sobre los siguientes extremos relativos a la protección de datos:</p>
+            <ol>
+                <li><b>Responsable del tratamiento:</b> Somos responsables de los datos recogidos en el formulario correspondiente.</li>
+                <li><b>Necesidad del tratamiento:</b> La comunicación de sus datos a través del formulario correspondiente es obligatoria para podamos contactar.</li>
+                <li>
+                    <b>Finalidades del tratamiento y legitimación del tratamiento:</b>
+                    <ul>
+                        <li>Gestionar, administrar, prestarle los servicios o facilitarle los productos que solicite y, en su caso, para el cumplimiento y ejecución de los contratos que pudiera celebrar, conocer mejor sus gustos, adecuar los servicios a sus preferencias.</li>
+                        <li>Enviarle, por correo postal, correo electrónico y otros medios de comunicación electrónica equivalente, comunicaciones comerciales y publicitarias sobre nuestros productos y/o servicios.</li>
+                    </ul>
+                </li>
+                <li><b>Destinatarios:</b> Contratamos con alguna entidad que prestan servicios como los de mantenimiento y hosting, a través de contratos de encargo del tratamiento para dar soporte a los fines de tratamiento indicados.</li>
+                <li><b>Plazo de conservación de datos:</b> Conservaremos sus datos mientras se mantenga el tratamiento y no solicite la supresión de los mismos.</li>
+                <li><b>Derechos:</b> Podrá ejercitar los derechos de acceso, rectificación, supresión, limitación al tratamiento, oposición, portabilidad y derecho a no ser objeto de una decisión basada únicamente en el tratamiento automatizado, mediante comunicación escrita al domicilio indicado en el aviso legal y a revocar su consentimiento sin efectos retroactivos u oponerse a la recepción de comunicaciones comerciales publicitarias por email y otros medios de comunicación electrónica equivalente, enviando y a presentar una reclamación ante la Autoridad de control, en España, la Agencia Española de Protección de Datos.</li>
+                <li><b>Modificación de la política de privacidad:</b> Nos reservamos el derecho a modificar su Política de Privacidad, de acuerdo a nuestro propio criterio, o motivado por un cambio doctrinal de la Autoridad competente en Protección de Datos, legislativo o jurisprudencial. El uso de la Web después de dichos cambios implicará la aceptación de éstos.</li>
+                <li><b>Legislación aplicable:</b> Cualquier controversia que se derive del uso de este Site, será regida, interpretada y sometida de acuerdo con las leyes de España.</li>
+            </ol>
+        </div>
     </div>
+
+    <!--* PIE DE PAGINA -->
+    <footer id="pie_pagina">
+        <div id="datos_bar">
+            <h3>Contacta con nosotros</h3>
+            <ul>
+                <li>947 511 213</li>
+                <li>info@restaurantebargutierrez.com</li>
+                <li>Calle San Bartolomé, 09400 Aranda de Duero, Burgos</li>
+            </ul>
+        </div>
+        <div id="enlaces_legales">
+            <h3>Enlaces legales</h3>
+            <ul>
+                <!--? IGUAL MEJOR PONERLO COMO UN BOTON -->
+                <li><a href="../../bar_gutierrez/avisos_legales/aviso_legal.html">Aviso Legal</a></li>
+                <li><a href="../../bar_gutierrez/avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
+                <li><a href="../../bar_gutierrez/avisos_legales/politica_cookies.html">Política de Cookies</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>&copy; 2024 RESTAURANTE BAR GUTIÉRREZ. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
