@@ -25,6 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     document.getElementById("btnReserva").onclick = function() {
-        window.location.href = "../admin/admin_gestionar_productos.html";
+        window.location.href = "./reserva.html";
     };
 });

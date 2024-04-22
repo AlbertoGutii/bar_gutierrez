@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva</title>
+    <script src="./JS/gestion_contacto.js"></script>
+    <link rel="stylesheet" href="./estilos/inicio_2.css">
+</head>
+<body>
+    <!--* BARRA DE NAVEGACION -->
+    <header>
+        <div class="menu container2">
+            <nav class="navbar">
+                <ul id="barraNav">
+                    <li>
+                        <!--? AQUI IBA EL LOGO -->
+                        <input type="checkbox" id="menu"/>
+                        <label for="menu">
+                            <!--? imagen para cuando se vea en movil y poder esconder el menu -->
+                            <img src="./imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
+                        </label>
+                    </li>
+                    <li>
+                        <!--! LOGO PENDIENTE PENSAR SI DEJARLO AQUI -->
+                        <button class="logo" id="btnLogo">
+                            <img src="./imagenes/pagina/logo.jpg" alt="logo">
+                        </button>
+                    </li>
+                    <li>
+                        <input type="button" id="btnInicio" value="Inicio">
+                    </li>
+                    <li class="dropdown">
+                        <input type="button" value="Carta">
+                            <ul id="submenu">
+                                <li>
+                                    <input type="button" id="btnCarta" value="Carta">
+                                </li>
+                                <li>
+                                    <input type="button" id="btnMenu" value="Menú">
+                                </li>
+                                <li>
+                                    <input type="button" id="btnVinos" value="Vinos">
+                                </li>
+                            </ul>
+                        </input>
+                    </li>
+                    <li>
+                        <input type="button" id="btnReserva" value="Reserva">
+                    </li>
+                    <li>
+                        <input type="button" id="btnContacto" value="Contacto">
+                    </li>
+                </ul>
+                <!--! ME FALTA PONER LOS ICONOS DE CONFIGURACION Y USUARIO -->
+            </nav>
+        </div>
+    </header>
+    <div>    
+        <!--* INFORMACION DEL NEGOCIO -->
+        <div id="info">
+
+        </div>
+
+        <!--* PIE DE PAGINA -->
+        <footer id="pie_pagina">
+            <div class="datos_enlaces_bar">
+                <h3>Contacta con nosotros</h3>
+                <ul>
+                    <li>947 511 213</li>
+                    <li>info@restaurantebargutierrez.com</li>
+                    <li>Calle San Bartolomé, 09400 Aranda de Duero, Burgos</li>
+                </ul>
+            </div>
+            <div class="datos_enlaces_bar">
+                <h3>Enlaces legales</h3>
+                <ul>
+                    <!--? IGUAL MEJOR PONERLO COMO UN BOTON -->
+                    <li><a href="./avisos_legales/aviso_legal.html">Aviso Legal</a></li>
+                    <li><a href="./avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="./avisos_legales/politica_cookies.html">Política de Cookies</a></li>
+                </ul>
+            </div>
+            <hr>
+            <p>&copy; 2024 RESTAURANTE BAR GUTIÉRREZ. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
