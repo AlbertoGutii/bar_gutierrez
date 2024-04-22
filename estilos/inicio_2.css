@@ -3,48 +3,45 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
 }
 
-/* a {
-  padding: 0;
-} */
-
+/** INICIO HEADER */
 header {
     display: flex;
     background-color: gray;
-    padding: 5px 0;
     justify-content: center;
     align-items: center; 
-}
-
-header img {
-    width: 60px;
-    height: 50px;
-}
-
-.back {
-    /* padding: 50px 0; */
-    /* margin-bottom: 40px; */
-    /* background-color: var(--container-color); */
+    padding: 10px 0;
     transition: 0.3s ease all;
 }
 
-.logo img {
-    width: 100px;
-    height: 70px;
+.logo {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
 }
 
+.logo:active > img{
+    transform: scale(0.95);
+}
+
+.logo:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
+/*? MENU CONTAINER2 */
 .menu {
     position: relative;
-    top: 20px;
-    left: 50px;
-    right: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* z-index: 1000; */
 }
 
 .menu .navbar ul {
@@ -53,18 +50,12 @@ header img {
     padding: 0;
 }
 
-/* Otros estilos existentes... */
-.menu .navbar ul li {
+/*? MUEVE LOS ELEMENTOS DE LA BARRA */
+.menu .navbar ul {
+    display: flex;
+    align-items: center;
     position: relative;
-    float: left;
-}
-
-.menu .navbar ul li a {
-    font-size: 18px;
-    /* padding: 20px; */
-    display: block;
-    color: var(--main-color);
-    text-decoration: none;
+    gap: 30px;
 }
 
 .menu .navbar ul li a:hover {
@@ -75,6 +66,7 @@ header img {
     display: none;
 }
 
+/*? ICONO MOVIL */
 .menu-icono {
     width: 90px;
     height: 80px;
@@ -85,31 +77,21 @@ header img {
     display: none;
 }
 
-
-.dropdown-menu {
-    background-color: aliceblue;
-}
-
 .navbar ul li #icoPersona:hover label {
     display: flex;
-}
-
-.btn:hover {
-    color: var(--light-text-color);
 }
 
 #barraNav {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    /* margin-right: 300px; */
 }
 
 #barraNav li {
+    display: flex;
+    align-items: center;
     position: relative;
-    justify-content: center;
-    display: inline;
-    margin-right: 10px;
+    justify-content: space-between;
 }
 
 #barraNav li input[type=button] {
@@ -130,6 +112,7 @@ header img {
   position: absolute;
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  top: 25px;
 }
 
 #submenu input[type="button"] {
@@ -139,7 +122,7 @@ header img {
   text-decoration: none;
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: justify;
 }
 
 #submenu input[type="button"]:hover {
@@ -154,6 +137,7 @@ header img {
   position: relative;
 }
 
+/*! ESTILOS DE LOS ICONOS BORRADOS */
 #iconos {
     list-style-type: none;
     /* margin-right: 40px; */
@@ -183,6 +167,8 @@ header img {
     background-color: transparent;
     border: none;
 }
+/*! FIN ESTILOS ICONOS BORRADOS */
+/** FIN DEL HEADER */
 
 /** CARRUSELL */
 #carrusel {
