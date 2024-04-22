@@ -1,8 +1,12 @@
 
 // CAMBIAR RUTA DE LOS BOTONES
 document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("btnLogo").onclick = function() {
+        window.location.href = "../bar_gutierrez/index.html";
+    };
+
     document.getElementById("btnInicio").onclick = function() {
-        window.location.href = "../bar_gutierrez/pagina_principal.html";
+        window.location.href = "../bar_gutierrez/index.html";
     };
     
     document.getElementById("btnCarta").onclick = function() {
