@@ -1,3 +1,4 @@
+window.onload = principal
 
 // CAMBIAR RUTA DE LOS BOTONES
 document.addEventListener("DOMContentLoaded", function() {
@@ -27,4 +28,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnReserva").onclick = function() {
         window.location.href = "../reserva.html";
     };
-});
+})
+
+function principal() {
+    
+}
