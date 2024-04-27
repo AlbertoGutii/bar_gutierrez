@@ -1,41 +1,39 @@
 <?php
 
-    //* RECUPERAR PRODUCTOS BASE DE DATOS
+    //* RECUPERAR VINOS BASE DE DATOS
 
-    if (isset($_POST['obtenerProductos'])) {
-        obtenerProductos();
+    if (isset($_POST['obtenerVinos'])) {
+        obtenerVinos();
     }
 
-    //? funcion que lista los productos
-    function obtenerProductos() {
+    //? funcion que lista los vinos
+    function obtenerVinos() {
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
         $resultado = $conexion -> prepare("SELECT 
-            p.id,
-            p.nombre,
-            p.descripcion,
-            tp.categoria,
-            p.foto,
-            p.precio
+            v.id,
+            v.nombre,
+            tv.categoria,
+            v.foto,
+            v.precio
         FROM
-            productos p
+            vinos v
         INNER JOIN
-            categorias_productos cp ON p.id = cp.fk_productos
+            categorias_vinos cv ON v.id = cv.fk_vinos
         INNER JOIN
-            tipos_producto tp ON cp.fk_categoria = tp.id");
+            tipos_vino tv ON cv.fk_vinos = tv.id");
         $resultado -> execute();
         $datos = array();
         while($fila = $resultado -> fetch()) {
-            $productos = array(
+            $vinos = array(
                 'id' => $fila['id'],
                 'nombre' => $fila['nombre'],
-                'descripcion' => $fila['descripcion'],
                 'categoria' => $fila['categoria'],
                 'foto' => $fila['foto'],
                 'precio' => $fila['precio']
             );
 
-            $datos[] = $productos;
+            $datos[] = $vinos;
         }
 
         $jsonString = json_encode($datos);
