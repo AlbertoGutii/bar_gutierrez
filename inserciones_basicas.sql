@@ -21,7 +21,7 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Ensalada mixta(4p)', 'Ensalada para 4 personas', 'foto', 15);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Ensalada de escabechados', 'Ensalada con codornices escabechadas', './imagenes/ensalada_escabechados.png', 15);
+    VALUES ('Ensalada de escabechados', 'Ensalada con codornices escabechadas', 'foto', 15);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Espárragos', 'Falta descripcion', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
@@ -33,7 +33,7 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Ensalada de ventresca y pimiento', 'Contiene ventresca y pimiento', 'foto', 16);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Bacalao Crudo', 'Bacalao crudo con cebolla, aceitunas negras y aceite', './imagenes/bacalao_crudo.png', 15);
+    VALUES ('Bacalao Crudo', 'Bacalao crudo con cebolla, aceitunas negras y aceite', 'foto', 15);
 
     -- ENTRANTES CALIENTES
     INSERT INTO productos (nombre, descripcion, foto, precio) 
@@ -55,7 +55,7 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Calamares a la romana', 'Calamares fritos', 'foto', 12);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Sepia a la plancha', 'Sepia a la plancha con salsa casera', './imagenes/sepia.png', 13);
+    VALUES ('Sepia a la plancha', 'Sepia a la plancha con salsa casera', 'foto', 13);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Mollejas con setas', 'Mollejas a la plancha, guisadas con setas', 'foto', 14);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
@@ -71,11 +71,11 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Codornices a la plancha', 'Codornices a la plancha', 'foto', 12);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Lomo adobado', 'Lomo adobado acompañado de patatas o ensalada', './imagenes/lomo.png', 9);
+    VALUES ('Lomo adobado', 'Lomo adobado acompañado de patatas o ensalada', 'foto', 9);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Bistec de ternera', 'Bistec de ternera acompañado de patatas o ensalada', 'foto', 11);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Secreto de cerdo DUROC', 'Secreto de cerdo DUROC acompañado de patatas o ensalada', './imagenes/secreto.png', 14);
+    VALUES ('Secreto de cerdo DUROC', 'Secreto de cerdo DUROC acompañado de patatas o ensalada', 'foto', 14);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Chuletillas de lechazo', 'Chuletillas de lechazo acompañadas de patatas o ensalada', 'foto', 17);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
@@ -117,41 +117,41 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Chicharro a la plancha', 'Chicharro a la plancha acompañado de ensalada', 'foto', 20);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Chipirones en su tinta', 'Chipirones en su tinta', './imagenes/chipirones_tinta.png', 15);
+    VALUES ('Chipirones en su tinta', 'Chipirones en su tinta', 'foto', 15);
 
     -- ALMUERZOS Y RACIONES
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Callos', 'Callos al estilo de la casa', './imagenes/callos.png', 8);
+    VALUES ('Callos', 'Callos al estilo de la casa', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Morro', 'Morro de cerdo al estilo de la casa', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Asadurilla', 'Asadurilla casera', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Manitas de Lechazo', 'Manitas de lechazo', './imagenes/manitas.png', 8);
+    VALUES ('Manitas de Lechazo', 'Manitas de lechazo', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Oreja rebozada', 'Oreja rebozada con jamon york y queso', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Oreja a la plancha', 'Oreja a la plancha', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Manitas de cerdo', 'Manitas de cerdo guisadas', './imagenes/manitas.png', 8);
+    VALUES ('Manitas de cerdo', 'Manitas de cerdo guisadas', 'foto', 8);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Zamburiñas', 'Zamburiñas a la plancha', 'foto', 18);
 
     -- POSTRES
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Flan de huevo', 'Flan de huevo casero', './imagenes/flan_huevo.png', 4.5);
+    VALUES ('Flan de huevo', 'Flan de huevo casero', 'foto', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Flan de queso', 'Flan de queso casero', './imagenes/flan_queso.png', 4.5);
+    VALUES ('Flan de queso', 'Flan de queso casero', 'foto', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Cuajada', 'Cuajada casera', './imagenes/cuajada.png', 4.5);
+    VALUES ('Cuajada', 'Cuajada casera', 'foto', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Natillas', 'Natillas caseras', './imagenes/natillas.png', 4.5);
+    VALUES ('Natillas', 'Natillas caseras', 'foto', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Crema Catalana', 'Crema Catalana casera', './imagenes/crema_catalana.png', 4.5);
+    VALUES ('Crema Catalana', 'Crema Catalana casera', 'foto', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Arroz con leche', 'Arroz con leche casero', './imagenes/arroz_leche.png', 4.5);
+    VALUES ('Arroz con leche', 'Arroz con leche casero', 'foto', 4.5);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Tarta de queso', 'Tarta de queso casera', './imagenes/tarta_queso.png', 5);
+    VALUES ('Tarta de queso', 'Tarta de queso casera', 'foto', 5);
     -- BUSCAR SI QUEDA ALGUN POSTRE MAS
 
 -- TABLA CATEGORIAS_PRODUCTOS
