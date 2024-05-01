@@ -173,15 +173,24 @@ header {
 
 /** CONTENEDOR PRODUCTOS */
 #contenedor-productos {
-    display: flex;
     position: relative;
-    
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin: 0 -10px;
 }
 
 #contenedor-productos ul {
     list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
+/** FIN DEL CONTENEDOR PRODUCTOS */
 
 /** ESTILO FOOTER */
 #pie_pagina {
@@ -189,6 +198,14 @@ header {
     color: white;
     padding: 20px;
     text-align: justify;
+}
+
+#pie_pagina div {
+    display: flex;
+    gap: 90px;
+    align-content: center;
+    justify-content: space-between;
+    margin: 0 15px;
 }
 
 .datos_enlaces_bar {

@@ -34,9 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //* funcion principal
 function principal() {
     miDiv = recuperarProductos()
-    // miFooter = dibujarFooter()
     document.body.appendChild(miDiv)
-    // document.body.appendChild(miFooter)
 }
 
 //* funcion para crear elementos
@@ -84,8 +82,9 @@ function dibujarProductos(datosProducto) {
     miFila.appendChild(foto)
     let nombre = crearElemento("li",datosProducto.nombre, {"id":"nombre_producto"})
     miFila.appendChild(nombre)
-    let descripcion = crearElemento("li",datosProducto.descripcion, {"id":"descripcion_producto"})
-    miFila.appendChild(descripcion)
+    //! DESCRIPCION ELIMINADA PARA VER SI QUEDA MEJOR
+    // let descripcion = crearElemento("li",datosProducto.descripcion, {"id":"descripcion_producto"})
+    // miFila.appendChild(descripcion)
     let categoria = crearElemento("li",datosProducto.categoria, {"id":"categoria_producto"})
     miFila.appendChild(categoria)
     let precio = crearElemento("li",datosProducto.precio, {"id":"precio_producto"})
