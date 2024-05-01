@@ -21,7 +21,7 @@
         INNER JOIN
             categorias_vinos cv ON v.id = cv.fk_vinos
         INNER JOIN
-            tipos_vino tv ON cv.fk_vinos = tv.id");
+            tipos_vino tv ON cv.fk_categoria = tv.id");
         $resultado -> execute();
         $datos = array();
         while($fila = $resultado -> fetch()) {

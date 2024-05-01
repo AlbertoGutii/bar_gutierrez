@@ -2,6 +2,7 @@ window.onload = principal
 
 // CAMBIAR RUTA DE LOS BOTONES
 document.addEventListener("DOMContentLoaded", function() {
+    
     document.getElementById("btnLogo").onclick = function() {
         window.location.href = "../index.html"
     }
@@ -32,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //* funcion principal
 function principal() {
-    recuperarProductos()
+    miDiv = recuperarProductos()
+    // miFooter = dibujarFooter()
+    document.body.appendChild(miDiv)
+    // document.body.appendChild(miFooter)
 }
 
 //* funcion para crear elementos
@@ -120,7 +124,9 @@ function recuperarProductos() {
         {
             miDiv.appendChild(dibujarProductos(respuesta[i]))
         }
-        document.body.appendChild(miDiv)
+        // document.body.appendChild(miDiv)
+        return miDiv
+        console.log("atontado")
     })
 }
 

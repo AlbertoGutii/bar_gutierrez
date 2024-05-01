@@ -172,7 +172,15 @@ header {
 /** FIN DEL HEADER */
 
 /** CONTENEDOR PRODUCTOS */
-/*! ME QUEDA HACER EL ESTILO DE LOS PRODUCTOS */
+#contenedor-productos {
+    display: flex;
+    position: relative;
+    
+}
+
+#contenedor-productos ul {
+    list-style: none;
+}
 
 
 /** ESTILO FOOTER */

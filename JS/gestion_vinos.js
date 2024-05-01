@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //* funcion principal
 function principal() {
-    recuperarVinos()
+    const miDiv = recuperarVinos()
+
+    document.body.appendChild(miDiv)
 }
 
 //* funcion para crear elementos
@@ -108,7 +110,7 @@ function dibujarVinos(datosVino) {
 function recuperarVinos() {
     let miDiv = document.getElementById("contenedor-vinos")
     // vaciamos el div
-    // miDiv.innerHTML = ""
+    miDiv.innerHTML = ""
     
 
     obtenerVinos(function(respuesta) {
@@ -119,7 +121,8 @@ function recuperarVinos() {
         {
             miDiv.appendChild(dibujarVinos(respuesta[i]))
         }
-        document.body.appendChild(miDiv)
+        // document.body.appendChild(miDiv)
+        return miDiv
     })
 }
 
