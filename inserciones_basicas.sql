@@ -17,9 +17,9 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
 -- TABLA PRODUCTOS
     -- ENTRANTES FRIOS
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Ensalada mixta(2p)', 'Ensalada para dos personas', 'foto', 10);
+    VALUES ('Ensalada mixta\n(2p)', 'Ensalada para dos personas', 'foto', 10);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Ensalada mixta(4p)', 'Ensalada para 4 personas', 'foto', 15);
+    VALUES ('Ensalada mixta\n(4p)', 'Ensalada para 4 personas', 'foto', 15);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Ensalada de escabechados', 'Ensalada con codornices escabechadas', 'foto', 15);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
@@ -27,9 +27,9 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Lacón a la gallega', 'Lacón con aceite y pimentón', 'foto', 13);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Ibéricos(jamón y lomo)', 'Plato con un surtido de jamón y lomo', 'foto', 17);
+    VALUES ('Ibéricos\n(jamón y lomo)', 'Plato con un surtido de jamón y lomo', 'foto', 17);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
-    VALUES ('Ibéricos(jamón, lomo y queso)', 'Plato con un surtido de jamón, lomo y queso', 'foto', 17);
+    VALUES ('Ibéricos\n(jamón, lomo y queso)', 'Plato con un surtido de jamón, lomo y queso', 'foto', 17);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
     VALUES ('Ensalada de ventresca y pimiento', 'Contiene ventresca y pimiento', 'foto', 16);
     INSERT INTO productos (nombre, descripcion, foto, precio) 
@@ -158,11 +158,11 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     -- ENTRANTES FRIOS
     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
     VALUES (
-    (SELECT id FROM productos WHERE nombre = 'Ensalada mixta(2p)'),
+    (SELECT id FROM productos WHERE nombre = 'Ensalada mixta\n(2p)'),
     (SELECT id FROM tipos_producto WHERE categoria = 'Entrantes frios'));
     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
     VALUES (
-    (SELECT id FROM productos WHERE nombre = 'Ensalada mixta(4p)'),
+    (SELECT id FROM productos WHERE nombre = 'Ensalada mixta\n(4p)'),
     (SELECT id FROM tipos_producto WHERE categoria = 'Entrantes frios'));
     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
     VALUES (
@@ -178,11 +178,11 @@ INSERT INTO tipos_vino (categoria) VALUES ('Otras opciones');
     (SELECT id FROM tipos_producto WHERE categoria = 'Entrantes frios'));
     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
     VALUES (
-    (SELECT id FROM productos WHERE nombre = 'Ibéricos(jamón y lomo)'),
+    (SELECT id FROM productos WHERE nombre = 'Ibéricos\n(jamón y lomo)'),
     (SELECT id FROM tipos_producto WHERE categoria = 'Entrantes frios'));
     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
     VALUES (
-    (SELECT id FROM productos WHERE nombre = 'Ibéricos(jamón, lomo y queso)'),
+    (SELECT id FROM productos WHERE nombre = 'Ibéricos\n(jamón, lomo y queso)'),
     (SELECT id FROM tipos_producto WHERE categoria = 'Entrantes frios'));
     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
     VALUES (

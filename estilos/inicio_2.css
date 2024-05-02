@@ -226,7 +226,7 @@ header {
     display: flex;
     gap: 90px;
     align-content: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 15px;
 }
 

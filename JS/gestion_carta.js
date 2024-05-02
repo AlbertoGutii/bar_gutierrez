@@ -80,15 +80,17 @@ function dibujarProductos(datosProducto) {
     let foto = crearElemento("li",undefined)    
     foto.appendChild(crearElemento("img",undefined,{"src" : "../imagenes/" + datosProducto.foto + ".png", "class":"foto_producto"}))   
     miFila.appendChild(foto)
-    let nombre = crearElemento("li",datosProducto.nombre, {"id":"nombre_producto"})
+    let nombre = crearElemento("li",datosProducto.nombre + ": " + datosProducto.precio + ' €', {"id":"nombre_producto"})
     miFila.appendChild(nombre)
     //! DESCRIPCION ELIMINADA PARA VER SI QUEDA MEJOR
     // let descripcion = crearElemento("li",datosProducto.descripcion, {"id":"descripcion_producto"})
     // miFila.appendChild(descripcion)
-    let categoria = crearElemento("li",datosProducto.categoria, {"id":"categoria_producto"})
-    miFila.appendChild(categoria)
-    let precio = crearElemento("li",datosProducto.precio, {"id":"precio_producto"})
-    miFila.appendChild(precio)
+    //! CATEGORIA TAMBIEN ELIMINADA PARA HACER EL ESTILO DE LOS PRODUCTOS
+    // let categoria = crearElemento("li",datosProducto.categoria, {"id":"categoria_producto"})
+    // miFila.appendChild(categoria)
+    //! PRECIO AÑADIDO EN EL NOMBRE PARA AHORRA ESPACIO
+    // let precio = crearElemento("li",datosProducto.precio + ' €', {"id":"precio_producto"})
+    // miFila.appendChild(precio)
     //? INPUT para introducir cantidad
     let filita_1 = crearElemento("li",undefined)
     let caja_texto = crearElemento("input",undefined,{"type":"text","id":"cantidad_"+datosProducto.id,"step":"0.001", "min":"0"})

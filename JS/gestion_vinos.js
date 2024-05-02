@@ -85,7 +85,7 @@ function dibujarVinos(datosVino) {
     miFila.appendChild(nombre)
     let categoria = crearElemento("li",datosVino.categoria, {"id":"categoria_vino"})
     miFila.appendChild(categoria)
-    let precio = crearElemento("li",datosVino.precio, {"id":"precio_vino"})
+    let precio = crearElemento("li",datosVino.precio + ' €', {"id":"precio_vino"})
     miFila.appendChild(precio)
     //? INPUT para introducir cantidad
     let filita_1 = crearElemento("li",undefined)
