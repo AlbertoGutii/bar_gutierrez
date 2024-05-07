@@ -178,6 +178,16 @@ header {
     text-align: center;
 }
 
+#buscador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buscador form {
+    
+}
+
 #contenedor-productos {
     position: relative;
     /* display: flex; */
@@ -193,6 +203,10 @@ header {
     margin: 5px 100px;
     /* margin-bottom: 1rem; */
     /* gap: 15px; */
+}
+
+#contenedor-productos ul li img {
+    width: 160px;
 }
 
 .container {
