@@ -82,22 +82,54 @@
     <!--* PRODUCTOS DE LA CARTA -->
     <!--! FALTA PONER BARRA DE BUSQUEDA Y BOTONES PARA FILTRAR -->
     <div class="container">
-        <div class="buscador">
-            <h1>Carta</h1>
-            <form action="">
-                <input type="text">
-                <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
-                        <path d="M17.5 17.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                    </svg>
-                </button>
-                <!--! BOTONCITOS PARA LOS FILTROS DE LAS COMIDAS -->
-                
-            </form>
+        <h1>Carta</h1>
+        <div>
+            <input type="text" id="busquedaProducto" placeholder="Calamares, Pulpo, Callos...">
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                    <path d="M17.5 17.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <!--? BOTONCITOS PARA LOS FILTROS DE LAS COMIDAS -->
+            <ul id="filtros">
+                <li>
+                    <label for="filters">Filtros</label>
+                </li>
+                <li>
+                    <button id="btnEntrantesCalientes">
+                        Entrantes
+                    </button>
+                </li>
+                <li>
+                    <button id="btnCarnes">
+                        Carnes
+                    </button>
+                </li>
+                <li>
+                    <button id="btnGuisos">
+                        Guisos Caseros
+                    </button>
+                </li>
+                <li>
+                    <button id="btnPescados">
+                        Pescados
+                    </button>
+                </li>
+                <li>
+                    <button id="btnRaciones">
+                        Raciones
+                    </button>
+                </li>
+                <li>
+                    <button id="btnPostres">
+                        Postres
+                    </button>
+                </li>
+            </ul>
         </div>
-        <div id="contenedor-productos">
-        </div>
+    </div>
+    <div id="contenedor-productos">
     </div>
     
     

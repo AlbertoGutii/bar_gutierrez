@@ -173,9 +173,18 @@ header {
 
 /** CONTENEDOR VINOS */
 .container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+#filtros {  
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 #contenedor-vinos {
