@@ -6,7 +6,7 @@
         obtenerProductos();
     }
 
-    //? funcion que lista los productos
+    //? funcion que obtiene los productos
     function obtenerProductos() {
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
