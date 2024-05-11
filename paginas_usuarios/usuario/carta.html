@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cesta</title>
-    <link rel="shortcut icon" href="../imagenes/svg/logo.ico" type="image/x-icon">
+    <title>Productos Carta</title>
+    <script src="../../JS/usuario_carta.js"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../estilos/inicio_productos.css">
+    <link rel="shortcut icon" href="../../imagenes/svg/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../estilos/usuario_productos.css">
 </head>
 <body>
     <!--* BARRA DE NAVEGACION -->
@@ -25,7 +26,7 @@
                     <li>
                         <!--! LOGO PENDIENTE PENSAR SI DEJARLO AQUI -->
                         <button class="logo" id="btnLogo">
-                            <img src="../imagenes/pagina/logo.jpg" alt="logo">
+                            <img src="../../imagenes/pagina/logo.jpg" alt="logo">
                         </button>
                     </li>
                     <li>
@@ -79,9 +80,57 @@
     </header>
     
     
-    <!--* AQUI IRIA EL FORMULARIO PARA PAGAR -->
+    <!--* PRODUCTOS DE LA CARTA -->
+    <!--! FALTA PONER BARRA DE BUSQUEDA Y BOTONES PARA FILTRAR -->
     <div class="container">
-
+        <h1>Carta</h1>
+        <div id="filtros">
+            <input type="text" id="busquedaProducto" placeholder="Calamares, Pulpo, Callos...">
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                    <path d="M17.5 17.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <!--? BOTONCITOS PARA LOS FILTROS DE LAS COMIDAS -->
+            <ul >
+                <li>
+                    <label for="filters">Filtros</label>
+                </li>
+                <li>
+                    <button id="btnEntrantesCalientes">
+                        Entrantes
+                    </button>
+                </li>
+                <li>
+                    <button id="btnCarnes">
+                        Carnes
+                    </button>
+                </li>
+                <li>
+                    <button id="btnGuisos">
+                        Guisos Caseros
+                    </button>
+                </li>
+                <li>
+                    <button id="btnPescados">
+                        Pescados
+                    </button>
+                </li>
+                <li>
+                    <button id="btnRaciones">
+                        Raciones
+                    </button>
+                </li>
+                <li>
+                    <button id="btnPostres">
+                        Postres
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div id="contenedor-productos">
+        </div>
     </div>
     
     
@@ -100,9 +149,9 @@
                 <h3>Enlaces legales</h3>
                 <ul>
                     <!--? IGUAL MEJOR PONERLO COMO UN BOTON -->
-                    <li><a href="../avisos_legales/aviso_legal.html">Aviso Legal</a></li>
-                    <li><a href="../avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
-                    <li><a href="../avisos_legales/politica_cookies.html">Política de Cookies</a></li>
+                    <li><a href="../../avisos_legales/aviso_legal.html">Aviso Legal</a></li>
+                    <li><a href="../../avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="../../avisos_legales/politica_cookies.html">Política de Cookies</a></li>
                 </ul>
             </div>
         </div>

@@ -1,32 +1,31 @@
 window.onload = principal
 
-// CAMBIAR RUTA DE LOS BOTONES
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnLogo").onclick = function() {
-        window.location.href = "../index.html";
+        window.location.href = "../../index.html";
     };
 
     document.getElementById("btnInicio").onclick = function() {
-        window.location.href = "../index.html";
+        window.location.href = "../../index.html";
     };
     
     document.getElementById("btnCarta").onclick = function() {
-        window.location.href = "../paginas_carta/carta.html";
+        window.location.href = "../../paginas_usuarios/usuario/carta.html";
     };
     document.getElementById("btnMenu").onclick = function() {
-        window.location.href = "../paginas_carta/menu.html";
+        window.location.href = "../../paginas_usuarios/usuario/menu.html";
     };
     
     document.getElementById("btnVinos").onclick = function() {
-        window.location.href = "../paginas_carta/vinos.html";
+        window.location.href = "../../paginas_usuarios/usuario/vinos.html";
     };
 
     document.getElementById("btnContacto").onclick = function() {
-        window.location.href = "../contacto.html";
+        window.location.href = "../../contacto.html";
     };
 
     document.getElementById("btnReserva").onclick = function() {
-        window.location.href = "../reserva.html";
+        window.location.href = "../../reserva.html";
     };
 });
 
@@ -58,7 +57,7 @@ function obtenerVinos(callback)
 {
     let miPeticion = new XMLHttpRequest()
 
-    miPeticion.open("POST","../PHP/gestionar-vino.php", true)
+    miPeticion.open("POST","../../PHP/usuario_vinos.php", true)
 
     miPeticion.onreadystatechange = function() {
         if(miPeticion.readyState == 4 && miPeticion.status == 200)
@@ -85,9 +84,9 @@ function dibujarVinos(datosvino) {
     imgDiv.classList.add("card-img");
     let img = document.createElement("img");
     if (datosvino.foto === "foto") {
-        img.setAttribute("src", "../imagenes/pagina/coming_soon.jpg");
+        img.setAttribute("src", "../../imagenes/pagina/coming_soon.jpg");
     } else {
-        img.setAttribute("src", "../imagenes/" + datosvino.foto + ".png");
+        img.setAttribute("src", "../../imagenes/" + datosvino.foto + ".png");
     }
     img.setAttribute("class", "foto_vino");
     img.setAttribute("alt", datosvino.nombre);
