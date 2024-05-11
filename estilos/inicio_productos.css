@@ -139,9 +139,9 @@ header {
 }
 
 /*! ESTILOS DE LOS ICONOS BORRADOS */
-/* #iconos {
+#iconos {
     list-style-type: none;
-    margin-right: 40px;
+    /* margin-right: 40px; */
 }
 
 #iconos ul {
@@ -167,7 +167,7 @@ header {
 #botonPersona {
     background-color: transparent;
     border: none;
-} */
+}
 /*! FIN ESTILOS ICONOS BORRADOS */
 /** FIN DEL HEADER */
 
@@ -180,6 +180,7 @@ header {
     text-align: center;
     width: 100%;
     padding: 10px 0px;
+    /* background: #8597e7; */
 }
 
 /* .container div {
@@ -216,10 +217,10 @@ header {
 
 /* Card */
 .card {
-    width: calc(33.33% - 20px);
+    width: calc(20% - 20px);
     height: auto;
     padding: .8em;
-    background: #f5f5f5;
+    background: #3ea594;
     position: relative;
     overflow: visible;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -228,19 +229,19 @@ header {
 .card-img {
     /* background-color: #ffcaa6; */
     /* background-color: transparent; */
-    width: 100%;
+    width: auto;
     height: auto;
     border-radius: .5rem;
     transition: .3s ease;
 }
 
 .card-info {
-    padding-top: 10%;
+    padding-top: 15px;
 }
 
-svg {
-    width: 20px;
-    height: 20px;
+#contendor-productos svg {
+    width: 25px;
+    height: 25px;
 }
 
 .card-footer {

@@ -2,7 +2,6 @@ window.onload = principal
 
 // CAMBIAR RUTA DE LOS BOTONES
 document.addEventListener("DOMContentLoaded", function() {
-    
     document.getElementById("btnLogo").onclick = function() {
         window.location.href = "../index.html"
     }
@@ -33,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //* funcion principal
 function principal() {
-    miDiv = recuperarProductos()
-    document.body.appendChild(miDiv)
+    let productos = recuperarProductos()
+    document.body.appendChild(productos)
 }
 
 //* funcion para crear elementos
@@ -62,7 +61,7 @@ function obtenerProductos(callback)
     miPeticion.onreadystatechange = function() {
         if(miPeticion.readyState == 4 && miPeticion.status == 200)
         {
-            // console.log(miPeticion.responseText)
+            console.log(miPeticion.responseText)
             callback(miPeticion.responseText)
         }
     }
@@ -74,49 +73,6 @@ function obtenerProductos(callback)
     miPeticion.send(datos)
 }
 
-//* funcion que dibuja los productos en el html
-// function dibujarProductos(datosProducto) {
-//     let miFila = crearElemento("ul",undefined)
-//     //? PONEMOS UNA IMAGEN POR DEFECTO
-//     let foto = crearElemento("li",undefined)    
-//     if(datosProducto.foto === "foto") {
-//         foto.appendChild(crearElemento("img",undefined,{"src" : "../imagenes/pagina/coming_soon.jpg", "class":"foto_producto"}))   
-//     }
-//     else {
-//         // let foto = crearElemento("li",undefined)    
-//         foto.appendChild(crearElemento("img",undefined,{"src" : "../imagenes/" + datosProducto.foto + ".png", "class":"foto_producto"}))
-//     }
-//     miFila.appendChild(foto)
-//     let nombre = crearElemento("li",datosProducto.nombre + ": " + datosProducto.precio + ' €', {"id":"nombre_producto"})
-//     miFila.appendChild(nombre)
-//     //! DESCRIPCION ELIMINADA PARA VER SI QUEDA MEJOR
-//     // let descripcion = crearElemento("li",datosProducto.descripcion, {"id":"descripcion_producto"})
-//     // miFila.appendChild(descripcion)
-//     //! CATEGORIA TAMBIEN ELIMINADA PARA HACER EL ESTILO DE LOS PRODUCTOS
-//     // let categoria = crearElemento("li",datosProducto.categoria, {"id":"categoria_producto"})
-//     // miFila.appendChild(categoria)
-//     //! PRECIO AÑADIDO EN EL NOMBRE PARA AHORRA ESPACIO
-//     // let precio = crearElemento("li",datosProducto.precio + ' €', {"id":"precio_producto"})
-//     // miFila.appendChild(precio)
-//     //? INPUT para introducir cantidad
-//     let filita_1 = crearElemento("li",undefined)
-//     let caja_texto = crearElemento("input",undefined,{"type":"text","id":"cantidad_"+datosProducto.id,"step":"0.001", "min":"0"})
-//     caja_texto.addEventListener("input",manejadorInputCantidad)
-//     filita_1.appendChild(caja_texto)
-//     miFila.appendChild(filita_1)
-//     //? Boton Añadir producto
-//     let filita_2 = crearElemento("li",undefined)
-//     let boton_2 = crearElemento("input",undefined,{"type":"button","value":"Añadir a la cesta"})
-//     let parrafo = crearElemento("p","",{"id":"errores_"+datosProducto.id})
-//     boton_2.addEventListener("click", function() {
-//         manejadorClickAñadirProducto(datosProducto.id)
-//     })
-//     filita_2.appendChild(boton_2)
-//     filita_2.appendChild(parrafo)
-//     miFila.appendChild(filita_2)
-//     return miFila
-// }
-
 function dibujarProductos(datosProducto) {
     let cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
@@ -125,12 +81,10 @@ function dibujarProductos(datosProducto) {
     let imgDiv = document.createElement("div");
     imgDiv.classList.add("card-img");
     let img = document.createElement("img");
-    if (datosProducto.foto === 'foto') {
+    if (datosProducto.foto === "foto") {
         img.setAttribute("src", "../imagenes/pagina/coming_soon.jpg");
-        img.setAttribute("alt", "imagen_proximamente");
     } else {
         img.setAttribute("src", "../imagenes/" + datosProducto.foto + ".png");
-        img.setAttribute("alt", "imagen_" + datosProducto.nombre);
     }
     img.setAttribute("class", "foto_producto");
     img.setAttribute("alt", datosProducto.nombre);
@@ -142,7 +96,7 @@ function dibujarProductos(datosProducto) {
     infoDiv.classList.add("card-info");
     let titlePara = document.createElement("p");
     titlePara.classList.add("text-title");
-    titlePara.setAttribute("id", "nombre_producto")
+    titlePara.setAttribute("id", "nombre_producto");
     titlePara.textContent = datosProducto.nombre;
     let bodyPara = document.createElement("p");
     bodyPara.classList.add("text-body");
@@ -155,7 +109,7 @@ function dibujarProductos(datosProducto) {
     let quantityInput = document.createElement("input");
     quantityInput.setAttribute("type", "number");
     quantityInput.setAttribute("placeholder", "Cantidad");
-    quantityInput.setAttribute("id", "cantidad_" + datosProducto.id)
+    quantityInput.setAttribute("id", "cantidad_" + datosProducto.id);
     quantityInput.classList.add("card-quantity");
     cardDiv.appendChild(quantityInput);
 
@@ -170,9 +124,9 @@ function dibujarProductos(datosProducto) {
     let buttonDiv = document.createElement("button");
     buttonDiv.classList.add("card-button");
     buttonDiv.addEventListener("click", function() {
-        manejadorClickAñadirProducto(datosProducto.id)
+        manejadorClickAñadirProducto(datosProducto.id);
     });
-    
+
     let svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgIcon.setAttribute("class", "svg-icon");
     svgIcon.setAttribute("viewBox", "0 0 20 20");
@@ -189,6 +143,7 @@ function dibujarProductos(datosProducto) {
     footerDiv.appendChild(buttonDiv);
     cardDiv.appendChild(footerDiv);
 
+    // console.log(cardDiv);
     return cardDiv;
 }
 
@@ -207,8 +162,8 @@ function recuperarProductos() {
         {
             miDiv.appendChild(dibujarProductos(respuesta[i]))
         }
+        // console.log(miDiv)
         // document.body.appendChild(miDiv)
-        // console.log("atontado")
         return miDiv
     })
 }
