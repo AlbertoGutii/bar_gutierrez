@@ -125,10 +125,12 @@ function dibujarProductos(datosProducto) {
     let imgDiv = document.createElement("div");
     imgDiv.classList.add("card-img");
     let img = document.createElement("img");
-    if (datosProducto.foto === "foto") {
+    if (datosProducto.foto === 'foto') {
         img.setAttribute("src", "../imagenes/pagina/coming_soon.jpg");
+        img.setAttribute("alt", "imagen_proximamente");
     } else {
         img.setAttribute("src", "../imagenes/" + datosProducto.foto + ".png");
+        img.setAttribute("alt", "imagen_" + datosProducto.nombre);
     }
     img.setAttribute("class", "foto_producto");
     img.setAttribute("alt", datosProducto.nombre);
