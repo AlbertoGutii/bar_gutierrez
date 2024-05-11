@@ -139,9 +139,9 @@ header {
 }
 
 /*! ESTILOS DE LOS ICONOS BORRADOS */
-#iconos {
+/* #iconos {
     list-style-type: none;
-    /* margin-right: 40px; */
+    margin-right: 40px;
 }
 
 #iconos ul {
@@ -167,7 +167,7 @@ header {
 #botonPersona {
     background-color: transparent;
     border: none;
-}
+} */
 /*! FIN ESTILOS ICONOS BORRADOS */
 /** FIN DEL HEADER */
 
@@ -179,83 +179,45 @@ header {
     align-items: center;
     text-align: center;
     width: 100%;
-    padding: 20px;
+    padding: 10px 0px;
 }
 
-.container div {
+/* .container div {
     width: 65%;
-}
+} */
 
 #filtros {
     margin: 35px 0px;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* gap: 10px; */
-}
-
-/* .container {
-    flex: 1 0 calc(33.33% - 40px);
-    margin: 20px;
-    list-style-type: none;
-    padding: 0;
-} */
-
-/* .container ul li {
-    margin-bottom: 30px;
-    padding: 20px;
-    text-align: center;
-}
-
-.container ul li input[type="text"] {
-    width: 80%;
-    margin-bottom: 10px;
-}
-
-.container ul li input[type="button"] {
-    width: 80%;
-}
-
-.container ul li p {
-    margin: 15px 0 0;
-} */
-
-#contenedor-productos {
-    position: relative;
     display: flex;
     /* flex-direction: column; */
-    /* justify-items: center;
-    align-items: center; */
-    align-content: space-around;
-    flex-wrap: wrap;
-    /* width: 1000px; */
-    /* margin-bottom: 100px; */
-    /* gap: 60px; */
-    /* border: 2px solid #ccc; */
-    /* border-radius: 10px; */
+    justify-content: center;
+    align-items: center;
 }
 
-/* #contenedor-productos ul {
-    list-style: none;
-    display: inline-block;
-    justify-content: center;
-    margin: 5px 100px;
-    margin-bottom: 1rem;
-    gap: 15px;
-    justify-items: center;
+#filtros ul {
+    list-style-type: none;
+    display: flex;
+    /* justify-content: space-around; */
     align-items: center;
-} */
+    gap: 10px;
+}
+
+#contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 20px;
+}
 
 .card-img img {
     width: 130px
 }
-/** FIN DEL CONTENEDOR PRODUCTOS */
 
 /* Card */
 .card {
-    /* width: 400px;
-    height: 300px; */
+    width: calc(33.33% - 20px);
+    height: auto;
     padding: .8em;
     background: #f5f5f5;
     position: relative;
@@ -266,8 +228,8 @@ header {
 .card-img {
     /* background-color: #ffcaa6; */
     /* background-color: transparent; */
-    height: 40%;
-    width: 130px;
+    width: 100%;
+    height: auto;
     border-radius: .5rem;
     transition: .3s ease;
 }
@@ -333,7 +295,7 @@ svg {
     box-sizing: border-box;
     font-size: 1em;
 }
-
+/** FIN DEL CONTENEDOR PRODUCTOS */
 
 /** ESTILO FOOTER */
 #pie_pagina {
