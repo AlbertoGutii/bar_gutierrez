@@ -2,39 +2,37 @@ window.onload = principal
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnLogo").onclick = function() {
-        window.location.href = "../../index.html";
-    };
+        window.location.href = "../../index.html"
+    }
 
     document.getElementById("btnInicio").onclick = function() {
-        window.location.href = "../../index.html";
-    };
+        window.location.href = "../../index.html"
+    }
     
     document.getElementById("btnCarta").onclick = function() {
-        window.location.href = "../../paginas_usuarios/usuario/carta.html";
-    };
+        window.location.href = "../../paginas_usuarios/usuario/carta.html"
+    }
     document.getElementById("btnMenu").onclick = function() {
-        window.location.href = "../../paginas_usuarios/usuario/menu.html";
-    };
+        window.location.href = "../../paginas_usuarios/usuario/menu.html"
+    }
     
     document.getElementById("btnVinos").onclick = function() {
-        window.location.href = "../../paginas_usuarios/usuario/vinos.html";
-    };
+        window.location.href = "../../paginas_usuarios/usuario/vinos.html"
+    }
 
     document.getElementById("btnContacto").onclick = function() {
-        window.location.href = "../../contacto.html";
-    };
+        window.location.href = "../../contacto.html"
+    }
 
     document.getElementById("btnReserva").onclick = function() {
-        window.location.href = "../../reserva.html";
-    };
-});
-
+        window.location.href = "../../reserva.html"
+    }
+})
 
 //* funcion principal
 function principal() {
-    let vinos = recuperarVinos()
-
-    document.body.appendChild(vinos)
+    let productos = recuperarProductos()
+    document.body.appendChild(productos)
 }
 
 //* funcion para crear elementos
@@ -52,8 +50,8 @@ function crearElemento(etiqueta, texto, atributos) {
     return elementoNuevo
 }
 
-//* funcion para obtener los vinos de la base de datos
-function obtenerVinos(callback)
+//* funcion para obtener los productos de la base de datos
+function obtenerProductos(callback)
 {
     let miPeticion = new XMLHttpRequest()
 
@@ -62,7 +60,7 @@ function obtenerVinos(callback)
     miPeticion.onreadystatechange = function() {
         if(miPeticion.readyState == 4 && miPeticion.status == 200)
         {
-            // console.log(miPeticion.responseText)
+            console.log(miPeticion.responseText)
             callback(miPeticion.responseText)
         }
     }
@@ -74,44 +72,43 @@ function obtenerVinos(callback)
     miPeticion.send(datos)
 }
 
-//* funcion que dibuja los vinos en el html
-function dibujarVinos(datosvino) {
+function dibujarProductos(datosProducto) {
     let cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
 
-    // Imagen del vino
+    // Imagen del producto
     let imgDiv = document.createElement("div");
     imgDiv.classList.add("card-img");
     let img = document.createElement("img");
-    if (datosvino.foto === "foto") {
+    if (datosProducto.foto === "foto") {
         img.setAttribute("src", "../../imagenes/pagina/coming_soon.jpg");
     } else {
-        img.setAttribute("src", "../../imagenes/" + datosvino.foto + ".png");
+        img.setAttribute("src", "../../imagenes/" + datosProducto.foto + ".png");
     }
-    img.setAttribute("class", "foto_vino");
-    img.setAttribute("alt", datosvino.nombre);
+    img.setAttribute("class", "foto_producto");
+    img.setAttribute("alt", datosProducto.nombre);
     imgDiv.appendChild(img);
     cardDiv.appendChild(imgDiv);
 
-    // Información del vino
+    // Información del producto
     let infoDiv = document.createElement("div");
     infoDiv.classList.add("card-info");
     let titlePara = document.createElement("p");
     titlePara.classList.add("text-title");
-    titlePara.setAttribute("id", "nombre_vino");
-    titlePara.textContent = datosvino.nombre;
+    titlePara.setAttribute("id", "nombre_producto");
+    titlePara.textContent = datosProducto.nombre;
     let bodyPara = document.createElement("p");
     bodyPara.classList.add("text-body");
-    bodyPara.textContent = datosvino.descripcion;
+    bodyPara.textContent = datosProducto.descripcion;
     infoDiv.appendChild(titlePara);
     infoDiv.appendChild(bodyPara);
     cardDiv.appendChild(infoDiv);
 
-    // Cantidad del vino
+    // Cantidad del producto
     let quantityInput = document.createElement("input");
     quantityInput.setAttribute("type", "number");
     quantityInput.setAttribute("placeholder", "Cantidad");
-    quantityInput.setAttribute("id", "cantidad_" + datosvino.id);
+    quantityInput.setAttribute("id", "cantidad_" + datosProducto.id);
     quantityInput.classList.add("card-quantity");
     cardDiv.appendChild(quantityInput);
 
@@ -120,13 +117,13 @@ function dibujarVinos(datosvino) {
     footerDiv.classList.add("card-footer");
     let priceSpan = document.createElement("span");
     priceSpan.classList.add("text-title");
-    priceSpan.textContent = datosvino.precio + " €";
+    priceSpan.textContent = datosProducto.precio + " €";
     footerDiv.appendChild(priceSpan);
 
     let buttonDiv = document.createElement("button");
     buttonDiv.classList.add("card-button");
     buttonDiv.addEventListener("click", function() {
-        manejadorClickAñadirvino(datosvino.id);
+        manejadorClickAñadirProducto(datosProducto.id);
     });
 
     let svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -149,69 +146,68 @@ function dibujarVinos(datosvino) {
     return cardDiv;
 }
 
-//* funcion para recuperar los vinos del php
-function recuperarVinos() {
-    let miDiv = document.getElementById("contenedor-vinos")
+//* funcion para recuperar los productos del php
+function recuperarProductos() {
+    let miDiv = document.getElementById("contenedor-productos")
     // vaciamos el div
     miDiv.innerHTML = ""
     
 
-    obtenerVinos(function(respuesta) {
-        console.log(respuesta)
+    obtenerProductos(function(respuesta) {
+        // console.log(respuesta)
         respuesta = JSON.parse(respuesta)
         // recorro el JSON
         for(let i = 0; i<respuesta.length; i++)
         {
-            miDiv.appendChild(dibujarVinos(respuesta[i]))
+            miDiv.appendChild(dibujarProductos(respuesta[i]))
         }
+        // console.log(miDiv)
         // document.body.appendChild(miDiv)
         return miDiv
     })
 }
 
-//* funcion para almacenar vinos en el localStorage
-function almacenarVinos(idVino, miCantidad)
+//* funcion para almacenar productos en el localStorage
+function almacenarProductos(idProducto, miCantidad)
 {
-    // console.log("ID: "+idVino)
-    // console.log("Cantidad: "+miCantidad)
-    // verificimos si existe vinos en el localStorage
-    let vinos
-    if (localStorage.getItem('vinos') !== null && localStorage.getItem('vinos') !== undefined) 
+    console.log("ID: "+idProducto)
+    console.log("Cantidad: "+miCantidad)
+    // verificimos si existe productos en el localStorage
+    let productos
+    if (localStorage.getItem('productos') !== null && localStorage.getItem('productos') !== undefined) 
     {
-        vinos = JSON.parse(localStorage.getItem('vinos'))
+        productos = JSON.parse(localStorage.getItem('productos'))
     }
     else 
     {
-        vinos = {}
+        productos = {}
     }
 
-    // verificamos si el vino ya existe en el objeto 'vinos'
-    if(vinos.hasOwnProperty(idVino))
+    // verificamos si el producto ya existe en el objeto 'productos'
+    if(productos.hasOwnProperty(idProducto))
     {
         // sumamos
-        vinos[idVino].cantidad = parseInt(vinos[idVino].cantidad) + parseInt(miCantidad)
+        productos[idProducto].cantidad = parseInt(productos[idProducto].cantidad) + parseInt(miCantidad)
     }
     else 
     {
-        vinos[idVino] = {
-            id : idVino,
+        productos[idProducto] = {
+            id : idProducto,
             cantidad : miCantidad
         }
     }
 
     // Almacenamos el objeto
-    localStorage.setItem('vinos', JSON.stringify(vinos))
+    localStorage.setItem('productos', JSON.stringify(productos))
     // para que el cajon de texto vuelve a esta vacio
-    document.getElementById("cantidad_"+idVino).value = ""
+    document.getElementById("cantidad_"+idProducto).value = null
 }
 
 //? ---- MANEJADORES ----
-//* manejadorInputCantidad 
 function manejadorInputCantidad() {
     validarInputNumeros(this)
 }
 
-//* validar numeros
 function validarInputNumeros(valor) {
     if (!isNaN(valor) && parseFloat(valor) > 0) 
     {
@@ -223,18 +219,19 @@ function validarInputNumeros(valor) {
     }
 }
 
-function manejadorClickAñadirvino(idVino)
+function manejadorClickAñadirProducto(idProducto)
 {
-    let miCantidad = document.getElementById("cantidad_"+idVino).value
+    let miCantidad = document.getElementById("cantidad_"+idProducto).value
     if (miCantidad === "" || miCantidad === null) 
     {
-        console.log("vino NO AÑADIDO")
+        console.log("PRODUCTO NO AÑADIDO")
+        
     } 
     else 
     {   
         //* ESTILO MENSAJE DE ERRORES
-        // almacenarVinos(idVino, miCantidad)
-        console.log("vino AÑADIDO")
+        almacenarProductos(idProducto, miCantidad)
+        console.log("PRODUCTO AÑADIDO")
         
     }
 }
