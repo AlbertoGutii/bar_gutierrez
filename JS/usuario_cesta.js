@@ -31,8 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //* funcion principal
 function principal() {
-    let productos = recuperarProductos()
+    let productos = recuperarPedido()
     document.body.appendChild(productos)
+    // recuperarPedido()
 }
 
 function crearElemento(etiqueta, texto, atributos) {
@@ -50,50 +51,112 @@ function crearElemento(etiqueta, texto, atributos) {
 }
 
 function dibujarProductos(datosProducto) {
-    let miFila = crearElemento("ul",undefined, {"id" : datosProducto.id});
-    let filita = crearElemento("li",undefined);
+    let cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
 
-    let papelera = crearElemento("a",undefined,{"href":"#"});
-    let imgPapelera = crearElemento("img",undefined, {
-        "class" : "imgPapelera",
-        "src" : "../../Imagenes/papelera-de-reciclaje-blanca.png",
-        "alt" : '<a href="https://www.flaticon.es/iconos-gratis/papelera-de-reciclaje" title="papelera de reciclaje iconos">Papelera de reciclaje iconos creados por lakonicon - Flaticon</a>'
-    });
-    
-    
-    let foto = crearElemento("li",undefined);    
-    foto.appendChild(crearElemento("img",undefined,{"src" :"../../Imagenes/" + datosProducto.foto, "id":"foto_producto"}));   
-    miFila.appendChild(foto);
-    let descripcion = crearElemento("li",datosProducto.nombre, {"id":"nombre_producto"});
-    miFila.appendChild(descripcion);
-    let filita_1 = crearElemento("li",undefined);
-    let boton_2 = crearElemento("input",undefined,{"type":"button","value":"-", "id":"btnRestar"});
-    // cantidad tipo input para poder cambiar el valor a mano
-    let cantidad =  crearElemento("input",undefined,{
-        "type" : "text",
-        "id":"cantidad_producto" + datosProducto.id,
-        "placeholder" : datosProducto.cantidad,
-        "value" : datosProducto.cantidad
-    });
-    let boton_3 = crearElemento("input",undefined,{"type":"button","value":"+", "id":"btnSumar"});
-    // eventos de botones e input
-    cantidad.addEventListener("input",manejadorInputCantidad);
-    papelera.addEventListener("click",manejadorClickPapelera);
-    boton_2.addEventListener("click",manejadorClickRestar);
-    boton_3.addEventListener("click",manejadorClickSumar);
-    filita_1.appendChild(boton_2);
-    filita_1.appendChild(cantidad);
-    filita_1.appendChild(boton_3);
-    miFila.appendChild(filita_1);
-    let unidades = crearElemento("li",datosProducto.unidad, {"id":"unidad_producto"});  
-    miFila.appendChild(unidades);    
-    // todos los productos van a tener observaciones
-    let observaciones = crearElemento("li",datosProducto.observaciones, {"id":"observaciones_producto"});    
-    miFila.appendChild(observaciones);
-    papelera.appendChild(imgPapelera);
-    filita.appendChild(papelera);
-    miFila.appendChild(filita);
-    return miFila;
+    // Imagen del producto
+    let imgDiv = document.createElement("div");
+    imgDiv.classList.add("card-img");
+    let img = document.createElement("img");
+    if (datosProducto.foto === "foto") {
+        img.setAttribute("src", "../../imagenes/pagina/coming_soon.jpg");
+    } else {
+        img.setAttribute("src", "../../imagenes/" + datosProducto.foto + ".png");
+    }
+    img.setAttribute("class", "foto_producto");
+    img.setAttribute("alt", datosProducto.nombre);
+    imgDiv.appendChild(img);
+    cardDiv.appendChild(imgDiv);
+
+    // Información del producto
+    let infoDiv = document.createElement("div");
+    infoDiv.classList.add("card-info");
+    let titlePara = document.createElement("p");
+    titlePara.classList.add("text-title");
+    titlePara.setAttribute("id", "nombre_producto");
+    titlePara.textContent = datosProducto.nombre;
+    let bodyPara = document.createElement("p");
+    bodyPara.classList.add("text-body");
+    bodyPara.textContent = datosProducto.descripcion;
+    infoDiv.appendChild(titlePara);
+    infoDiv.appendChild(bodyPara);
+    cardDiv.appendChild(infoDiv);
+
+    // Botones y input para cantidad
+    let decreaseButton = document.createElement("input");
+    decreaseButton.setAttribute("type", "button");
+    decreaseButton.setAttribute("value", "-");
+    decreaseButton.setAttribute("id", "btnRestar");
+    decreaseButton.classList.add("quantity-button");
+    decreaseButton.addEventListener("click", manejadorClickRestar);
+    cardDiv.appendChild(decreaseButton);
+
+    let quantityInput = document.createElement("input");
+    quantityInput.setAttribute("type", "text");
+    quantityInput.setAttribute("id", "cantidad_" + datosProducto.id);
+    quantityInput.setAttribute("placeholder", datosProducto.cantidad);
+    quantityInput.setAttribute("value", datosProducto.cantidad);
+    quantityInput.classList.add("card-quantity");
+    //! MANEJADOR COMENTADO
+    // quantityInput.addEventListener("input", manejadorInputCantidad);
+    cardDiv.appendChild(quantityInput);
+
+    let increaseButton = document.createElement("input");
+    increaseButton.setAttribute("type", "button");
+    increaseButton.setAttribute("value", "+");
+    increaseButton.setAttribute("id", "btnSumar");
+    increaseButton.classList.add("quantity-button");
+    increaseButton.addEventListener("click", manejadorClickSumar);
+    cardDiv.appendChild(increaseButton);
+
+    // Precio y botón de eliminar
+    let footerDiv = document.createElement("div");
+    footerDiv.classList.add("card-footer");
+    let priceSpan = document.createElement("span");
+    priceSpan.classList.add("text-title");
+    priceSpan.textContent = datosProducto.precio + " €";
+    footerDiv.appendChild(priceSpan);
+
+    let deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.addEventListener("click", manejadorClickPapelera);
+    let deleteSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    deleteSVG.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    deleteSVG.setAttribute("viewBox", "0 0 24 24");
+    deleteSVG.setAttribute("width", "32");
+    deleteSVG.setAttribute("height", "32");
+    deleteSVG.setAttribute("color", "#000000");
+    deleteSVG.setAttribute("fill", "none");
+    let deletePath1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    deletePath1.setAttribute("d", "M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5");
+    deletePath1.setAttribute("stroke", "currentColor");
+    deletePath1.setAttribute("stroke-width", "1.5");
+    deletePath1.setAttribute("stroke-linecap", "round");
+    let deletePath2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    deletePath2.setAttribute("d", "M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5");
+    deletePath2.setAttribute("stroke", "currentColor");
+    deletePath2.setAttribute("stroke-width", "1.5");
+    deletePath2.setAttribute("stroke-linecap", "round");
+    let deletePath3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    deletePath3.setAttribute("d", "M9.5 16.5L9.5 10.5");
+    deletePath3.setAttribute("stroke", "currentColor");
+    deletePath3.setAttribute("stroke-width", "1.5");
+    deletePath3.setAttribute("stroke-linecap", "round");
+    let deletePath4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    deletePath4.setAttribute("d", "M14.5 16.5L14.5 10.5");
+    deletePath4.setAttribute("stroke", "currentColor");
+    deletePath4.setAttribute("stroke-width", "1.5");
+    deletePath4.setAttribute("stroke-linecap", "round");
+    deleteSVG.appendChild(deletePath1);
+    deleteSVG.appendChild(deletePath2);
+    deleteSVG.appendChild(deletePath3);
+    deleteSVG.appendChild(deletePath4);
+    deleteButton.appendChild(deleteSVG);
+    footerDiv.appendChild(deleteButton);
+    cardDiv.appendChild(footerDiv);
+
+    // console.log(cardDiv);
+    return cardDiv;
 }
 
 function enviarProductos(callback)

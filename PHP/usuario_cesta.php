@@ -9,10 +9,16 @@
         crearPedido();
     }
 
-    //? funcion que obtiene los productos
+    // funcion para listar los productos 
     function obtenerProductos() {
+        // Establecer conexión con la base de datos
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
-
+        
+        // Obtener el string JSON de productos enviado desde el cliente y convertirlo a un array PHP
+        $productosJSON = $_POST['productos'];
+        $productos = json_decode($productosJSON, true);
+        
+        // Consulta SQL para obtener los productos según sus IDs
         $resultado = $conexion -> prepare("SELECT 
             p.id,
             p.nombre,
@@ -25,22 +31,35 @@
         INNER JOIN
             categorias_productos cp ON p.id = cp.fk_productos
         INNER JOIN
-            tipos_producto tp ON cp.fk_categoria = tp.id");
-        $resultado -> execute();
+            tipos_producto tp ON cp.fk_categoria = tp.id 
+        WHERE 
+            p.id = ?;");
+
+        // Array para almacenar los datos de los productos
         $datos = array();
-        while($fila = $resultado -> fetch()) {
-            $productos = array(
-                'id' => $fila['id'],
-                'nombre' => $fila['nombre'],
-                'descripcion' => $fila['descripcion'],
-                'categoria' => $fila['categoria'],
-                'foto' => $fila['foto'],
-                'precio' => $fila['precio']
-            );
-
-            $datos[] = $productos;
+        
+        // Iterar sobre los IDs de los productos recibidos
+        foreach($productos as $productoID) {
+            // print_r($productoID["id"]);
+            // Ejecutar la consulta para cada ID de producto
+            $resultado->execute(array($productoID["id"]));
+            
+            // Obtener los datos del producto y agregarlos al array $datos
+            while($fila = $resultado->fetch()) {
+                $pedido = array(
+                    'id' => $fila['id'],
+                    'nombre' => $fila['nombre'],
+                    'cantidad' => $productoID["cantidad"],
+                    'descripcion' => $fila['descripcion'],
+                    'categoria' => $fila['categoria'],
+                    'foto' => $fila['foto'],
+                    'precio' => $fila['precio']
+                );
+                $datos[] = $pedido;
+            }
         }
-
+    
+        // Convertir el array $datos a formato JSON y enviarlo al cliente
         $jsonString = json_encode($datos);
         echo $jsonString;
     }
