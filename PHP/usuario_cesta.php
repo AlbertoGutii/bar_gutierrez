@@ -3,7 +3,6 @@
     if(isset($_POST['productos']))
     {
         obtenerProductos();
-        // obtenerVinos();
     }
     if(isset($_POST['crearPedido']))
     {
@@ -19,121 +18,29 @@
         $productos = json_decode($productosJSON, true);
         
         // Consulta SQL para obtener tanto los productos como los vinos según sus IDs
-        $resultado = $conexion->prepare("
-            SELECT 
-                id,
-                nombre,
-                descripcion,
-                categoria,
-                foto,
-                precio
-            FROM
-                (
-                    SELECT 
-                        p.id,
-                        p.nombre,
-                        p.descripcion,
-                        tp.categoria,
-                        p.foto,
-                        p.precio
-                    FROM
-                        productos p
-                    INNER JOIN
-                        categorias_productos cp ON p.id = cp.fk_productos
-                    INNER JOIN
-                        tipos_producto tp ON cp.fk_categoria = tp.id
-                    WHERE 
-                        p.id = ?
-                ) AS productos
-            UNION ALL
-            SELECT 
-                id,
-                nombre,
-                '',
-                categoria,
-                foto,
-                precio
-            FROM
-                (
-                    SELECT 
-                        v.id,
-                        v.nombre,
-                        tv.categoria,
-                        v.foto,
-                        v.precio
-                    FROM
-                        vinos v
-                    INNER JOIN
-                        tipos_vino tv ON v.id = tv.id
-                    WHERE 
-                        v.id = ?
-                ) AS vinos
-        ");
-    
-        // Array para almacenar los datos de los productos y vinos
-        $datos = array();
+        $resultado = $conexion->prepare("SELECT 
+        p.id,
+        p.nombre,
+        p.descripcion,
+        c.categoria,
+        p.foto,
+        p.precio
+    FROM
+        productos p
+    INNER JOIN
+        categorias c ON p.fk_categoria = c.id
+    WHERE
+        p.id = ?;");
         
-        // Iterar sobre los IDs de los productos y vinos recibidos
-        foreach($productos as $productoID) {
-            // Ejecutar la consulta para cada ID de producto o vino
-            $resultado->execute(array($productoID["id"], $productoID["id"]));
-            
-            // Obtener los datos del producto o vino y agregarlos al array $datos
-            while($fila = $resultado->fetch()) {
-                $producto = array(
-                    'id' => $fila['id'],
-                    'nombre' => $fila['nombre'],
-                    'cantidad' => $productoID["cantidad"],
-                    'descripcion' => $fila['descripcion'],
-                    'categoria' => $fila['categoria'],
-                    'foto' => $fila['foto'],
-                    'precio' => $fila['precio']
-                );
-                $datos[] = $producto;
-            }
-        }
-    
-        // Convertir el array $datos a formato JSON y enviarlo al cliente
-        $jsonString = json_encode($datos);
-        echo $jsonString;
-    }
-    
-
-    // funcion para listar los productos 
-    function obtenerVinos() {
-        // Establecer conexión con la base de datos
-        $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
-        
-        // Obtener el string JSON de productos enviado desde el cliente y convertirlo a un array PHP
-        $productosJSON = $_POST['vinos'];
-        $productos = json_decode($productosJSON, true);
-        
-        // Consulta SQL para obtener los productos según sus IDs
-        $resultado = $conexion -> prepare("SELECT 
-            p.id,
-            p.nombre,
-            p.descripcion,
-            tp.categoria,
-            p.foto,
-            p.precio
-        FROM
-            productos p
-        INNER JOIN
-            categorias_productos cp ON p.id = cp.fk_productos
-        INNER JOIN
-            tipos_producto tp ON cp.fk_categoria = tp.id 
-        WHERE 
-            p.id = ?;");
-
         // Array para almacenar los datos de los productos
         $datos = array();
-        
+
         // Iterar sobre los IDs de los productos recibidos
         foreach($productos as $productoID) {
             // print_r($productoID["id"]);
             // Ejecutar la consulta para cada ID de producto
             $resultado->execute(array($productoID["id"]));
-            
+
             // Obtener los datos del producto y agregarlos al array $datos
             while($fila = $resultado->fetch()) {
                 $pedido = array(
@@ -148,7 +55,8 @@
                 $datos[] = $pedido;
             }
         }
-    
+
+
         // Convertir el array $datos a formato JSON y enviarlo al cliente
         $jsonString = json_encode($datos);
         echo $jsonString;

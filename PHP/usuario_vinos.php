@@ -1,7 +1,5 @@
 <?php
 
-    //* RECUPERAR VINOS BASE DE DATOS
-
     if (isset($_POST['obtenerVinos'])) {
         obtenerVinos();
     }
@@ -10,22 +8,23 @@
     function obtenerVinos() {
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
-        $resultado = $conexion -> prepare("SELECT 
-            v.id,
-            v.nombre,
-            tv.categoria,
-            v.foto,
-            v.precio
+        $resultado = $conexion->prepare("SELECT 
+            p.id,
+            p.nombre,
+            c.categoria,
+            p.foto,
+            p.precio
         FROM
-            vinos v
+            productos p
         INNER JOIN
-            categorias_vinos cv ON v.id = cv.fk_vinos
-        INNER JOIN
-            tipos_vino tv ON cv.fk_categoria = tv.id");
+            categorias c ON p.fk_categoria = c.id
+        WHERE
+            p.tipo = 'vino'");
+
         $resultado -> execute();
         $datos = array();
         while($fila = $resultado -> fetch()) {
-            $vinos = array(
+            $productos = array(
                 'id' => $fila['id'],
                 'nombre' => $fila['nombre'],
                 'categoria' => $fila['categoria'],
@@ -33,11 +32,10 @@
                 'precio' => $fila['precio']
             );
 
-            $datos[] = $vinos;
+            $datos[] = $productos;
         }
 
         $jsonString = json_encode($datos);
         echo $jsonString;
     }
-
 ?>

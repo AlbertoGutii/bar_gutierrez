@@ -75,41 +75,26 @@ function dibujarProductos(datosProducto) {
     titlePara.classList.add("text-title");
     titlePara.setAttribute("id", "nombre_producto");
     titlePara.textContent = datosProducto.nombre;
-    let bodyPara = document.createElement("p");
-    bodyPara.classList.add("text-body");
-    bodyPara.textContent = datosProducto.descripcion;
-    infoDiv.appendChild(titlePara);
-    infoDiv.appendChild(bodyPara);
+
+    // Verificar si la descripción es null
+    if (datosProducto.descripcion !== null) {
+        let bodyPara = document.createElement("p");
+        bodyPara.classList.add("text-body");
+        bodyPara.textContent = datosProducto.descripcion;
+        infoDiv.appendChild(bodyPara);
+    }
+    
     cardDiv.appendChild(infoDiv);
 
-    // Botones y input para cantidad
-    let decreaseButton = document.createElement("input");
-    decreaseButton.setAttribute("type", "button");
-    decreaseButton.setAttribute("value", "-");
-    decreaseButton.setAttribute("id", "btnRestar");
-    decreaseButton.classList.add("quantity-button");
-    decreaseButton.addEventListener("click", manejadorClickRestar);
-    cardDiv.appendChild(decreaseButton);
-
+    // Cantidad del producto
     let quantityInput = document.createElement("input");
-    quantityInput.setAttribute("type", "text");
+    quantityInput.setAttribute("type", "number");
+    quantityInput.setAttribute("placeholder", "Cantidad");
     quantityInput.setAttribute("id", "cantidad_" + datosProducto.id);
-    quantityInput.setAttribute("placeholder", datosProducto.cantidad);
-    quantityInput.setAttribute("value", datosProducto.cantidad);
     quantityInput.classList.add("card-quantity");
-    //! MANEJADOR COMENTADO
-    // quantityInput.addEventListener("input", manejadorInputCantidad);
     cardDiv.appendChild(quantityInput);
 
-    let increaseButton = document.createElement("input");
-    increaseButton.setAttribute("type", "button");
-    increaseButton.setAttribute("value", "+");
-    increaseButton.setAttribute("id", "btnSumar");
-    increaseButton.classList.add("quantity-button");
-    increaseButton.addEventListener("click", manejadorClickSumar);
-    cardDiv.appendChild(increaseButton);
-
-    // Precio y botón de eliminar
+    // Precio y botón
     let footerDiv = document.createElement("div");
     footerDiv.classList.add("card-footer");
     let priceSpan = document.createElement("span");
@@ -117,47 +102,32 @@ function dibujarProductos(datosProducto) {
     priceSpan.textContent = datosProducto.precio + " €";
     footerDiv.appendChild(priceSpan);
 
-    let deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-button");
-    deleteButton.addEventListener("click", manejadorClickPapelera);
-    let deleteSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    deleteSVG.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    deleteSVG.setAttribute("viewBox", "0 0 24 24");
-    deleteSVG.setAttribute("width", "32");
-    deleteSVG.setAttribute("height", "32");
-    deleteSVG.setAttribute("color", "#000000");
-    deleteSVG.setAttribute("fill", "none");
-    let deletePath1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    deletePath1.setAttribute("d", "M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5");
-    deletePath1.setAttribute("stroke", "currentColor");
-    deletePath1.setAttribute("stroke-width", "1.5");
-    deletePath1.setAttribute("stroke-linecap", "round");
-    let deletePath2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    deletePath2.setAttribute("d", "M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5");
-    deletePath2.setAttribute("stroke", "currentColor");
-    deletePath2.setAttribute("stroke-width", "1.5");
-    deletePath2.setAttribute("stroke-linecap", "round");
-    let deletePath3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    deletePath3.setAttribute("d", "M9.5 16.5L9.5 10.5");
-    deletePath3.setAttribute("stroke", "currentColor");
-    deletePath3.setAttribute("stroke-width", "1.5");
-    deletePath3.setAttribute("stroke-linecap", "round");
-    let deletePath4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    deletePath4.setAttribute("d", "M14.5 16.5L14.5 10.5");
-    deletePath4.setAttribute("stroke", "currentColor");
-    deletePath4.setAttribute("stroke-width", "1.5");
-    deletePath4.setAttribute("stroke-linecap", "round");
-    deleteSVG.appendChild(deletePath1);
-    deleteSVG.appendChild(deletePath2);
-    deleteSVG.appendChild(deletePath3);
-    deleteSVG.appendChild(deletePath4);
-    deleteButton.appendChild(deleteSVG);
-    footerDiv.appendChild(deleteButton);
+    let buttonDiv = document.createElement("button");
+    buttonDiv.classList.add("card-button");
+    buttonDiv.addEventListener("click", function() {
+        manejadorClickAñadirProducto(datosProducto.id);
+    });
+
+    let svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgIcon.setAttribute("class", "svg-icon");
+    svgIcon.setAttribute("viewBox", "0 0 20 20");
+    let path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path1.setAttribute("d", "M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z");
+    let path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path2.setAttribute("d", "M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z");
+    let path3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path3.setAttribute("d", "M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z");
+    svgIcon.appendChild(path1);
+    svgIcon.appendChild(path2);
+    svgIcon.appendChild(path3);
+    buttonDiv.appendChild(svgIcon);
+    footerDiv.appendChild(buttonDiv);
     cardDiv.appendChild(footerDiv);
 
     // console.log(cardDiv);
     return cardDiv;
 }
+
 
 function enviarProductos(callback)
 {

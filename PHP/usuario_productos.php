@@ -10,7 +10,7 @@
     function obtenerProductos() {
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
-        $resultado = $conexion -> prepare("SELECT 
+        $resultado = $conexion->prepare("SELECT 
             p.id,
             p.nombre,
             p.descripcion,
@@ -20,9 +20,10 @@
         FROM
             productos p
         INNER JOIN
-            categorias c ON p.id = c.id
+            categorias c ON p.fk_categoria = c.id
         WHERE
-            p.tipo = 'plato");
+            p.tipo = 'plato'");
+
         $resultado -> execute();
         $datos = array();
         while($fila = $resultado -> fetch()) {
