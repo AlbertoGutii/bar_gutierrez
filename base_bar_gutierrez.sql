@@ -3,19 +3,6 @@ CREATE DATABASE IF NOT EXISTS bar_gutierrez;
 USE bar_gutierrez;
 
 -- Creamos las tablas
-
--- TABLA TIPOS_PRODUCTO
-CREATE TABLE IF NOT EXISTS tipos_producto (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    categoria CHAR(50) NOT NULL
-) ENGINE = INNODB;
-
--- TABLA TIPOS_VINO
-CREATE TABLE IF NOT EXISTS tipos_vino (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    categoria CHAR(50) NOT NULL
-) ENGINE = INNODB;
-
 -- TABLA MESAS
 CREATE TABLE IF NOT EXISTS mesas (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -24,21 +11,23 @@ CREATE TABLE IF NOT EXISTS mesas (
     capacidad INT NOT NULL
 ) ENGINE = INNODB;
 
+-- TABLA CATEGORIAS_PRODUCTOS (o simplemente CATEGORIAS)
+CREATE TABLE IF NOT EXISTS categorias (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    categoria CHAR(40) NOT NULL
+) ENGINE = INNODB;
+
 -- TABLA PRODUCTOS
 CREATE TABLE IF NOT EXISTS productos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre CHAR(60) NOT NULL,
-    descripcion CHAR(140) NOT NULL,
+    descripcion CHAR(140),
     foto CHAR(100) NOT NULL,
-    precio INT NOT NULL
-) ENGINE = INNODB;
-
--- TABLA VINOS
-CREATE TABLE IF NOT EXISTS vinos (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre CHAR(50) NOT NULL,
-    foto CHAR(100) NOT NULL,
-    precio INT NOT NULL
+    precio INT NOT NULL,
+    fk_categoria INT NOT NULL,
+    tipo ENUM('plato', 'vino') NOT NULL DEFAULT 'plato',
+    FOREIGN KEY (fk_categoria) REFERENCES categorias (id)
+    ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
 -- TABLA CLIENTES
@@ -61,28 +50,6 @@ CREATE TABLE IF NOT EXISTS pedidos (
     precio INT NOT NULL,
     entregado BINARY(1) NOT NULL,
     FOREIGN KEY (fk_cliente) REFERENCES clientes (id)
-    ON UPDATE CASCADE
-) ENGINE = INNODB;
-
--- TABLA CATEGORIAS_PRODUCTOS
-CREATE TABLE IF NOT EXISTS categorias_productos (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    fk_productos INT NOT NULL,
-    fk_categoria INT NOT NULL,
-    FOREIGN KEY (fk_productos) REFERENCES productos (id)
-    ON UPDATE CASCADE,
-    FOREIGN KEY (fk_categoria) REFERENCES tipos_producto (id)
-    ON UPDATE CASCADE
-) ENGINE = INNODB;
-
--- TABLA CATEGORIAS_VINOS
-CREATE TABLE IF NOT EXISTS categorias_vinos (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    fk_vinos INT NOT NULL,
-    fk_categoria INT NOT NULL,
-    FOREIGN KEY (fk_vinos) REFERENCES vinos (id)
-    ON UPDATE CASCADE,
-    FOREIGN KEY (fk_categoria) REFERENCES tipos_vino (id)
     ON UPDATE CASCADE
 ) ENGINE = INNODB;
 

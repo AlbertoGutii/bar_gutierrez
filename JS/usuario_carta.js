@@ -156,6 +156,7 @@ function recuperarProductos() {
     obtenerProductos(function(respuesta) {
         // console.log(respuesta)
         respuesta = JSON.parse(respuesta)
+        console.log(respuesta)
         // recorro el JSON
         for(let i = 0; i<respuesta.length; i++)
         {

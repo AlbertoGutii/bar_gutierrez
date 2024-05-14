@@ -14,15 +14,15 @@
             p.id,
             p.nombre,
             p.descripcion,
-            tp.categoria,
+            c.categoria,
             p.foto,
             p.precio
         FROM
             productos p
         INNER JOIN
-            categorias_productos cp ON p.id = cp.fk_productos
-        INNER JOIN
-            tipos_producto tp ON cp.fk_categoria = tp.id");
+            categorias c ON p.id = c.id
+        WHERE
+            p.tipo = 'plato");
         $resultado -> execute();
         $datos = array();
         while($fila = $resultado -> fetch()) {
