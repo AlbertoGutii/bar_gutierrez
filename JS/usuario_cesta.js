@@ -242,11 +242,10 @@ function recuperarPedido(longitud) {
                         "id": "inObservaciones",
                         "placeholder": "Sin observaciones"
                     })
-                    let botonPedido = crearElemento("input", undefined, {
+                    let botonPedido = crearElemento("button", "Realizar Pedido", {
                         "type": "button",
-                        "value": "Realizar Pedido",
                         "id": "btnPedido",
-                        "class": "btn btn-primary"
+                        "class": "btn"
                     })
                     botonPedido.addEventListener("click", manejadorClickRealizarPedido)
                     divPagar.appendChild(inObservaciones)
