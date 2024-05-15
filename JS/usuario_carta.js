@@ -223,7 +223,7 @@ function validarInputNumeros(valor) {
 function manejadorClickAñadirProducto(idProducto)
 {
     let miCantidad = document.getElementById("cantidad_"+idProducto).value
-    if (miCantidad === "" || miCantidad === null) 
+    if (miCantidad === "" || miCantidad === null || miCantidad <= 0) 
     {
         console.log("PRODUCTO NO AÑADIDO")
         

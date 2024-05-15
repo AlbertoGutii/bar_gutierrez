@@ -55,6 +55,7 @@ function crearElemento(etiqueta, texto, atributos) {
 
 function dibujarProductos(datosProducto) {
     let cardDiv = document.createElement("div")
+    cardDiv.setAttribute("id", datosProducto.id)
     cardDiv.classList.add("card")
 
     let imgDiv = document.createElement("div")
@@ -294,19 +295,31 @@ function manejadorClickRestar() {
 }
 
 function manejadorClickPapelera() {
-    let ulProducto = this.parentElement.parentElement
-    console.log(ulProducto)
-    let idProducto = ulProducto.id
-    console.log(idProducto)
-    // let productosString = localStorage.getItem("productos")
-    // let productosJSON = JSON.parse(productosString) 
-    // delete productosJSON[idProducto]
-    // if(Object.keys(productosJSON).length === 0) {
-    //     document.getElementById("contenedor-productos").innerHTML = ""
-    // }
-    // productosString = JSON.stringify(productosJSON)
-    // localStorage.setItem("productos", productosString)
-    // ulProducto.remove()
+    console.log("Click en papelera detectado.")
+    let cardDiv = this.closest('.card')
+    if (!cardDiv) return
+
+    let idProducto = cardDiv.id
+
+    // Eliminar el producto del DOM
+    cardDiv.remove()
+
+    // Eliminar el producto del almacenamiento local
+    let productosString = localStorage.getItem("productos")
+    if (productosString) {
+        let productosJSON = JSON.parse(productosString)
+        console.log("Eliminando producto del almacenamiento local:", idProducto)
+        delete productosJSON[idProducto]
+
+        // Actualizar el almacenamiento local
+        productosString = JSON.stringify(productosJSON)
+        localStorage.setItem("productos", productosString)
+
+        // Si el carrito está vacío, limpiar el contenedor de productos
+        if (Object.keys(productosJSON).length === 0) {
+            document.getElementById("contenedor-productos").innerHTML = ""
+        }
+    }
 }
 
 // function manejadorClickPapelera() {
