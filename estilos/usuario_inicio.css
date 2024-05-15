@@ -138,35 +138,37 @@ header {
   position: relative;
 }
 
-/*! ESTILOS DE LOS ICONOS BORRADOS */
-#iconos {
-    list-style-type: none;
-    /* margin-right: 40px; */
+/** SUBMENU CARTA */
+/** SUBMENU SVG */
+#subConfiguracion {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  top: 35px;
+  z-index: 1000;
 }
 
-#iconos ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+#subConfiguracion input[type="button"] {
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: justify;
 }
 
-#iconos li {
-    display: inline;
-    margin-left: 10px;
+#subConfiguracion input[type="button"]:hover {
+  background-color: #ddd;
 }
 
-#iconos li a {
-    text-decoration: none;
+.dropdown:hover #subConfiguracion {
+  display: block;
 }
 
-#iconos img {
-    width: 50px;
-    height: 50px;
-}
-
-#botonPersona {
-    background-color: transparent;
-    border: none;
+.dropdown {
+  position: relative;
 }
 /*! FIN ESTILOS ICONOS BORRADOS */
 /** FIN DEL HEADER */

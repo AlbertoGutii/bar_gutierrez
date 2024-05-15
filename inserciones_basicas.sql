@@ -24,7 +24,7 @@ INSERT INTO categorias (categoria) VALUES ('Otras opciones');
     VALUES ('Ensalada de escabechados', 'Ensalada con codornices escabechadas', 'ensalada_escabechados', 15, 
         (SELECT id FROM categorias WHERE categoria = 'Entrantes frios'));
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria) 
-    VALUES ('Espárragos', 'Falta descripcion', 'foto', 8, 
+    VALUES ('Espárragos', 'Espárragos', 'foto', 8, 
         (SELECT id FROM categorias WHERE categoria = 'Entrantes frios'));
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria) 
     VALUES ('Lacón a la gallega', 'Lacón con aceite y pimentón', 'foto', 13, 

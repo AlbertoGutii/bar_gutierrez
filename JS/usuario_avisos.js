@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnLogo").onclick = function() {
-        window.location.href = "./index.html";
+        window.location.href = "../index.html";
     };
 
     document.getElementById("btnInicio").onclick = function() {
