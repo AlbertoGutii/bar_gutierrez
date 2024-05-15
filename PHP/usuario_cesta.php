@@ -46,7 +46,7 @@
                 $pedido = array(
                     'id' => $fila['id'],
                     'nombre' => $fila['nombre'],
-                    'cantidad' => $productoID["cantidad"],
+                    'cantidad' => $productoID['cantidad'],
                     'descripcion' => $fila['descripcion'],
                     'categoria' => $fila['categoria'],
                     'foto' => $fila['foto'],

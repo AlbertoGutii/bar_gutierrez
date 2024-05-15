@@ -15,10 +15,10 @@ INSERT INTO categorias (categoria) VALUES ('Otras opciones');
 -- TABLA PRODUCTOS
     -- ENTRANTES FRIOS
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria)
-    VALUES ('Ensalada mixta\n(2p)', 'Ensalada para dos personas', 'foto', 10, 
+    VALUES ('Ensalada mixta(2p)', 'Ensalada para dos personas', 'foto', 10, 
         (SELECT id FROM categorias WHERE categoria = 'Entrantes frios'));
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria) 
-    VALUES ('Ensalada mixta\n(4p)', 'Ensalada para 4 personas', 'foto', 15, 
+    VALUES ('Ensalada mixta(4p)', 'Ensalada para 4 personas', 'foto', 15, 
         (SELECT id FROM categorias WHERE categoria = 'Entrantes frios'));
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria) 
     VALUES ('Ensalada de escabechados', 'Ensalada con codornices escabechadas', 'ensalada_escabechados', 15, 
@@ -30,10 +30,10 @@ INSERT INTO categorias (categoria) VALUES ('Otras opciones');
     VALUES ('Lacón a la gallega', 'Lacón con aceite y pimentón', 'foto', 13, 
         (SELECT id FROM categorias WHERE categoria = 'Entrantes frios'));
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria) 
-    VALUES ('Ibéricos\n(jamón y lomo)', 'Plato con un surtido de jamón y lomo', 'foto', 17, 
+    VALUES ('Ibéricos(jamón y lomo)', 'Plato con un surtido de jamón y lomo', 'foto', 17, 
         (SELECT id FROM categorias WHERE categoria = 'Entrantes frios'));
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria) 
-    VALUES ('Ibéricos\n(jamón, lomo y queso)', 'Plato con un surtido de jamón, lomo y queso', 'foto', 17, 
+    VALUES ('Ibéricos(jamón, lomo y queso)', 'Plato con un surtido de jamón, lomo y queso', 'foto', 17, 
         (SELECT id FROM categorias WHERE categoria = 'Entrantes frios'));
     INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria) 
     VALUES ('Ensalada de ventresca y pimiento', 'Contiene ventresca y pimiento', 'foto', 16, 
@@ -216,85 +216,85 @@ INSERT INTO categorias (categoria) VALUES ('Otras opciones');
 
 -- TABLA VINOS
     -- CLARO RIBERA DEL DUERO
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Tierra Aranda', 'foto', 9, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Tierra Aranda', 'Claro Ribera del duero', 'foto', 9, 
         (SELECT id FROM categorias WHERE categoria = 'Claro Ribera del duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Morozán', 'foto', 10, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Morozán', 'Claro Ribera del duero', 'foto', 10, 
         (SELECT id FROM categorias WHERE categoria = 'Claro Ribera del duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Hoyo de la Vega', 'foto', 11, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Hoyo de la Vega', 'Claro Ribera del duero', 'foto', 11, 
         (SELECT id FROM categorias WHERE categoria = 'Claro Ribera del duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Monte Pinadillo', 'foto', 11, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Monte Pinadillo', 'Claro Ribera del duero', 'foto', 11, 
         (SELECT id FROM categorias WHERE categoria = 'Claro Ribera del duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Viña Solorca', 'foto', 11, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Viña Solorca', 'Claro Ribera del duero', 'foto', 11, 
         (SELECT id FROM categorias WHERE categoria = 'Claro Ribera del duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Vegazar', 'foto', 10, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Vegazar', 'Claro Ribera del duero', 'foto', 10, 
         (SELECT id FROM categorias WHERE categoria = 'Claro Ribera del duero'), 'vino');
     
     -- BLANCOS, RUEDA Y VERDEJO
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Yllera Cinco', 'foto', 11, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Yllera Cinco', 'Blanco, Rueda y Verdejo', 'foto', 11, 
         (SELECT id FROM categorias WHERE categoria = 'Blanco, Rueda y Verdejo'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Verdejo de la casa', 'foto', 9, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Verdejo de la casa', 'Blanco, Rueda y Verdejo', 'foto', 9, 
         (SELECT id FROM categorias WHERE categoria = 'Blanco, Rueda y Verdejo'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Doña Beatriz', 'foto', 11, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Doña Beatriz', 'Blanco, Rueda y Verdejo', 'foto', 11, 
         (SELECT id FROM categorias WHERE categoria = 'Blanco, Rueda y Verdejo'), 'vino');
 
     -- TINTO RIBERA DEL DUERO
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Meloso', 'foto', 9, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Meloso', 'Tinto Ribera del Duero', 'foto', 9, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Eloy Escudero', 'foto', 11, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Eloy Escudero', 'Tinto Ribera del Duero', 'foto', 11, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Balbás Roble', 'foto', 11, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Balbás Roble', 'Tinto Ribera del Duero', 'foto', 11, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Dominio de Cair', 'foto', 16, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Dominio de Cair', 'Tinto Ribera del Duero', 'foto', 16, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Casajús Roble', 'foto', 13, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Casajús Roble', 'Tinto Ribera del Duero', 'foto', 13, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Flores de Callejo', 'foto', 14, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Flores de Callejo', 'Tinto Ribera del Duero', 'foto', 14, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Figuero Roble', 'foto', 16, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Figuero Roble', 'Tinto Ribera del Duero', 'foto', 16, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Ceres Roble', 'foto', 17, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Ceres Roble', 'Tinto Ribera del Duero', 'foto', 17, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Valdehermoso', 'foto', 13, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Valdehermoso', 'Tinto Ribera del Duero', 'foto', 13, 
         (SELECT id FROM categorias WHERE categoria = 'Tinto Ribera del Duero'), 'vino');
 
     -- CRIANZA RIBERA DEL DUERO
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Pago de los Capellanes', 'foto', 30, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Pago de los Capellanes', 'Crianza Ribera del Duero', 'foto', 30, 
         (SELECT id FROM categorias WHERE categoria = 'Crianza Ribera del Duero'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Pago de Carraovejas', 'foto', 40, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Pago de Carraovejas', 'Crianza Ribera del Duero', 'foto', 40, 
         (SELECT id FROM categorias WHERE categoria = 'Crianza Ribera del Duero'), 'vino');
     
     -- OTRAS OPCIONES
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Vino de la casa tinto o claro', 'foto', 5, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Vino de la casa tinto o claro', 'Otras opciones', 'foto', 5, 
         (SELECT id FROM categorias WHERE categoria = 'Otras opciones'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Casera', 'foto', 2, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Casera', 'Otras opciones', 'foto', 2, 
         (SELECT id FROM categorias WHERE categoria = 'Otras opciones'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Agua 1.5L', 'foto', 3, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Agua 1.5L', 'Otras opciones', 'foto', 3, 
         (SELECT id FROM categorias WHERE categoria = 'Otras opciones'), 'vino');
-    INSERT INTO productos (nombre, foto, precio, fk_categoria, tipo) 
-    VALUES ('Agua 0.5L', 'foto', 1.5, 
+    INSERT INTO productos (nombre, descripcion, foto, precio, fk_categoria, tipo) 
+    VALUES ('Agua 0.5L', 'Otras opciones', 'foto', 1.5, 
         (SELECT id FROM categorias WHERE categoria = 'Otras opciones'), 'vino');
 
 -- -- TABLA CATEGORIAS_VINOS
@@ -410,7 +410,7 @@ INSERT INTO categorias (categoria) VALUES ('Otras opciones');
 --     VALUES ((SELECT id FROM tipos_producto WHERE categoria = 'Entrantes frios'));
 --     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
 --     VALUES (
---     (SELECT id FROM productos WHERE nombre = 'Ensalada mixta\n(4p)'),
+--     (SELECT id FROM productos WHERE nombre = 'Ensalada mixta(4p)'),
 --     (SELECT id FROM tipos_producto WHERE categoria = 'Entrantes frios'));
 --     INSERT INTO categorias_productos (fk_productos, fk_categoria) 
 --     VALUES (

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS categorias (
 CREATE TABLE IF NOT EXISTS productos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre CHAR(60) NOT NULL,
-    descripcion CHAR(140),
+    descripcion CHAR(140) NOT NULL,
     foto CHAR(100) NOT NULL,
     precio INT NOT NULL,
     fk_categoria INT NOT NULL,
