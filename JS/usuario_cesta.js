@@ -264,6 +264,34 @@ function recuperarPedido(longitud) {
     }
 }
 
+function crearPedido(callback) {
+    // enviar a PHP
+    let miPeticion = new XMLHttpRequest();
+
+    miPeticion.onreadystatechange = function () {
+        if(miPeticion.readyState == 4 && miPeticion.status == 200) {
+            // console.log(miPeticion.responseText);
+            callback(miPeticion.responseText);
+        }   
+    }
+
+    miPeticion.open("POST","../../PHP/usuario_cesta.php",true);
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    let productos = localStorage.getItem('productos');
+    let observaciones = document.getElementById("inObservaciones");
+    if(observaciones.value === '') {
+        observaciones.value = observaciones.placeholder;
+    }
+    
+    let misDatos = {
+        // "email" : localStorage.getItem("email"),
+        "productos" : JSON.parse(productos),
+        "observaciones" : observaciones.value
+    };
+    misDatos = JSON.stringify(misDatos);
+    miPeticion.send("crearPedido=" + misDatos);
+}
+
 
 // function manejadorClickSumar() {
 //     let inputCantidad = this.previousSibling
