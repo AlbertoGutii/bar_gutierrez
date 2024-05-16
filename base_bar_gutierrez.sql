@@ -45,10 +45,11 @@ CREATE TABLE IF NOT EXISTS clientes (
 CREATE TABLE IF NOT EXISTS pedidos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fk_cliente INT NOT NULL,
-    hora_recogida DATETIME NOT NULL,
+    fecha_pedido DATETIME NOT NULL,
     observaciones CHAR(50) NULL,
     cantidad INT NOT NULL,
     precio INT NOT NULL,
+    fecha_recogida DATETIME NOT NULL,
     entregado BINARY(1) NOT NULL,
     FOREIGN KEY (fk_cliente) REFERENCES clientes (id)
     ON UPDATE CASCADE
