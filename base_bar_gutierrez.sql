@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
     fk_cliente INT NOT NULL,
     hora_recogida DATETIME NOT NULL,
     observaciones CHAR(50) NULL,
+    cantidad INT NOT NULL,
     precio INT NOT NULL,
     entregado BINARY(1) NOT NULL,
     FOREIGN KEY (fk_cliente) REFERENCES clientes (id)

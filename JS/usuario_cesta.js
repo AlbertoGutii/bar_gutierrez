@@ -271,7 +271,7 @@ function crearPedido(callback) {
 
     miPeticion.onreadystatechange = function () {
         if(miPeticion.readyState == 4 && miPeticion.status == 200) {
-            // console.log(miPeticion.responseText);
+            console.log(miPeticion.responseText);
             callback(miPeticion.responseText);
         }   
     }
@@ -412,6 +412,7 @@ function manejadorClickRealizarPedido() {
         let cardProducto = cardsProductos[i]
         let idProducto = cardProducto.id
         let cantidadNueva = cardProducto.querySelector("#cantidad_" + idProducto).value
+        console.log("Cantidad: ",cantidadNueva)
         if(cantidadNueva.substr(-1) === ".") {
             cantidadNueva = cantidadNueva.slice(0,-1)
         }
@@ -425,7 +426,7 @@ function manejadorClickRealizarPedido() {
             console.log("se hizo el pedido")
             localStorage.removeItem("productos")
             recuperarPedido()
-            window.location.href = "./usuario_carniceria.html"
+            window.location.href = "../paginas_usuarios/usuario/cesta.html"
         } else {
             console.log("no se pudo hacer el pedido")
         }

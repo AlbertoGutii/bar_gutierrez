@@ -325,7 +325,7 @@ header {
     overflow: hidden;
     transition: all 0.3s;
     border-radius: 12px;
-    background-color: #e26464;
+    background-color: #ca7b7b;
     font-weight: bolder;
     box-shadow: 0 2px 0 2px #000;
 }
@@ -335,14 +335,14 @@ header {
     position: absolute;
     width: 100px;
     height: 120%;
-    background-color: #407c8b;
+    background-color: #8a3838;
     top: 50%;
     transform: skewX(30deg) translate(-150%, -50%);
     transition: all 0.5s;
 }
 
 .btn:hover {
-    background-color: #2df83e;
+    background-color: #750000;
     color: #fff;
     box-shadow: 0 2px 0 2px #0d3b66;
 }

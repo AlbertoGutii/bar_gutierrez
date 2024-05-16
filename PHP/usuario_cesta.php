@@ -71,7 +71,8 @@
         // Obtener el string JSON de productos enviado desde el cliente y convertirlo a un array PHP
         $productosJSON = $_POST['crearPedido'];
         $productos = json_decode($productosJSON, true);
-        $usuario = $productos['email'];
+        //! DESCOMENTAR EL EMAIL CUANDO TENGA LO DE LOS USUARIOS
+        // $usuario = $productos['email'];
         $observaciones = $productos['observaciones'];
         $productos = $productos['productos'];
 
@@ -84,12 +85,12 @@
         //     }
         // }
 
-        // Insertar las solicitudes de producto en SOLICITUDES
+        // Insertar el pedido en la tabla de pedidos 
         
         try {
             $resultado = $conexion->prepare("
-                INSERT INTO solicitudes 
-                (fecha, descripcion, unidades, cantidad, observaciones, fk_usuario, tramitado)
+                INSERT INTO pedidos 
+                (id, fk_cliente, hora_recogida, observaciones, precio, entregado)
                 VALUES (
                     ?,
                     (SELECT descripcion FROM productos WHERE id = ?),
@@ -106,7 +107,7 @@
             foreach ($productos as $productoID => $producto) {
                 $cantidad = $producto['cantidad'];
         
-                $resultado->execute(array($fecha, $productoID, $productoID, $cantidad, $observaciones, $usuario));
+                $resultado->execute(array($fecha, $productoID, $productoID, $cantidad, $observaciones));
             }
         
             echo 1; // Éxito
