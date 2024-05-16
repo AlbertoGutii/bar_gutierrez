@@ -220,6 +220,7 @@ function enviarProductos(callback)
 
 function recuperarPedido(longitud) {
     let miDiv = document.getElementById("contenedor-productos")
+    let container = document.getElementById("container")
     if (miDiv) 
     {
         if (localStorage.getItem("productos") !== null) 
@@ -250,7 +251,7 @@ function recuperarPedido(longitud) {
                     botonPedido.addEventListener("click", manejadorClickRealizarPedido)
                     divPagar.appendChild(inObservaciones)
                     divPagar.appendChild(botonPedido)
-                    miDiv.appendChild(divPagar)
+                    container.appendChild(divPagar)
                 }
             })
             return miDiv
