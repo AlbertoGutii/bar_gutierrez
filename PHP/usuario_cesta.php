@@ -90,10 +90,10 @@
         try {
             $resultado = $conexion->prepare("
                 INSERT INTO pedidos 
-                (id, fk_cliente, hora_recogida, observaciones, precio, entregado)
+                (fk_cliente, fecha_pedido, observaciones, cantidad, precio, fecha_recogida,entregado)
                 VALUES (
                     ?,
-                    (SELECT descripcion FROM productos WHERE id = ?),
+                    (SELECT nombre FROM productos WHERE id = ?),
                     (SELECT unidades.descripcion 
                         FROM productos 
                         JOIN unidades ON productos.fk_unidades = unidades.id 
