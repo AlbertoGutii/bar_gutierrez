@@ -214,13 +214,14 @@ header {
 .card-img img {
     width: 130px;
     height: 130px;
+    border-radius: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 /* Card */
 .card {
-    width: calc(20% - 20px);
+    width: calc(35% - 150px);
     height: auto;
     padding: .8em;
     background: #3ea594;
@@ -235,7 +236,6 @@ header {
     /* background-color: transparent; */
     width: auto;
     height: auto;
-    border-radius: 20px;
     transition: .3s ease;
 }
 
@@ -282,7 +282,7 @@ header {
 /* Hover */
 .card-img:hover {
     transform: translateY(-25%);
-    box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+    /* box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px; */
 }
 
 .card-button:hover {
