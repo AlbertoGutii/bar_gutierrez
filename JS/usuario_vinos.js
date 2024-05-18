@@ -27,6 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnReserva").onclick = function() {
         window.location.href = "../../reserva.html"
     }
+
+    document.getElementById("btnInicioSesion").onclick = function() {
+        window.location.href = "../inicio_sesion.html"
+    }
+
+    document.getElementById("btnHistorialPedidos").onclick = function() {
+        window.location.href = "../historial_pedidos.html"
+    }
 })
 
 //* funcion principal
