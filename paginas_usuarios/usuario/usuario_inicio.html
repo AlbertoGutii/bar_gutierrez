@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <script src="../JS/usuario_historial.js"></script>
-    <link rel="shortcut icon" href="./imagenes/svg/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../estilos/usuario_inicio.css">
+    <script src="../../JS/carrusel_imagenes.js"></script>
+    <script src="../../JS/usuario_inicio.js"></script>
+    <link rel="shortcut icon" href="../../imagenes/svg/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../estilos/usuario_inicio.css">
 </head>
 <body>
     <!--* BARRA DE NAVEGACION -->
@@ -19,13 +20,13 @@
                         <input type="checkbox" id="menu"/>
                         <label for="menu">
                             <!--? imagen para cuando se vea en movil y poder esconder el menu -->
-                            <img src="../imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
+                            <img src="../../imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
                         </label>
                     </li>
                     <li>
                         <!--! LOGO PENDIENTE PENSAR SI DEJARLO AQUI -->
                         <button class="logo" id="btnLogo">
-                            <img src="../imagenes/pagina/logo.jpg" alt="logo">
+                            <img src="../../imagenes/pagina/logo.jpg" alt="logo">
                         </button>
                     </li>
                     <li>
@@ -54,7 +55,7 @@
                     </li>
                     <!--* ICONOS DE CONFIGURACION Y CESTA -->
                     <li id="iconos">
-                        <a href="./usuario/cesta.html">
+                        <a href="./cesta.html">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" color="#000000" fill="none">
                                 <path d="M8 16L16.7201 15.2733C19.4486 15.046 20.0611 14.45 20.3635 11.7289L21 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                 <path d="M6 6H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -74,10 +75,10 @@
                                 <!--! FALTA ESCONDER EL BOTON DE CERRAR SESION HASTA QUE NO INICIE SESION -->
                                 <ul id="subConfiguracion">
                                     <li>
-                                        <input type="button" id="btnInicioSesion" value="Iniciar Sesión">
+                                        <input type="button" id="btnHistorialPedidos" value="Historial de pedidos">
                                     </li>
                                     <li>
-                                        <input type="button" id="btnHistorialPedidos" value="Historial de pedidos">
+                                        <input type="button" id="btnAdministrador" value="Cambiar a Administrador">
                                     </li>
                                     <li>
                                         <input type="button" id="btnCerrarSesion" value="Cerrar Sesión">
@@ -92,25 +93,47 @@
     </header>
 
 
-    <div id="Buscador_Fechas">
-        <!-- <label for="fecha_desde">Desde: </label>
-        <input type="date" name="fecha_desde" id="fecha_desde" value="2024-01-01">
-        <label for="fecha_hasta">Hasta: </label>
-        <input type="date" name="fecha_hasta" id="fecha_hasta"> -->
-        <div class="fechas">
-            <label for="inFecha_desde">Desde: </label>
-            <input type="date" id="inFecha_desde">
+    <div>    
+        <!--* CARRUSEL CON IMAGENES -->
+        <div id="carrusel">
+            <div class="slide">
+                <img src="../../imagenes/bar/entrada_calle.jpg" id="entrada_calle" alt="entrada_calle"/>
+            </div>
+            <div class="slide">
+                <img src="../../imagenes/bar/barra.jpg" alt="barra"/>
+            </div>
+            <div class="slide">
+                <img src="../../imagenes/bar/barra_comedor_fuera.jpg" alt="barra_comedor_fuera"/>
+            </div>
+            <div class="slide">
+                <img src="../../imagenes/bar/comedor_dentro.jpg" alt="comedor_dentro"/>
+            </div>
+            <div class="slide">
+                <img src="../../imagenes/bar/comedor_dentro_2.jpg" alt="comedor_dentro_2"/>
+            </div>
+            <div class="slide">
+                <img src="../../imagenes/bar/comedor_dentro_3.jpg" alt="comedor_dentro_3"/>
+            </div>
+            <div class="slide">
+                <img src="../../imagenes/bar/comedor_dentro_4.jpg" alt="comedor_dentro_4"/>
+            </div>
         </div>
-        <div class="fechas">
-            <label for="inFecha_hasta">Hasta: </label>
-            <input type="date" id="inFecha_hasta">
+    
+        <!--* INFORMACION DEL NEGOCIO -->
+        <div id="info">
+            <div>
+                <h3>Quiénes somos</h3>
+                <p>Somos Restaurante Bar Gutiérrez, ubicado en el centro de Aranda de Duero, al sur de la provincia de Burgos.
+                Ponemos a su disposición un ambiente agradable y tranquilo, perfecto para disfrutar de una buena copa y de lo mejor de nuestro menú. 
+                No dude en consultarnos.</p>
+            </div>
+            <div>
+                <h3>Calidad y atención</h3>
+                <p>En Restaurante Bar Gutiérrez apostamos por ofrecer excelencia en todos nuestros servicios y platos. 
+                Somos uno de los restaurantes destacados en la localidad gracias a nuestra atención rápida y cordial.
+                Le esperamos.</p>
+            </div>
         </div>
-
-
-        <button type="button" class="btn btn-warning" id="btnBuscar">Buscar</button>
-    </div>
-
-    <div id="contenedor-historico">
 
     </div>
     
@@ -130,9 +153,9 @@
                 <h3>Enlaces legales</h3>
                 <ul>
                     <!--? IGUAL MEJOR PONERLO COMO UN BOTON -->
-                    <li><a href="../avisos_legales/aviso_legal.html">Aviso Legal</a></li>
-                    <li><a href="../avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
-                    <li><a href="../avisos_legales/politica_cookies.html">Política de Cookies</a></li>
+                    <li><a href="../../avisos_legales/aviso_legal.html">Aviso Legal</a></li>
+                    <li><a href="../../avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="../../avisos_legales/politica_cookies.html">Política de Cookies</a></li>
                 </ul>
             </div>
         </div>
