@@ -1,16 +1,17 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnLogo").onclick = function() {
-        window.location.href = "./paginas_usuario/usuario/inicio_usuario.html"
+        window.location.href = "./index.html"
     }
 
     document.getElementById("btnInicio").onclick = function() {
-        window.location.href = "./paginas_usuario/usuario/inicio_usuario.html"
+        window.location.href = "./index.html"
     }
     
     document.getElementById("btnCarta").onclick = function() {
         window.location.href = "./paginas_usuarios/usuario/carta.html"
     }
+    
     document.getElementById("btnMenu").onclick = function() {
         window.location.href = "./paginas_usuarios/usuario/menu.html"
     }
@@ -25,6 +26,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("btnReserva").onclick = function() {
         window.location.href = "./reserva.html"
+    }
+
+    document.getElementById("btnIniciarSesion").onclick = function() {
+        window.location.href = "./paginas_usuarios/login.html"
     }
 
     document.getElementById("btnHistorialPedidos").onclick = function() {

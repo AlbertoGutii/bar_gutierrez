@@ -1,11 +1,10 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnLogo").onclick = function() {
-        window.location.href = "./usuario_inicio.html"
+        window.location.href = "../../index.html"
     }
 
     document.getElementById("btnInicio").onclick = function() {
-        window.location.href = "./usuario_inicio.html"
+        window.location.href = "../../index.html"
     }
     
     document.getElementById("btnCarta").onclick = function() {
@@ -23,9 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnContacto").onclick = function() {
         window.location.href = "../../contacto.html"
     }
-
+    
     document.getElementById("btnReserva").onclick = function() {
         window.location.href = "../../reserva.html"
+    }
+    
+    document.getElementById("btnInicioSesion").onclick = function() {
+        window.location.href = "../login.html"
     }
 
     document.getElementById("btnHistorialPedidos").onclick = function() {

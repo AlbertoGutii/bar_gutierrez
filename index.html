@@ -3,29 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesion</title>
-    <script src="./JS/inicio_sesion.js"></script>
+    <title>Inicio</title>
+    <script src="./JS/carrusel_imagenes.js"></script>
+    <script src="./JS/usuario_inicio.js"></script>
     <link rel="shortcut icon" href="./imagenes/svg/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./estilos/inicio_sesion.css">
+    <link rel="stylesheet" href="./estilos/usuario_inicio.css">
 </head>
 <body>
-    <div class="login-box">
-        <h2>Iniciar sesión</h2>
-        <form id="loginForm" action="#" method="post">
+    <!--* BARRA DE NAVEGACION -->
+    <header>
+        <div class="menu container2">
+            <nav class="navbar">
+                <ul id="barraNav">
+                    <li>
+                        <!--? AQUI IBA EL LOGO -->
+                        <input type="checkbox" id="menu"/>
+                        <label for="menu">
+                            <!--? imagen para cuando se vea en movil y poder esconder el menu -->
+                            <img src="./imagenes/pagina/menu2.png" class="menu-icono" alt="menu-icono">
+                        </label>
+                    </li>
+                    <li>
+                        <!--! LOGO PENDIENTE PENSAR SI DEJARLO AQUI -->
+                        <button class="logo" id="btnLogo">
+                            <img src="./imagenes/pagina/logo.jpg" alt="logo">
+                        </button>
+                    </li>
+                    <li>
+                        <input type="button" id="btnInicio" value="Inicio">
+                    </li>
+                    <li class="dropdown">
+                        <input type="button" value="Carta">
+                            <ul id="submenu">
+                                <li>
+                                    <input type="button" id="btnCarta" value="Carta">
+                                </li>
+                                <li>
+                                    <input type="button" id="btnMenu" value="Menú">
+                                </li>
+                                <li>
+                                    <input type="button" id="btnVinos" value="Vinos">
+                                </li>
+                            </ul>
+                        </input>
+                    </li>
+                    <li>
+                        <input type="button" id="btnReserva" value="Reserva">
+                    </li>
+                    <li>
+                        <input type="button" id="btnContacto" value="Contacto">
+                    </li>
+                    <!--* ICONOS DE CONFIGURACION Y CESTA -->
+                    <li id="iconos">
+                        <a href="./paginas_usuarios/usuario/cesta.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" color="#000000" fill="none">
+                                <path d="M8 16L16.7201 15.2733C19.4486 15.046 20.0611 14.45 20.3635 11.7289L21 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M6 6H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <circle cx="6" cy="20" r="2" stroke="currentColor" stroke-width="1.5" />
+                                <circle cx="17" cy="20" r="2" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M8 20L15 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M2 2H2.966C3.91068 2 4.73414 2.62459 4.96326 3.51493L7.93852 15.0765C8.08887 15.6608 7.9602 16.2797 7.58824 16.7616L6.63213 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li id="iconos" class="dropdown">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" color="#000000" fill="none">
+                                <path d="M11.5 14.0116C9.45338 13.9164 7.38334 14.4064 5.57757 15.4816C4.1628 16.324 0.453365 18.0441 2.71266 20.1966C3.81631 21.248 5.04549 22 6.59087 22H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M15.5 6.5C15.5 8.98528 13.4853 11 11 11C8.51472 11 6.5 8.98528 6.5 6.5C6.5 4.01472 8.51472 2 11 2C13.4853 2 15.5 4.01472 15.5 6.5Z" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M18 20.7143V22M18 20.7143C16.8432 20.7143 15.8241 20.1461 15.2263 19.2833M18 20.7143C19.1568 20.7143 20.1759 20.1461 20.7737 19.2833M18 14.2857C19.1569 14.2857 20.1761 14.854 20.7738 15.7169M18 14.2857C16.8431 14.2857 15.8239 14.854 15.2262 15.7169M18 14.2857V13M22 14.9286L20.7738 15.7169M14.0004 20.0714L15.2263 19.2833M14 14.9286L15.2262 15.7169M21.9996 20.0714L20.7737 19.2833M20.7738 15.7169C21.1273 16.2271 21.3333 16.8403 21.3333 17.5C21.3333 18.1597 21.1272 18.773 20.7737 19.2833M15.2262 15.7169C14.8727 16.2271 14.6667 16.8403 14.6667 17.5C14.6667 18.1597 14.8728 18.773 15.2263 19.2833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <!--! FALTA ESCONDER EL BOTON DE CERRAR SESION HASTA QUE NO INICIE SESION -->
+                                <ul id="subConfiguracion">
+                                    <li>
+                                        <input type="button" id="btnIniciarSesion" value="Iniciar Sesión">
+                                    </li>
+                                    <li>
+                                        <input type="button" id="btnHistorialPedidos" value="Historial de pedidos">
+                                    </li>
+                                    <li>
+                                        <input type="button" id="btnAdministrador" value="Cambiar a Administrador">
+                                    </li>
+                                    <li>
+                                        <input type="button" id="btnCerrarSesion" value="Cerrar Sesión">
+                                    </li>
+                                </ul>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div>    
+        <!--* CARRUSEL CON IMAGENES -->
+        <div id="carrusel">
+            <div class="slide">
+                <img src="./imagenes/bar/entrada_calle.jpg" id="entrada_calle" alt="entrada_calle"/>
+            </div>
+            <div class="slide">
+                <img src="./imagenes/bar/barra.jpg" alt="barra"/>
+            </div>
+            <div class="slide">
+                <img src="./imagenes/bar/barra_comedor_fuera.jpg" alt="barra_comedor_fuera"/>
+            </div>
+            <div class="slide">
+                <img src="../imagenes/bar/comedor_dentro.jpg" alt="comedor_dentro"/>
+            </div>
+            <div class="slide">
+                <img src="./imagenes/bar/comedor_dentro_2.jpg" alt="comedor_dentro_2"/>
+            </div>
+            <div class="slide">
+                <img src="./imagenes/bar/comedor_dentro_3.jpg" alt="comedor_dentro_3"/>
+            </div>
+            <div class="slide">
+                <img src="./imagenes/bar/comedor_dentro_4.jpg" alt="comedor_dentro_4"/>
+            </div>
+        </div>
+    
+        <!--* INFORMACION DEL NEGOCIO -->
+        <div id="info">
             <div>
-                    <label for="email">Email:</label>
-                    <input type="text" id="inEmail" name="email" required><br><br>
-                    <p id="errorEmail"></p>
-                    <label for="password">Contraseña:</label>
-                <div class="password-input">
-                    <input type="password" id="inContrasenia" name="password" required>
-                    <p id="errorContrasenia"></p>   
-                    <p id="rellenadoCampos"></p>
-                    <label for="visualizarContraseña"><input type="checkbox" id="visualizarContraseña" onclick="mostrarContrasenia()"> Mostrar contraseña</label>
-                </div>
-                <input type="button" id="btnInicio_Sesion" value="Iniciar sesión">
-            </div>  
-        </form>
+                <h3>Quiénes somos</h3>
+                <p>Somos Restaurante Bar Gutiérrez, ubicado en el centro de Aranda de Duero, al sur de la provincia de Burgos.
+                Ponemos a su disposición un ambiente agradable y tranquilo, perfecto para disfrutar de una buena copa y de lo mejor de nuestro menú. 
+                No dude en consultarnos.</p>
+            </div>
+            <div>
+                <h3>Calidad y atención</h3>
+                <p>En Restaurante Bar Gutiérrez apostamos por ofrecer excelencia en todos nuestros servicios y platos. 
+                Somos uno de los restaurantes destacados en la localidad gracias a nuestra atención rápida y cordial.
+                Le esperamos.</p>
+            </div>
+        </div>
+
     </div>
+    
+    
+    <!--* PIE DE PAGINA -->
+    <footer id="pie_pagina">
+        <div>
+            <div class="datos_enlaces_bar">
+                <h3>Contacta con nosotros</h3>
+                <ul>
+                    <li>947 511 213</li>
+                    <li>info@restaurantebargutierrez.com</li>
+                    <li><a href="https://www.google.com/maps/place/Restaurante+Bar+Guti%C3%A9rrez/@41.6731338,-3.6861734,16z/data=!3m1!4b1!4m6!3m5!1s0xd442642eb4be80d:0xf763703124bb319e!8m2!3d41.6731338!4d-3.6835985!16s%2Fg%2F1td4r06f?entry=ttu">Calle San Bartolomé, 09400 Aranda de Duero, Burgos</a></li>
+                </ul>
+            </div>
+            <div class="datos_enlaces_bar">
+                <h3>Enlaces legales</h3>
+                <ul>
+                    <!--? IGUAL MEJOR PONERLO COMO UN BOTON -->
+                    <li><a href="./avisos_legales/aviso_legal.html">Aviso Legal</a></li>
+                    <li><a href="./avisos_legales/politica_privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="./avisos_legales/politica_cookies.html">Política de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p>&copy; 2024 RESTAURANTE BAR GUTIÉRREZ. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
