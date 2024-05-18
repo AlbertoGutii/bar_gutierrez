@@ -33,12 +33,13 @@ CREATE TABLE IF NOT EXISTS productos (
 -- TABLA CLIENTES
 CREATE TABLE IF NOT EXISTS clientes (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ADMIN BINARY(1) NOT NULL,
+    admin BINARY(1) NOT NULL,
     nombre CHAR(40) NOT NULL,
     apellidos CHAR(40) NOT NULL,
-    telefono CHAR(9) NOT NULL,
     email CHAR(50) NOT NULL UNIQUE,
-    contraseña CHAR(255) NOT NULL
+    password CHAR(255) NOT NULL,
+    activo BINARY(1) NOT NULL,
+    telefono CHAR(9) NOT NULL
 ) ENGINE = INNODB;
 
 -- TABLA PEDIDOS
