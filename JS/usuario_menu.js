@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "../../reserva.html"
     }
     
-    document.getElementById("btnInicioSesion").onclick = function() {
+    document.getElementById("btnIniciarSesion").onclick = function() {
         window.location.href = "../login.html"
     }
 
