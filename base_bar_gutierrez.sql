@@ -35,7 +35,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     admin BINARY(1) NOT NULL,
     nombre CHAR(40) NOT NULL,
-    apellidos CHAR(40) NOT NULL,
     email CHAR(50) NOT NULL UNIQUE,
     password CHAR(255) NOT NULL,
     activo BINARY(1) NOT NULL,
