@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS productos (
     ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
--- TABLA CLIENTES
+-- TABLA USUARIOS
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     admin BINARY(1) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
     precio INT NOT NULL,
     fecha_recogida DATETIME NOT NULL,
     entregado BINARY(1) NOT NULL,
-    FOREIGN KEY (fk_cliente) REFERENCES clientes (id)
+    FOREIGN KEY (fk_cliente) REFERENCES usuarios (id)
     ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS reservas (
     fk_mesa INT NOT NULL,
     num_personas INT NOT NULL,
     fecha DATETIME NOT NULL,
-    FOREIGN KEY (fk_cliente) REFERENCES clientes (id)
+    FOREIGN KEY (fk_cliente) REFERENCES usuarios (id)
     ON UPDATE CASCADE,
     FOREIGN KEY (fk_mesa) REFERENCES mesas (id)
     ON UPDATE CASCADE
