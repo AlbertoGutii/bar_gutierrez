@@ -2,52 +2,52 @@ window.onload = principal
 
 //? NO HACEN NADA ESTAS FUNCIONES
 //? AUNQUE EN OTROS ARCHIVOS LA FUNCION QUE CUMPLEN ES DE QUE NO PUEDAS ACCEDER A OTROS SITIOS SI NO LO TIENES PERMITIDO
-// comprobarExisteEmail()
+comprobarExisteEmail()
 
-// function comprobarExisteEmail() {
-//     let miEmail = localStorage.getItem("email")
-//     let miPeticion = new XMLHttpRequest()
+function comprobarExisteEmail() {
+    let miEmail = localStorage.getItem("email")
+    let miPeticion = new XMLHttpRequest()
 
-//     miPeticion.open("POST", "./PHP/redireccion.php", true)
+    miPeticion.open("POST", "./PHP/redireccion.php", true)
 
-//     miPeticion.onreadystatechange = function() {
-//         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-//             console.log("existe", miPeticion.responseText)
-//             if(miPeticion.responseText === "0") {
-//                 window.location.href = "../index.html"
-//             } 
-//             else {
-//                 comprobarEsAdmin()
-//             }
-//         }
-//     }
+    miPeticion.onreadystatechange = function() {
+        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
+            console.log("existe", miPeticion.responseText)
+            if(miPeticion.responseText === "0") {
+                window.location.href = "../paginas_usuarios/login.html"
+            } 
+            else {
+                comprobarEsAdmin()
+            }
+        }
+    }
 
-//     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-//     let datos = "comprobarExisteEmail=" + miEmail
-//     miPeticion.send(datos)
-// }
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let datos = "comprobarExisteEmail=" + miEmail
+    miPeticion.send(datos)
+}
 
-// function comprobarEsAdmin() {
-//     let miEmail = localStorage.getItem("email")
-//     let miPeticion = new XMLHttpRequest()
+function comprobarEsAdmin() {
+    let miEmail = localStorage.getItem("email")
+    let miPeticion = new XMLHttpRequest()
 
-//     miPeticion.open("POST", "../PHP/redireccion.php", true)
+    miPeticion.open("POST", "./PHP/redireccion.php", true)
 
-//     miPeticion.onreadystatechange = function() {
-//         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-//             console.log("es admin: ",miPeticion.responseText)
-//             // callback(miPeticion.responseText)
-//             if(miPeticion.responseText === "0") {
-//                 window.location.href = "../index.html"
-//             } 
-//         }
-//     }
+    miPeticion.onreadystatechange = function() {
+        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
+            console.log("es admin: ",miPeticion.responseText)
+            // callback(miPeticion.responseText)
+            if(miPeticion.responseText === "0") {
+                window.location.href = "../paginas_usuarios/login.html"
+            } 
+        }
+    }
 
-//     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-//     let datos = "comprobarEsAdmin=" + miEmail
-//     console.log(datos)
-//     miPeticion.send(datos)
-// }
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let datos = "comprobarEsAdmin=" + miEmail
+    console.log(datos)
+    miPeticion.send(datos)
+}
 
 function principal() {
     localStorage.clear()

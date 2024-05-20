@@ -10,8 +10,33 @@
 </head>
 <body>
     <div class="login-box">
-        <h2>Iniciar sesión</h2>
-        <form id="loginForm" action="#" method="post">
+        <form class="form" action="#" method="post">
+            <p class="form-title">Sign in to your account</p>
+            <div class="input-container">
+                <input type="email" placeholder="Enter email" id="inEmail" name="email" required>
+               <span>
+                    <p id="errorEmail"></p>
+               </span>
+            </div>
+            <div class="input-container">
+                <input type="password" placeholder="Enter password" id="inContrasenia" name="password" required>
+                <p id="errorContrasenia"></p>   
+                <p id="rellenadoCampos"></p>
+            </div>
+            <span for="visualizarContraseña">
+                <input type="checkbox" id="visualizarContraseña" onclick="mostrarContrasenia()"> Mostrar contraseña
+            </span>
+            <button type="button" class="submit" id="btnInicio_Sesion">
+                Sign in
+            </button>
+     
+            <p class="signup-link">
+                No account?
+                <a href="./nueva_contrasenia.html">Sign up</a>
+            </p>
+        </form>
+
+        <!-- <form id="loginForm" action="#" method="post">
             <div>
                     <label for="email">Email:</label>
                     <input type="text" id="inEmail" name="email" required><br><br>
@@ -25,7 +50,7 @@
                 </div>
                 <input type="button" id="btnInicio_Sesion" value="Iniciar sesión">
             </div>  
-        </form>
+        </form> -->
     </div>
 </body>
 </html>
