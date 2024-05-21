@@ -13,6 +13,7 @@
         iniciarSesion();
     }
 
+    //? funcion para verificar si el email existe
     function existeEmail($email) {
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
         $resultado = $conexion -> prepare("SELECT * FROM usuarios WHERE email = ?;");
@@ -28,6 +29,7 @@
         return $existe;
     }
     
+    //? funcion para verificar si la contraseña coincide con el email
     function existeContrasenia($contrasenia) {
         $contrasenia = hash('sha256', $contrasenia);
         $email = $_SESSION['email'];
@@ -45,6 +47,7 @@
         return $existe;
     }
     
+    //? funcion para iniciar sesión
     function iniciarSesion() {
         $email = $_SESSION['email'];
         $contrasenia = $_SESSION['contrasenia'];
@@ -56,29 +59,12 @@
         $resultado -> execute(array($email));
         $existe = $resultado -> fetch();
 
-        //? aqui lo que hace es verificar que si el usuario tiene la contraseña por defecto le redirije a la pagina para cambiarse la contraseña
-        //? si no tiene la contraseña por defecto hago otra verificacion
         if($existe) {
-            $resultado = $conexion -> prepare("SELECT * FROM usuarios WHERE email = ? AND password='8e7ab8d9fe3b324acdd1f76735eea350ea61ac24cbd17e5446946e5a4c71d999';");
-            $resultado -> execute(array($email));
-            $existe = $resultado -> fetch();
-            if($existe) {
+            $resultado = $conexion -> prepare("SELECT admin FROM usuarios WHERE email = ? AND password=?;");
+            $resultado -> execute(array($email, $contrasenia));
+            if($resultado -> fetch()) {
                 session_destroy();
-                echo "./Paginas/nueva_contrasenia.html";
-            } 
-            else {
-                $resultado = $conexion -> prepare("SELECT admin FROM usuarios WHERE email = ? AND password=?;");
-                $resultado -> execute(array($email, $contrasenia));
-                $respuesta = $resultado -> fetch();
-                //? aqui verifico que si el usuario es administrador le lleve al inicio de admin el cual puede elegir si entrar en administrador o entrar en usuario
-                //? y si no directamente al inicio de usuario
-                if($respuesta['admin'] == "1") {
-                    session_destroy();
-                    echo "./Paginas/admin/admin_inicio.html";
-                } else {
-                    session_destroy();
-                    echo "./Paginas/usuario/usuario_inicio.html";
-                }
+                echo "../index.html";
             }
         }
         else {
