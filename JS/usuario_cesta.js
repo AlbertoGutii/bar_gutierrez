@@ -1,7 +1,6 @@
-// window.onload = principal
+window.onload = principal
 
 document.addEventListener("DOMContentLoaded", function() {
-    principal()
     document.getElementById("btnLogo").onclick = function() {
         window.location.href = "../../index.html"
     }
@@ -41,10 +40,16 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnAdministrador").onclick = function() {
         window.location.href = "./administrador/inicio_administrador.html"
     }
+
+    document.getElementById("btnCerrarSesion").onclick = function() {
+        localStorage.clear()
+        window.location.href = "../../index.html"
+    }
 })
 
 //* Función principal
 function principal() {
+    comprobarExisteEmail()
     let container = document.getElementById("container")
     let productosNode = recuperarPedido()
     console.log(productosNode)
@@ -186,50 +191,6 @@ function enviarProductos(callback)
     miPeticion.send("productos=" + productos)
 }
 
-// function recuperarPedido(longitud)
-// {
-//     let miDiv = document.getElementById("contenedor-productos")
-//     if(localStorage.getItem("productos") !== null) {
-//         // vaciamos el div
-//         // miDiv.innerHTML = ""
-    
-//         enviarProductos(function(respuesta) {
-//             respuesta = JSON.parse(respuesta)
-//             // recorro el JSON
-//             // let miDiv = document.getElementById("contenedor-productos")
-//             for(let i = 0; i<respuesta.length; i++)
-//             {
-//                 miDiv.appendChild(dibujarProductos(respuesta[i]))
-//             }
-//             if(Object.keys(respuesta).length > 0) {
-//                 console.log(miDiv)
-//                 let divPagar = crearElemento("div",undefined,{"id" : "divPagar"})
-//                 let inObservaciones = crearElemento("textarea",undefined,{
-//                    "rows" : "4",
-//                    "cols": "50",
-//                     "id": "inObservaciones",
-//                     "placeholder" : "Sin observaciones"
-//                 })
-//                 let botonPedido = crearElemento("input",undefined,{
-//                     "type" : "button",
-//                     "value" : "Realizar Pedido",
-//                     "id" : "btnPedido",
-//                     "class" :"btn btn-primary"
-//                 })
-//                 botonPedido.addEventListener("click",manejadorClickRealizarPedido)
-//                 divPagar.appendChild(inObservaciones)
-//                 divPagar.appendChild(botonPedido)
-//                 miDiv.appendChild(divPagar)
-//                 console.log(miDiv)
-//             }
-//             let container = document.getElementById("container")
-//             container.appendChild(miDiv)
-//         })
-//     } else {
-//         miDiv.innerHTML = ""
-//     }
-// }
-
 function recuperarPedido(longitud) {
     let miDiv = document.getElementById("contenedor-productos")
     let container = document.getElementById("container")
@@ -304,21 +265,6 @@ function crearPedido(callback) {
     misDatos = JSON.stringify(misDatos);
     miPeticion.send("crearPedido=" + misDatos);
 }
-
-
-// function manejadorClickSumar() {
-//     let inputCantidad = this.previousSibling
-//     let cantidad = inputCantidad.value
-//     inputCantidad.value = parseFloat(cantidad) + 1
-// }
-
-// function manejadorClickRestar() {
-//     let inputCantidad = this.nextSibling
-//     let cantidad = parseFloat(inputCantidad.value)
-//     if(cantidad > 0) {
-//         inputCantidad.value = cantidad - 1
-//     }
-// }
 
 function manejadorClickSumar() {
     let inputCantidad = this.parentElement.querySelector('.card-quantity')
@@ -443,4 +389,75 @@ function manejadorClickRealizarPedido() {
             console.log("no se pudo hacer el pedido")
         }
     })
+}
+
+function comprobarExisteEmail() {
+    let miEmail = localStorage.getItem("email")
+    if (!miEmail) {
+        mostrarBotonesSesion(false)
+        return
+    }
+
+    let miPeticion = new XMLHttpRequest()
+
+    miPeticion.open("POST", "../../PHP/redireccion.php", true)
+
+    miPeticion.onreadystatechange = function() {
+        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
+            console.log("existe", miPeticion.responseText)
+            if (miPeticion.responseText === "0") {
+                mostrarBotonesSesion(false)
+            } else {
+                comprobarEsAdmin()
+            }
+        }
+    }
+
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let datos = "comprobarExisteEmail=" + miEmail
+    miPeticion.send(datos)
+}
+
+function comprobarEsAdmin() {
+    let miEmail = localStorage.getItem("email")
+    let miPeticion = new XMLHttpRequest()
+
+    miPeticion.open("POST", "../../PHP/redireccion.php", true)
+
+    miPeticion.onreadystatechange = function() {
+        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
+            console.log("es admin: ", miPeticion.responseText)
+            if (miPeticion.responseText === "1") {
+                mostrarBotonesSesion(true)
+                document.getElementById("btnAdministrador").style.display = "block"
+            } else {
+                mostrarBotonesSesion(true)
+                document.getElementById("btnAdministrador").style.display = "none"
+            }
+        }
+    }
+
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let datos = "comprobarEsAdmin=" + miEmail
+    console.log(datos)
+    miPeticion.send(datos)
+}
+
+function mostrarBotonesSesion(haIniciadoSesion) {
+    if (haIniciadoSesion) {
+        document.getElementById("btnIniciarSesion").style.display = "none"
+        document.getElementById("btnCerrarSesion").style.display = "block"
+        document.getElementById("btnHistorialPedidos").style.display = "block"
+        document.getElementById("btnCesta").onclick = function() {
+            window.location.href = "./cesta.html"
+        }
+    } else {
+        document.getElementById("btnIniciarSesion").style.display = "block"
+        document.getElementById("btnCerrarSesion").style.display = "none"
+        document.getElementById("btnHistorialPedidos").style.display = "none"
+        document.getElementById("btnAdministrador").style.display = "none"
+        document.getElementById("btnCesta").onclick = function() {
+            window.location.href = "../login.html"
+        }
+    }
 }

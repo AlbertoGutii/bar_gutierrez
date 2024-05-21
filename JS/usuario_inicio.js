@@ -1,7 +1,4 @@
-window.onload = function() {
-    principal()
-    comprobarExisteEmail()
-}
+window.onload = principal
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnLogo").onclick = function() {
@@ -37,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     document.getElementById("btnCesta").onclick = function() {
-        window.location.href = "./paginas_usuarios/cesta.html"
+        window.location.href = "./paginas_usuarios/usuario/cesta.html"
     }
 
     document.getElementById("btnHistorialPedidos").onclick = function() {
@@ -55,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 function principal() {
+    comprobarExisteEmail()
     iniciarCarrusel()
 }
 
