@@ -2,13 +2,13 @@ window.onload = principal
 
 //? NO HACEN NADA ESTAS FUNCIONES
 //? AUNQUE EN OTROS ARCHIVOS LA FUNCION QUE CUMPLEN ES DE QUE NO PUEDAS ACCEDER A OTROS SITIOS SI NO LO TIENES PERMITIDO
-comprobarExisteEmail()
+// comprobarExisteEmail()
 
 function comprobarExisteEmail() {
     let miEmail = localStorage.getItem("email")
     let miPeticion = new XMLHttpRequest()
 
-    miPeticion.open("POST", "./PHP/redireccion.php", true)
+    miPeticion.open("POST", "../PHP/redireccion.php", true)
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
@@ -31,7 +31,7 @@ function comprobarEsAdmin() {
     let miEmail = localStorage.getItem("email")
     let miPeticion = new XMLHttpRequest()
 
-    miPeticion.open("POST", "./PHP/redireccion.php", true)
+    miPeticion.open("POST", "../PHP/redireccion.php", true)
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {

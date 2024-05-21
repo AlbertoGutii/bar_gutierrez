@@ -78,7 +78,7 @@ function iniciarCarrusel() {
 function comprobarExisteEmail() {
     let miEmail = localStorage.getItem("email")
     if (!miEmail) {
-        redirigirLogin()
+        mostrarBotonesSesion(false)
         return
     }
 
@@ -89,10 +89,9 @@ function comprobarExisteEmail() {
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
             console.log("existe", miPeticion.responseText)
-            if(miPeticion.responseText === "0") {
-                redirigirLogin()
+            if (miPeticion.responseText === "0") {
+                mostrarBotonesSesion(false)
             } else {
-                mostrarBotonesSesion(true)
                 comprobarEsAdmin()
             }
         }
@@ -113,8 +112,10 @@ function comprobarEsAdmin() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
             console.log("es admin: ", miPeticion.responseText)
             if (miPeticion.responseText === "1") {
+                mostrarBotonesSesion(true)
                 document.getElementById("btnAdministrador").style.display = "block"
             } else {
+                mostrarBotonesSesion(true)
                 document.getElementById("btnAdministrador").style.display = "none"
             }
         }
@@ -126,22 +127,21 @@ function comprobarEsAdmin() {
     miPeticion.send(datos)
 }
 
-function redirigirLogin() {
-    document.getElementById("btnCesta").onclick = function() {
-        window.location.href = "./paginas_usuarios/login.html"
-    }
-    document.getElementById("btnAdministrador").style.display = "none"
-    mostrarBotonesSesion(false)
-}
-
 function mostrarBotonesSesion(haIniciadoSesion) {
     if (haIniciadoSesion) {
         document.getElementById("btnIniciarSesion").style.display = "none"
         document.getElementById("btnCerrarSesion").style.display = "block"
         document.getElementById("btnHistorialPedidos").style.display = "block"
+        document.getElementById("btnCesta").onclick = function() {
+            window.location.href = "./paginas_usuarios/usuario/cesta.html"
+        }
     } else {
         document.getElementById("btnIniciarSesion").style.display = "block"
         document.getElementById("btnCerrarSesion").style.display = "none"
         document.getElementById("btnHistorialPedidos").style.display = "none"
+        document.getElementById("btnAdministrador").style.display = "none"
+        document.getElementById("btnCesta").onclick = function() {
+            window.location.href = "./paginas_usuarios/login.html"
+        }
     }
 }
