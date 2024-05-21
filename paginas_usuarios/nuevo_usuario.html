@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link rel="shortcut icon" href="../Imagenes/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../Estilos/nuevoUsuario.css">
+    <link rel="shortcut icon" href="../imagenes/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../estilos/nuevoUsuario.css">
     <script src="../JS/nuevoUsuario.js"></script>
 </head>
 <body>
     <div class="login-box">
-        <form id="loginForm" action="../PHP/nuevaContrasenia.php" method="post">
+        <!-- <form id="loginForm" action="../PHP/nuevaContrasenia.php" method="post">
             <div>
                 <label for="contrasenia">Nueva contraseña:</label>
                 <input type="password" id="inContrasenia" name="contrasenia" required>
@@ -38,6 +38,32 @@
                     </ul>
                 </div>
             </div>
+        </form> -->
+        <form class="form" id="loginForm">
+            <p class="title">Register </p>
+            <p class="message">Signup now and get full access to our app. </p>
+            <div class="flex">
+                <label>
+                    <input required="" placeholder="" type="text" class="input">
+                    <span>Name</span>
+                </label>
+            </div>  
+                    
+            <label>
+                <input required="" placeholder="" type="email" class="input">
+                <span>Email</span>
+            </label> 
+                
+            <label>
+                <input required="" placeholder="" type="password" class="input">
+                <span>Password</span>
+            </label>
+            <label>
+                <input required="" placeholder="" type="password" class="input">
+                <span>Confirm password</span>
+            </label>
+            <button class="submit">Submit</button>
+            <p class="signin">Already have an acount ? <a href="./login.html">Signin</a> </p>
         </form>
     </div>
 </body>
