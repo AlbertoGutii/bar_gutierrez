@@ -290,12 +290,16 @@ header {
 
     .menu label img {
         width: 100px; /* Ajusta el tamaño del icono según sea necesario */
-        cursor: pointer;
     }
 
-    .menu label:hover + .navbar ul,
-    .menu .navbar ul:hover {
+    .menu label:hover + .navbar ul {
         display: flex;
+        align-items: center;
+    }
+
+    #pie_pagina div {
+        flex-direction: column;
+        gap: 2px;
     }
 }
 
@@ -303,15 +307,15 @@ header {
     .logo img {
         width: 60px;
     }
-
+    
     #info {
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
+        padding: 20px 10px;
     }
 
     #info div {
-        margin: 20px 0;
+        margin: 20px 10px;
     }
 
     #info h3 {
@@ -328,7 +332,7 @@ header {
 
     #pie_pagina div {
         flex-direction: column;
-        gap: 20px;
+        gap: 2px;
     }
 }
 
