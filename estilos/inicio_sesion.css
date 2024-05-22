@@ -1,22 +1,22 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('../imagenes/bar/comedor_dentro.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('../imagenes/bar/comedor_dentro.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 15px;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: red;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: red;
 }
 
 /* .login-box {

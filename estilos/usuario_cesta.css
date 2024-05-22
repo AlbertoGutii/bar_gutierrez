@@ -138,6 +138,12 @@ header {
   position: relative;
 }
 
+#btnCesta {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 /** SUBMENU SVG */
 #subConfiguracion {
   display: none;

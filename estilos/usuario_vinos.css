@@ -39,6 +39,12 @@ header {
     display: block;
 }
 
+#btnCesta {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 /*? MENU CONTAINER2 */
 .menu {
     position: relative;
