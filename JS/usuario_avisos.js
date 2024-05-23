@@ -41,8 +41,12 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "../paginas_usuarios/historial_pedidos.html"
     }
 
-    document.getElementById("btnAdministrador").onclick = function() {
-        window.location.href = "../paginas_usuarios/administrador/inicio_administrador.html"
+    document.getElementById("btnAdminPedidos").onclick = function() {
+        window.location.href = "../paginas_usuarios/administrador/admin_gestion_pedidos.html"
+    }
+
+    document.getElementById("btnAdminUsuarios").onclick = function() {
+        window.location.href = "../paginas_usuarios/administrador/admin_gestion_usuarios.html"
     }
 
     document.getElementById("btnCerrarSesion").onclick = function() {
@@ -93,10 +97,12 @@ function comprobarEsAdmin() {
             console.log("es admin: ", miPeticion.responseText)
             if (miPeticion.responseText === "1") {
                 mostrarBotonesSesion(true)
-                document.getElementById("btnAdministrador").style.display = "block"
+                document.getElementById("btnAdminPedidos").style.display = "block"
+                document.getElementById("btnAdminUsuarios").style.display = "block"
             } else {
                 mostrarBotonesSesion(true)
-                document.getElementById("btnAdministrador").style.display = "none"
+                document.getElementById("btnAdminPedidos").style.display = "none"
+                document.getElementById("btnAdminUsuarios").style.display = "none"
             }
         }
     }
@@ -119,7 +125,8 @@ function mostrarBotonesSesion(haIniciadoSesion) {
         document.getElementById("btnIniciarSesion").style.display = "block"
         document.getElementById("btnCerrarSesion").style.display = "none"
         document.getElementById("btnHistorialPedidos").style.display = "none"
-        document.getElementById("btnAdministrador").style.display = "none"
+        document.getElementById("btnAdminPedidos").style.display = "none"
+        document.getElementById("btnAdminUsuarios").style.display = "none"
         document.getElementById("btnCesta").onclick = function() {
             window.location.href = "../paginas_usuarios/login.html"
         }

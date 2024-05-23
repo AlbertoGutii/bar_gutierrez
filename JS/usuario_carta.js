@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     document.getElementById("btnCarta").onclick = function() {
-        window.location.href = "../../paginas_usuarios/usuario/carta.html"
+        window.location.href = "./carta.html"
     }
     
     document.getElementById("btnMenu").onclick = function() {
-        window.location.href = "../../paginas_usuarios/usuario/menu.html"
+        window.location.href = "./menu.html"
     }
     
     document.getElementById("btnVinos").onclick = function() {
-        window.location.href = "../../paginas_usuarios/usuario/vinos.html"
+        window.location.href = "./vinos.html"
     }
 
     document.getElementById("btnContacto").onclick = function() {
@@ -41,8 +41,12 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "../historial_pedidos.html"
     }
 
-    document.getElementById("btnAdministrador").onclick = function() {
-        window.location.href = "../administrador/inicio_administrador.html"
+    document.getElementById("btnAdminPedidos").onclick = function() {
+        window.location.href = "../administrador/admin_gestion_pedidos.html"
+    }
+
+    document.getElementById("btnAdminUsuarios").onclick = function() {
+        window.location.href = "../administrador/admin_gestion_usuarios.html"
     }
 
     document.getElementById("btnCerrarSesion").onclick = function() {
@@ -53,9 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //* funcion principal
 function principal() {
+    comprobarExisteEmail()
     let productos = recuperarProductos()
     document.body.appendChild(productos)
-    comprobarExisteEmail()
 }
 
 //* funcion para crear elementos
@@ -265,10 +269,12 @@ function comprobarEsAdmin() {
             console.log("es admin: ", miPeticion.responseText)
             if (miPeticion.responseText === "1") {
                 mostrarBotonesSesion(true)
-                document.getElementById("btnAdministrador").style.display = "block"
+                document.getElementById("btnAdminPedidos").style.display = "block"
+                document.getElementById("btnAdminUsuarios").style.display = "block"
             } else {
                 mostrarBotonesSesion(true)
-                document.getElementById("btnAdministrador").style.display = "none"
+                document.getElementById("btnAdminPedidos").style.display = "none"
+                document.getElementById("btnAdminUsuarios").style.display = "none"
             }
         }
     }
@@ -291,9 +297,10 @@ function mostrarBotonesSesion(haIniciadoSesion) {
         document.getElementById("btnIniciarSesion").style.display = "block"
         document.getElementById("btnCerrarSesion").style.display = "none"
         document.getElementById("btnHistorialPedidos").style.display = "none"
-        document.getElementById("btnAdministrador").style.display = "none"
+        document.getElementById("btnAdminPedidos").style.display = "none"
+        document.getElementById("btnAdminUsuarios").style.display = "none"
         document.getElementById("btnCesta").onclick = function() {
-            window.location.href = "./login.html"
+            window.location.href = "../login.html"
         }
     }
 }
