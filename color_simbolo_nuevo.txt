@@ -1,1 +1,2 @@
-color: #13959E
+primerLogo => color: #13959E
+segundoLogo => color: #2C504C
