@@ -1,30 +1,52 @@
 window.onload = principal
 
 function principal() {
-
+    document.getElementById("btnAddUsuario").addEventListener("click", manejadorAñadirUsuario)
 }
 
-function addUsuario(nombreUsuario,cargoUsuario,emailUsuario,telefonoUsuario) {
-    let miPeticion = new XMLHttpRequest();
+function manejadorAñadirUsuario(e) {
+    e.preventDefault()
 
-    miPeticion.open("POST", "../../PHP/gestionar_usuarios.php", true);
+    if(!comprobarExisteEmail()) {
+        document.getElementById("errorEmail").innerHTML = "❗Este usuario ya existe❗"
+    }
+    else {
+        console.log("first")
+        let nombreUsuario = document.getElementById("inNombre").value
+        // nombreUsuario = nombreUsuario.split(": ")[1].trim()
+        let emailUsuario = document.getElementById("inEmail").value
+        // emailUsuario = emailUsuario.split(": ")[1].trim()
+        let telefonoUsuario = document.getElementById("inTelefono").value
+        // telefonoUsuario = telefonoUsuario.split(": ")[1].trim()
+        let passwordUsuario = document.getElementById("inPassword").value
+        // passwordUsuario = telefonoUsuario.split(": ")[1].trim()
+        console.log(nombreUsuario)
+        console.log(emailUsuario)
+        console.log(telefonoUsuario)
+        console.log(passwordUsuario)
+        // addUsuario(nombreUsuario,emailUsuario,telefonoUsuario,passwordUsuario)
+    }
+}
+
+function addUsuario(nombreUsuario,emailUsuario,telefonoUsuario,passwordUsuario) {
+    let miPeticion = new XMLHttpRequest()
+
+    miPeticion.open("POST", "../PHP/nuevoUsuario.php", true)
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            // console.log(miPeticion.responseText);
-            // callback(miPeticion.responseText);
-            // dibujarModalesAdd();
-            recuperarUsuarios();
+            console.log(miPeticion.responseText)
+            // recuperarUsuarios()
         }
-    };
+    }
 
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    let datos = "addUsuario=" + "&nombre=" + nombreUsuario + "&cargo=" + cargoUsuario + "&email=" +emailUsuario + "&telefono=" + telefonoUsuario;
-    miPeticion.send(datos);
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let datos = "addUsuario=" + "&nombre=" + nombreUsuario + "&email=" +emailUsuario + "&telefono=" + telefonoUsuario + "&password=" + passwordUsuario
+    miPeticion.send(datos)
 }
 
 function comprobarExisteEmail() {
-    let miEmail = localStorage.getItem("email")
+    let miEmail = document.getElementById("inEmail").value
     let miPeticion = new XMLHttpRequest()
 
     miPeticion.open("POST", "../PHP/redireccion.php", true)
@@ -32,38 +54,15 @@ function comprobarExisteEmail() {
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
             console.log("existe", miPeticion.responseText)
-            if(miPeticion.responseText === "0") {
-                window.location.href = "../paginas_usuarios/login.html"
-            } 
-            else {
-                comprobarEsAdmin()
+            let existe = false
+            if(miPeticion.responseText === "1") {
+                existe = true
             }
+            return existe
         }
     }
 
     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
     let datos = "comprobarExisteEmail=" + miEmail
-    miPeticion.send(datos)
-}
-
-function comprobarEsAdmin() {
-    let miEmail = localStorage.getItem("email")
-    let miPeticion = new XMLHttpRequest()
-
-    miPeticion.open("POST", "../PHP/redireccion.php", true)
-
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            console.log("es admin: ",miPeticion.responseText)
-            // callback(miPeticion.responseText)
-            if(miPeticion.responseText === "0") {
-                window.location.href = "../paginas_usuarios/login.html"
-            } 
-        }
-    }
-
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-    let datos = "comprobarEsAdmin=" + miEmail
-    console.log(datos)
     miPeticion.send(datos)
 }

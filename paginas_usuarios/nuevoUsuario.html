@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link rel="shortcut icon" href="../imagenes/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../imagenes/svg/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/nuevoUsuario.css">
     <script src="../JS/nuevoUsuario.js"></script>
 </head>
@@ -53,17 +53,20 @@
                 <input required="" placeholder="" type="email" class="input" id="inEmail">
                 <span>Email</span>
             </label> 
-                
+            
+            <label>
+                <input required="" placeholder="" type="text" class="input" id="inTelefono">
+                <span>Teléfono</span>
+            </label>
+            
             <label>
                 <input required="" placeholder="" type="password" class="input" id="inPassword">
-                <span>Contraseña</span>
-            </label>
-            <label>
-                <input required="" placeholder="" type="password" class="input" id="inPasswordConfirm">
-                <span>Confirmar contraseña</span>
+                <span>password</span>
+                <p id="errorEmail"></p>
+                <p id="errorContrasenia"></p>
             </label>
             <button class="submit" id="btnAddUsuario">Registrarse</button>
-            <p class="signin">Tienes ya una cuenta ? <a href="./login.html">Signin</a> </p>
+            <p class="signin">Ya tienes una cuenta ? <a href="./login.html">Signin</a> </p>
         </form>
     </div>
 </body>
