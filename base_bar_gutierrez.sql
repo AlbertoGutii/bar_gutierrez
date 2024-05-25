@@ -44,12 +44,13 @@ CREATE TABLE IF NOT EXISTS usuarios (
 -- TABLA PEDIDOS
 CREATE TABLE IF NOT EXISTS pedidos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    fk_cliente INT NOT NULL,
+    producto CHAR(50) NOT NULL,
     fecha_pedido DATETIME NOT NULL,
-    observaciones CHAR(50) NULL,
     cantidad INT NOT NULL,
     precio INT NOT NULL,
     fecha_recogida DATETIME NOT NULL,
+    fk_cliente INT NOT NULL,
+    observaciones CHAR(100) NOT NULL,
     entregado BINARY(1) NOT NULL,
     FOREIGN KEY (fk_cliente) REFERENCES usuarios (id)
     ON UPDATE CASCADE
