@@ -66,57 +66,64 @@
         // Establecer conexión con la base de datos
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
         date_default_timezone_set('Europe/Madrid');
-        $fecha = date('Y-m-d H:i');
-
+        $fechaPedido = date('Y-m-d H:i');
+    
         // Obtener el string JSON de productos enviado desde el cliente y convertirlo a un array PHP
-        $productosJSON = $_POST['crearPedido'];
-        $productos = json_decode($productosJSON, true);
-        $usuario = $productos['email'];
-        $observaciones = $productos['observaciones'];
-        $productos = $productos['productos'];
-
-        // Mi Json en php
-        // {
-        //     "email":"cuando-lo-tenga",
-        //     "productos":{
-        //         "6":{"id":6,"cantidad":"25"},
-        //         "9":{"id":9,"cantidad":"23"}
-        //     }
-        // }
-
-        // Insertar el pedido en la tabla de pedidos 
-        
+        $pedidoJSON = $_POST['crearPedido'];
+        $pedido = json_decode($pedidoJSON, true);
+    
+        $usuario = $pedido['email'];
+        $observaciones = $pedido['observaciones'];
+        $productos = $pedido['productos'];
+    
         try {
-            $resultado = $conexion->prepare("
+            $conexion->beginTransaction();
+            
+            // Obtener la ID del cliente (usuario) a partir del correo electrónico
+            $consultaIDCliente = $conexion->prepare("SELECT id FROM usuarios WHERE email = ?");
+            $consultaIDCliente->execute([$usuario]);
+            $idCliente = $consultaIDCliente->fetchColumn();
+    
+            // Sumar media hora a la fecha de pedido para obtener la fecha de recogida
+            $fechaRecogida = date('Y-m-d H:i', strtotime($fechaPedido . ' +30 minutes'));
+    
+            // Insertar el pedido en la tabla de pedidos
+            $insertPedido = $conexion->prepare("
                 INSERT INTO pedidos 
-                (producto, fecha_pedido, cantidad, precio, fecha_recogida, fk_cliente, entregado)
-                VALUES (
-                    ?,
-                    (SELECT nombre FROM productos WHERE id = ?),
-                    (SELECT unidades.descripcion 
-                        FROM productos 
-                        JOIN unidades ON productos.fk_unidades = unidades.id 
-                        WHERE productos.id = ?),
-                    ?,
-                    ?,
-                    (SELECT id FROM usuarios WHERE email = ?), 0
-                );
+                (producto, fecha_pedido, cantidad, precio, fecha_recogida, fk_cliente, observaciones, entregado)
+                VALUES (?, ?, ?, ?, ?, ?, ?, 0);
             ");
-        
+    
+            // Iterar sobre los productos del pedido
             foreach ($productos as $productoID => $producto) {
                 $cantidad = $producto['cantidad'];
-        
-                $resultado->execute(array($fecha, $productoID, $productoID, $cantidad, $observaciones));
+                $precio = obtenerPrecioProducto($conexion, $productoID); // Obtener el precio del producto desde la base de datos
+                $insertPedido->execute(array($productoID, $fechaPedido, $cantidad, $precio, $fechaRecogida, $idCliente, $observaciones));
+                $pedidoID = $conexion->lastInsertId(); // Obtener el ID del pedido recién creado
+    
+                // Insertar detalles del pedido en la tabla detalle_pedido
+                $insertDetalle = $conexion->prepare("
+                    INSERT INTO detalle_pedido (fk_pedido, fk_producto, cantidad)
+                    VALUES (?, ?, ?);
+                ");
+                $insertDetalle->execute(array($pedidoID, $productoID, $cantidad));
             }
-        
+    
+            $conexion->commit();
             echo 1; // Éxito
         } catch (Exception $e) {
+            $conexion->rollBack();
             echo 0; // Error
         }
-        
-        
-
-        
-
     }
+    
+
+    function obtenerPrecioProducto($conexion, $productoID) {
+        // Consultar el precio del producto según su ID
+        $consultaPrecio = $conexion->prepare("SELECT precio FROM productos WHERE id = ?");
+        $consultaPrecio->execute([$productoID]);
+        $fila = $consultaPrecio->fetch(PDO::FETCH_ASSOC);
+        return $fila['precio'];
+    }
+    
 ?>

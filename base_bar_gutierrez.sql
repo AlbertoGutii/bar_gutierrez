@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS detalle_pedido (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fk_pedido INT NOT NULL,
     fk_producto INT NOT NULL,
+    cantidad INT NOT NULL,
     observaciones CHAR(50) NULL,
     FOREIGN KEY (fk_pedido) REFERENCES pedidos (id)
     ON UPDATE CASCADE,

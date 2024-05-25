@@ -265,7 +265,7 @@ function crearPedido(callback) {
     }
     
     let misDatos = {
-        // "email" : localStorage.getItem("email"),
+        "email" : localStorage.getItem("email"),
         "productos" : JSON.parse(productos),
         "observaciones" : observaciones.value
     };
@@ -390,8 +390,7 @@ function manejadorClickRealizarPedido() {
         if(respuesta === "1") {
             console.log("se hizo el pedido")
             localStorage.removeItem("productos")
-            recuperarPedido()
-            window.location.href = "../paginas_usuarios/usuario/cesta.html"
+            window.location.href = "../../index.html"
         } else {
             console.log("no se pudo hacer el pedido")
         }
