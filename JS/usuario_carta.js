@@ -42,11 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     document.getElementById("btnAdminPedidos").onclick = function() {
-        window.location.href = "../administrador/admin_gestion_pedidos.html"
+        window.location.href = "../admin/admin_gestion_pedidos.html"
     }
 
     document.getElementById("btnAdminUsuarios").onclick = function() {
-        window.location.href = "../administrador/admin_gestion_usuarios.html"
+        window.location.href = "../admin/admin_gestion_usuarios.html"
     }
 
     document.getElementById("btnCerrarSesion").onclick = function() {

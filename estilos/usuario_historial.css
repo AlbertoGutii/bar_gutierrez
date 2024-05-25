@@ -1,0 +1,371 @@
+/** ESTILOS GENERALES */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* width: 100vw; */
+  height: 100vh;
+}
+
+/** INICIO HEADER */
+header {
+    display: flex;
+    background-color: gray;
+    justify-content: center;
+    align-items: center; 
+    padding: 10px 0;
+    transition: 0.3s ease all;
+}
+
+.logo {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.logo:active > img{
+    transform: scale(0.95);
+}
+
+.logo:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
+/*? MENU CONTAINER2 */
+.menu {
+    position: relative;
+}
+
+.menu .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*? MUEVE LOS ELEMENTOS DE LA BARRA */
+.menu .navbar ul {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 30px;
+}
+
+.menu .navbar ul li a:hover {
+    color: var(--light-text-color);
+}
+
+#menu {
+    display: none;
+}
+
+/*? ICONO MOVIL */
+.menu-icono {
+    width: 90px;
+    height: 80px;
+}
+
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+
+.navbar ul li #icoPersona:hover label {
+    display: flex;
+}
+
+#barraNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#barraNav li {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+#barraNav li input[type=button] {
+    background-color: transparent;
+    border: none;
+    color: var(--title-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#barraNav li input[type=button]:hover {
+    text-decoration: underline;
+}
+
+/** SUBMENU CARTA */
+#submenu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  top: 25px;
+  z-index: 1000;
+}
+
+#submenu input[type="button"] {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: justify;
+}
+
+#submenu input[type="button"]:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover #submenu {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+
+#btnCesta {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/** SUBMENU CARTA */
+/** SUBMENU SVG */
+#subConfiguracion {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  top: 35px;
+  z-index: 1000;
+}
+
+#subConfiguracion input[type="button"] {
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: justify;
+}
+
+#subConfiguracion input[type="button"]:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover #subConfiguracion {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+/*! FIN ESTILOS ICONOS BORRADOS */
+/** FIN DEL HEADER */
+
+/** ESTILO BUSCADOR DE FECHAS */
+.form-control {
+    width: auto;
+    margin-left: 5px;
+    margin-right: 25px;
+}
+
+#Buscador_Fechas{
+    display: flex;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 24px;
+    margin-right: 24px;
+    flex-direction: row;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+
+
+.circle::before{
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0vh;
+    right: 4.5vw;
+    background: green;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+.circle2::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0vh;
+    right: 2vw;
+    background: orange;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 8px;
+    align-items: baseline;
+    justify-items: start
+}
+  
+.div1 { grid-area: 1 / 5 / 2 / 6; }
+.div2 { grid-area: 1 / 6 / 2 / 7; }
+.div3 { grid-area: 1 / 7 / 2 / 8; }
+.div4 { grid-area: 1 / 8 / 2 / 9; }
+.div5 { grid-area: 1 / 9 / 2 / 10; }
+ 
+/* Patricio pruebas */
+/* #contenedor-historico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.filas {
+    display: flex;
+    align-items: center;
+}
+
+.padre {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 0px;
+    } */
+
+    #contenedor-historico ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    #contenedor-historico ul li {
+        flex: 1; /* Distribuir el espacio disponible de manera equitativa */
+        padding: 10px; /* Añadimos un poco de espacio interno */
+        text-align: center; /* Centramos el texto */
+        border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
+    }
+    
+    /* Estilo para el último elemento dentro de un usuario */
+    #contenedor-historico ul li:last-child {
+        border-right: none; /* Quitamos la línea divisoria en el último elemento */
+    }
+/** FIN ESTILO BUSCADOR FECHAS */
+
+/** ESTILO FOOTER */
+#pie_pagina {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: justify;
+}
+
+#pie_pagina div {
+    display: flex;
+    gap: 90px;
+    align-content: center;
+    justify-content: space-around;
+    margin: 0 15px;
+}
+
+.datos_enlaces_bar {
+    margin-bottom: 20px;
+    /* display: flex; */
+}
+
+.datos_enlaces_bar h3 {
+    font-size: 1.2em;
+}
+
+.datos_enlaces_bar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.datos_enlaces_bar li {
+    margin-bottom: 5px;
+}
+
+.datos_enlaces_bar li:last-child {
+    margin-bottom: 0;
+}
+
+.datos_enlaces_bar a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.datos_enlaces_bar a:hover {
+    color: #ffd700;
+}
+
+/* #pie_pagina p {
+    margin-top: 20px;
+    font-size: 0.8em;
+} */
+
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 1100px) {
+    #contenedor-historico ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #contenedor-historico ul li {
+        border-right: none; /* Quitamos la línea divisoria en todos los elementos */
+    }
+
+    .flatpickr-input {
+        width: auto;
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+    #Buscador_Fechas {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fechas {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    #btnBuscar {
+        margin: 0 auto;
+    }
+}
