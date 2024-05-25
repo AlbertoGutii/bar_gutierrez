@@ -10,47 +10,17 @@
 </head>
 <body>
     <div class="login-box">
-        <!-- <form id="loginForm" action="../PHP/nuevaContrasenia.php" method="post">
-            <div>
-                <label for="contrasenia">Nueva contraseña:</label>
-                <input type="password" id="inContrasenia" name="contrasenia" required>
-                <p id="errorNuevaContrasenia"></p>
-                <br><br>
-                <label for="confirmarContrasenia">Confirmar contraseña:</label>
-                <input type="password" id="inConfirmarContrasenia" name="confirmarContrasenia" required><br><br>
-                <label for="visualizarContraseña">
-                    <p id="errorConfirmarContrasenia"></p>
-                    <p id="rellenadoCampos"></p>
-                    <input type="checkbox" id="visualizarContraseña"> Mostrar contraseña
-                </label>
-                <input type="button" id="btnConfirmar" value="Confirmar">
-                <div class="password-specs">
-                    <h3>Requisitos de la contraseña:</h3>
-                    <ul>
-                        <li>Mínimo 8 caracteres</li>
-                        <li>Máximo 15 caracteres</li>
-                        <li>Al menos una letra mayúscula</li>
-                        <li>Al menos una letra minúscula</li>
-                        <li>Al menos un dígito</li>
-                        <li>Sin espacios en blanco</li>
-                        <li>Al menos 1 carácter especial</li>
-                        <li>Carácteres especiales: $@!%*?&#¡.</li>
-                    </ul>
-                </div>
-            </div>
-        </form> -->
         <form class="form" >
             <p class="title">Registro </p>
             <p class="message">Inicia sesión ahora y ten acceso completo. </p>
-            <div class="flex">
-                <label>
-                    <input required="" placeholder="" type="text" class="input" id="inNombre">
-                    <span>Nombre</span>
-                </label>
-            </div>  
+            
+            <label>
+                <input required="" placeholder="" type="text" class="input" id="inNombre">
+                <span>Nombre</span>
+            </label>  
                     
             <label>
-                <input required="" placeholder="" type="email" class="input" id="inEmail">
+                <input required="" placeholder="" type="text" class="input" id="inEmail">
                 <span>Email</span>
             </label> 
             
@@ -62,6 +32,20 @@
             <label>
                 <input required="" placeholder="" type="password" class="input" id="inPassword">
                 <span>password</span>
+                <span for="visualizarContraseña">
+                    <input type="checkbox" id="visualizarContraseña" onclick="mostrarContrasenia()"> Mostrar contraseña
+                </span>
+                <h3>Requisitos de la contraseña:</h3>
+                <ul>
+                    <li>Mínimo 8 caracteres</li>
+                    <li>Máximo 15 caracteres</li>
+                    <li>Al menos una letra mayúscula</li>
+                    <li>Al menos una letra minúscula</li>
+                    <li>Al menos un dígito</li>
+                    <li>Sin espacios en blanco</li>
+                    <li>Al menos 1 carácter especial</li>
+                    <li>Carácteres especiales: $@!%*?&#¡.</li>
+                </ul>
                 <p id="errorEmail"></p>
                 <p id="errorContrasenia"></p>
             </label>

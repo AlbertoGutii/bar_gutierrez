@@ -4,65 +4,90 @@ function principal() {
     document.getElementById("btnAddUsuario").addEventListener("click", manejadorAñadirUsuario)
 }
 
-function manejadorAñadirUsuario(e) {
+async function manejadorAñadirUsuario(e) {
     e.preventDefault()
 
-    if(!comprobarExisteEmail()) {
+    const existe = await comprobarExisteEmail()
+    
+    if (existe) {
         document.getElementById("errorEmail").innerHTML = "❗Este usuario ya existe❗"
-    }
-    else {
-        console.log("first")
+    } else {
         let nombreUsuario = document.getElementById("inNombre").value
-        // nombreUsuario = nombreUsuario.split(": ")[1].trim()
         let emailUsuario = document.getElementById("inEmail").value
-        // emailUsuario = emailUsuario.split(": ")[1].trim()
         let telefonoUsuario = document.getElementById("inTelefono").value
-        // telefonoUsuario = telefonoUsuario.split(": ")[1].trim()
         let passwordUsuario = document.getElementById("inPassword").value
-        // passwordUsuario = telefonoUsuario.split(": ")[1].trim()
-        console.log(nombreUsuario)
-        console.log(emailUsuario)
-        console.log(telefonoUsuario)
-        console.log(passwordUsuario)
-        // addUsuario(nombreUsuario,emailUsuario,telefonoUsuario,passwordUsuario)
+
+        if (!comprobarContrasenia(passwordUsuario)) {
+            document.getElementById("errorContrasenia").innerHTML = "❗La contraseña no cumple con los requisitos❗"
+            return
+        }
+
+        addUsuario(nombreUsuario, emailUsuario, telefonoUsuario, passwordUsuario)
     }
 }
 
-function addUsuario(nombreUsuario,emailUsuario,telefonoUsuario,passwordUsuario) {
+function addUsuario(nombreUsuario, emailUsuario, telefonoUsuario, passwordUsuario) {
     let miPeticion = new XMLHttpRequest()
 
     miPeticion.open("POST", "../PHP/nuevoUsuario.php", true)
 
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            console.log(miPeticion.responseText)
-            // recuperarUsuarios()
+    miPeticion.onreadystatechange = function () {
+        if (miPeticion.readyState == 4) {
+            if (miPeticion.status == 200) {
+                let response = JSON.parse(miPeticion.responseText)
+                if (response.status === "success") {
+                    window.location.href = response.redirect
+                } else {
+                    document.getElementById("errorContrasenia").innerHTML = response.message
+                }
+            } else {
+                document.getElementById("errorContrasenia").innerHTML = "Error en la petición"
+            }
         }
     }
 
     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-    let datos = "addUsuario=" + "&nombre=" + nombreUsuario + "&email=" +emailUsuario + "&telefono=" + telefonoUsuario + "&password=" + passwordUsuario
+    let datos = "addUsuario=" + "&nombre=" + encodeURIComponent(nombreUsuario) + "&email=" + encodeURIComponent(emailUsuario) + "&telefono=" + encodeURIComponent(telefonoUsuario) + "&password=" + encodeURIComponent(passwordUsuario)
     miPeticion.send(datos)
 }
 
+//* función que comprueba que el email que pone no esté ya registrado
 function comprobarExisteEmail() {
-    let miEmail = document.getElementById("inEmail").value
-    let miPeticion = new XMLHttpRequest()
+    return new Promise((resolve, reject) => {
+        let miEmail = document.getElementById("inEmail").value
+        let miPeticion = new XMLHttpRequest()
 
-    miPeticion.open("POST", "../PHP/redireccion.php", true)
+        miPeticion.open("POST", "../PHP/redireccion.php", true)
 
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            console.log("existe", miPeticion.responseText)
-            let existe = false
-            if(miPeticion.responseText === "1") {
-                existe = true
+        miPeticion.onreadystatechange = function () {
+            if (miPeticion.readyState == 4) {
+                if (miPeticion.status == 200) {
+                    console.log("existe", miPeticion.responseText)
+                    resolve(miPeticion.responseText === "1")
+                } else {
+                    reject(new Error("Error en la petición"))
+                }
             }
-            return existe
         }
-    }
 
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-    let datos = "comprobarExisteEmail=" + miEmail
-    miPeticion.send(datos)
+        miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        let datos = "comprobarExisteEmail=" + encodeURIComponent(miEmail)
+        miPeticion.send(datos)
+    })
+}
+
+function comprobarContrasenia(contrasenia) {
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@!%*?&#¡.])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/
+    return regex.test(contrasenia)
+}
+
+function mostrarContrasenia() {
+    let contrasenia = document.getElementById("inPassword")
+    let visualizarContraseña = document.getElementById("visualizarContraseña")
+    
+    if (visualizarContraseña.checked) {
+        contrasenia.type = "text"
+    } else {
+        contrasenia.type = "password"
+    }
 }
