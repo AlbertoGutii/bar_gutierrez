@@ -56,6 +56,10 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 function principal() {
+    $(document).ready(function() {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+        $('[data-bs-toggle="popover"]').popover();
+    });
     comprobarExisteEmail()
     fechasDefecto()
 
@@ -82,21 +86,35 @@ function crearElemento(etiqueta, texto, atributos) {
 function dibujarHistorico(datosPedido) {
     // console.log("dibujando fila: ", datosPedido)
     let miFila = crearElemento("ul", undefined, {"id": "solicitud" + datosPedido.id, "class": "padre"})
-    if (datosPedido.entregado == 1) {
-        miEstado = crearElemento("li", "Ya se ha recogido el pedido", {"class": "circle"})
-        miFila.appendChild(miEstado)
-        fecha_recogida = crearElemento("li", datosPedido.fecha_recogida, {"class": "fecha"})
-        miFila.appendChild(fecha_recogida)
-    } else if (datosPedido.entregado == 0) {
-        miEstado = crearElemento("li", "No se ha entregado todavía", {"class": "estadoMensaje circle2"})
-        miFila.appendChild(miEstado)
-    }
     let miFecha = crearElemento("li", datosPedido.fecha_pedido, {"class": "fecha"})
     miFila.appendChild(miFecha)
+    
+    if (datosPedido.entregado == '\u0001' || datosPedido.entregado == 1) {
+        let miEstado = crearElemento("li", undefined, {"class": "circle"})
+        let miBoton = crearElemento("button", "Ya se ha recogido", {
+            "type": "button", 
+            "class": "btn btn-secondary", 
+            "data-bs-toggle": "popover",
+            "data-bs-trigger": "focus",
+            "data-bs-placement": "left", 
+            "title": "Recogida: " + datosPedido.fecha_recogida
+        })
+        miEstado.appendChild(miBoton)
+        miFila.appendChild(miEstado)
+        
+        // let fecha_recogida = crearElemento("li", datosPedido.fecha_recogida, {"class": "fecha"})
+        // miFila.appendChild(fecha_recogida)
+    } else if (datosPedido.entregado == 0 || datosPedido.entregado == '\u0000') {
+        let miEstado = crearElemento("li", "No se ha entregado todavía", {"class": "estadoMensaje circle2"})
+        miFila.appendChild(miEstado)
+    }
+    
     let miDescripcion = crearElemento("li", datosPedido.producto, {"class": "producto"})
     miFila.appendChild(miDescripcion)
+    
     let miCantidad = crearElemento("li", datosPedido.cantidad, {"class": "cantidad"})
     miFila.appendChild(miCantidad)
+    
     let miUnidad = crearElemento("li", datosPedido.observaciones, {"class": "observacion"})
     miFila.appendChild(miUnidad)
 
