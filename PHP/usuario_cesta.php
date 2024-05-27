@@ -90,9 +90,9 @@
             // Insertar el pedido en la tabla de pedidos
             $insertPedido = $conexion->prepare("
                 INSERT INTO pedidos 
-                (producto, fecha_pedido, cantidad, precio, fecha_recogida, fk_cliente, observaciones, entregado)
+                (producto, fecha_pedido, cantidad, precio, fecha_recogida, fk_cliente, observaciones)
                 VALUES (
-                    (SELECT nombre FROM productos WHERE id = ?), ?, ?, ?, ?, ?, ?, 0);
+                    (SELECT nombre FROM productos WHERE id = ?), ?, ?, ?, ?, ?, ?);
             ");
     
             // Iterar sobre los productos del pedido

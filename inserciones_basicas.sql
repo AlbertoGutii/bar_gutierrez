@@ -15,6 +15,7 @@ INSERT INTO categorias (categoria) VALUES ('Otras opciones');
 -- INSERCION ESTADOS
 INSERT INTO `estados` (`descripcion`, `observaciones`) VALUES
         ('Pendiente', "El pedido esta en proceso, estará listo pronto."),
+        ('Recibido', 'El pedido ha sido recibido y está siendo procesado'),
         ('Cancelado', "No se acepto el pedido o se anulo por parte del Admin"),
         ('Completado', 'El pedido ha sido recibido');
 
