@@ -124,7 +124,8 @@
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
         $resultado = $conexion -> prepare("
-            SELECT estados.descripcion AS estado FROM pedidos
+            SELECT estados.descripcion AS estado 
+            FROM pedidos
             JOIN estados ON pedidos.fk_estado = estados.id 
             WHERE pedidos.id = ?;
         ");
@@ -155,12 +156,8 @@
             'nombre' => $fila['nombre'],
             'email' => $fila['email'],
             'activo' => $fila['activo'],
-            'observaciones' => $fila['observaciones'],
             'telefono' => $fila['telefono']
-            );
-        
-
-            
+        );
 
         $jsonString = json_encode($usuario);
         echo $jsonString;
@@ -183,8 +180,7 @@
 
             $resultado = $conexion->prepare("UPDATE pedidos
             SET fk_estado = ?
-            WHERE id = ?;        
-            ");
+            WHERE id = ?;");
 
             $resultado->execute(array($idEstado, $idPedido));
 
