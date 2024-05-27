@@ -569,7 +569,7 @@ function actualizarPedido(datosSolicitud ,callback) {
 function obtenerEstado(datosSolicitud ,callback) {
     let miPeticion = new XMLHttpRequest();
 
-    miPeticion.open("POST", "../../PHP/gestionar_pedidos.php", true);
+    miPeticion.open("POST", "../../PHP/admin_gestionPedidos.php", true);
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
@@ -588,7 +588,7 @@ function obtenerEstado(datosSolicitud ,callback) {
 function obtenerEstados(callback) {
     let miPeticion = new XMLHttpRequest();
 
-    miPeticion.open("POST", "../../PHP/gestionar_pedidos.php", true);
+    miPeticion.open("POST", "../../PHP/admin_gestionPedidos.php", true);
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {

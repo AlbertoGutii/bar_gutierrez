@@ -11,6 +11,14 @@
         // echo "conectado";
         actualizarPedido();
     }
+    if(isset($_POST['obtenerEstados'])) {
+        // echo "conectado";
+        obtenerEstados();
+    }
+    if(isset($_POST['obtenerEstado'])) {
+        // echo "conectado";
+        obtenerEstado();
+    }
 
 
     function obtenerPedidos() {

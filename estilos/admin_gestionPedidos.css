@@ -1,20 +1,10 @@
-/** ESTILOS GENERALES */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* width: 100vw; */
-    height: 100vh;
-}
-  
-/** INICIO HEADER */
+/* Estilos para el header */
 header {
     display: flex;
-    background-color: gray;
-    justify-content: center;
-    align-items: center; 
-    padding: 10px 0;
-    transition: 0.3s ease all;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
 }
 
 .logo {
@@ -39,196 +29,363 @@ header {
     display: block;
 }
 
-/*? MENU CONTAINER2 */
-.menu {
-    position: relative;
+.container2 { 
+    background-color: rgba(255, 255, 255, 0.8);
 }
-
-.menu .navbar ul {
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-/*? MUEVE LOS ELEMENTOS DE LA BARRA */
-.menu .navbar ul {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
-    position: relative;
-    gap: 30px;
 }
 
-.menu .navbar ul li a:hover {
-    color: var(--light-text-color);
-}
-
-#menu {
-    display: none;
-}
-
-/*? ICONO MOVIL */
-.menu-icono {
-    width: 90px;
-    height: 80px;
-}
-
-.menu label {
-    cursor: pointer;
-    display: none;
-}
-
-.navbar ul li #icoPersona:hover label {
+/* Estilos para la cabecera */
+#cabecera {
     display: flex;
-}
-
-#barraNav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-#barraNav li {
-    display: flex;
-    align-items: center;
-    position: relative;
     justify-content: space-between;
-}
-
-#barraNav li input[type=button] {
-    background-color: transparent;
-    border: none;
-    color: var(--title-color);
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#barraNav li input[type=button]:hover {
-    text-decoration: underline;
-}
-
-/** SUBMENU CARTA */
-#submenu {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    top: 25px;
-    z-index: 1000;
-}
-
-#submenu input[type="button"] {
-    background-color: transparent;
-    border: none;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    text-align: justify;
-}
-
-#submenu input[type="button"]:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover #submenu {
-    display: block;
-}
-
-.dropdown {
-    position: relative;
-}
-
-#btnCesta {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/** SUBMENU CARTA */
-/** SUBMENU SVG */
-#subConfiguracion {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    top: 35px;
-    z-index: 1000;
-}
-
-#subConfiguracion input[type="button"] {
-    background-color: transparent;
-    border: none;
-    padding: 5px 10px;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    text-align: justify;
-}
-
-#subConfiguracion input[type="button"]:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover #subConfiguracion {
-    display: block;
-}
-
-.dropdown {
-    position: relative;
-}
-/*! FIN ESTILOS ICONOS BORRADOS */
-/** FIN DEL HEADER */
-  
-
-  
-/** ESTILO FOOTER */
-/* #pie_pagina {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: justify;
-}
-
-#pie_pagina div {
-    display: flex;
-    gap: 90px;
-    align-content: center;
-    justify-content: space-around;
-    margin: 0 15px;
-}
-
-.datos_enlaces_bar {
-    margin-bottom: 20px;
-}
-
-.datos_enlaces_bar h3 {
-    ont-size: 1.2em;
-}
-
-.datos_enlaces_bar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.datos_enlaces_bar li {
-    margin-bottom: 5px;
-}
-
-.datos_enlaces_bar li:last-child {
-    margin-bottom: 0;
-}
-
-.datos_enlaces_bar a {
+    align-items: center;
+    padding: 0; /* Eliminamos el padding para que se ajuste al tamaño de los elementos */
+    background-color: #007bff9c;
     color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
+    border: 1px solid #ccc;
+    list-style-type: none;
+    margin: 0;
+    flex: 1;
+    font-weight: bolder;
+    font-size: 16px; /* Ajustamos el tamaño de la fuente para que sea igual al de las listas */
+    z-index: 1000;
+    margin-bottom: 10px;
 }
 
-.datos_enlaces_bar a:hover {
-    color: #ffd700;
-} */
+/* Estilo para cada elemento dentro de la cabecera */
+#cabecera li {
+    flex: 1; /* Distribuir el espacio disponible de manera equitativa */
+    padding: 10px; /* Añadimos un poco de espacio interno */
+    text-align: center; /* Centramos el texto */
+    border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
+    margin: 0; /* Añadimos margen cero para evitar espacios adicionales */
+}
 
-/* #pie_pagina p {
-    margin-top: 20px;
-    font-size: 0.8em;
-} */  
+/* Estilo para el último elemento dentro de la cabecera */
+#cabecera li:last-child {
+    border-right: none; /* Quitamos la línea divisoria en el último elemento */
+}
+
+/* Estilo para cada elemento dentro de un usuario */
+ul li {
+    flex: 1; /* Distribuir el espacio disponible de manera equitativa */
+    padding: 10px; /* Añadimos un poco de espacio interno */
+    text-align: center; /* Centramos el texto */
+    border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
+}
+
+/* Estilo para el último elemento dentro de un usuario */
+ul li:last-child {
+    border-right: none; /* Quitamos la línea divisoria en el último elemento */
+}
+
+ul li img {
+    width: 100px;
+    height: auto;
+}
+
+#contenedor-buscar {
+    display: flex;
+    align-items: center;
+}
+
+#txtBuscar {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#btnMostrarAddProducto,
+#btnModificar {
+    padding: 8px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* Mismo color que el botón de añadir */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btnMostrarAddProducto:hover,
+#btnModificar:hover {
+    background-color: #0056b3; /* Cambio de color al pasar el cursor */
+}
+
+/* Estilos para los modales */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    background-color: #f0f0f0;
+    border-radius: 0 0 10px 10px;
+    padding: 15px;
+}
+
+.modal-footer .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #ccc;
+    border-color: #ccc;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #b3b3b3;
+    border-color: #b3b3b3;
+}
+
+/* Estilos para los campos del formulario dentro del modal */
+.modal-body label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.modal-body input[type="text"] {
+    width: calc(100% - 22px); /* Ancho ajustado para tener en cuenta el padding y el borde */
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Estilos generales */
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para el botón de ir arriba */
+#btnScrollToTop {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 999;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 50%;
+}
+
+#btnScrollToTop:hover {
+    background-color: #0056b3;
+}
+
+
+.completado::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0vh;
+    right: 7vw;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+.cancelado::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0vh;
+    right: 2vw;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+.enEspera::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0vh;
+    right: 2vw;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+.pendiente::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0vh;
+    right: 2vw;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.ulUsuario:first-child {
+    width: min-content;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 1100px) {
+    .completado::before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        top: 0vh;
+        right: 7vw;
+        background: #5cb85c;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+    }
+    .cancelado::before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        top: 0vh;
+        right: 2vw;
+        background: #d9534f;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+    }
+    .enEspera::before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        top: 0vh;
+        right: 2vw;
+        background: #0275d8;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+    }
+    .pendiente::before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        top: 0vh;
+        right: 2vw;
+        background: #f0ad4e;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+    }
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px; /* Reducimos el padding para dispositivos móviles */
+    }
+    
+    /* Ajustar el tamaño del logo */
+    .logo-container {
+        margin-bottom: 10px; /* Añadimos un margen inferior */
+    }
+    .logo-container img {
+        max-width: 100px; /* Ajustamos el tamaño máximo del logo */
+    }
+
+    /* Alinear contenedor de buscar verticalmente */
+    #contenedor-buscar {
+        margin-bottom: 10px;
+    }
+
+    /* Alinear dropdown de usuario */
+    .persona-logo-container {
+        margin-top: 10px;
+    }
+
+    /* Estilos para los botones */
+    input[type="button"] {
+        width: 100%;
+        margin-bottom: 5px; /* Añadimos un pequeño margen inferior entre los botones */
+    }
+    /* Ocultar contenedor de hacer pedido */
+    #contenedor-hacer-pedido {
+        display: none;
+    }
+    
+    ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    ul li {
+        border-right: none; /* Quitamos la línea divisoria en todos los elementos */
+    }
+
+    #contenedor-buscar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #txtBuscar {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #contenedor-hacer-pedido {
+        display: flex; /* Asegurarse de que el contenedor sea visible */
+        justify-content: space-between; /* Distribuir elementos horizontalmente */
+        align-items: center; /* Alinear elementos verticalmente */
+        width: 100%; /* Ajustar al ancho completo del contenedor padre */
+        margin-bottom: 10px; /* Agregar margen inferior para separar de otros elementos */
+    }
+
+    /* Estilos para los botones dentro del contenedor de hacer pedido */
+    #btnVerPedidos,
+    #btnVerSolicitudes {
+        width: 45%; /* Ajustar el ancho de los botones */
+    }
+
+    #btnMostrarAddProducto,
+    #btnModificarDatos {
+        width: 100%;
+        margin-top: 10px;
+    }
+    /* Estilos para el botón de ir arriba */
+#btnScrollToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+#btnScrollToTop:hover {
+    background-color: #0056b3;
+}
+}
