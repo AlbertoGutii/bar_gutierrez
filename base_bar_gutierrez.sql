@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
     observaciones CHAR(100) NOT NULL,
     fk_estado INT NOT NULL,
     FOREIGN KEY (fk_cliente) REFERENCES usuarios (id)
-    ON UPDATE CASCADE
+    ON UPDATE CASCADE,
     FOREIGN KEY (fk_estado) REFERENCES estados (id)
     ON UPDATE CASCADE
 ) ENGINE = INNODB;
