@@ -14,10 +14,10 @@ INSERT INTO categorias (categoria) VALUES ('Otras opciones');
 
 -- INSERCION ESTADOS
 INSERT INTO `estados` (`descripcion`, `observaciones`) VALUES
-        ('Cancelado', "No se acepto el pedido o se anulo por parte del Admin"),
+        ('Cancelado', "No se acepto el pedido o ha sido cancelado por parte del Admin"),
         ('Recibido', 'El pedido ha sido recibido y está siendo procesado'),
         ('Pendiente', "El pedido esta en proceso, estará listo pronto."),
-        ('Completado', 'El pedido ha sido recibido');
+        ('Completado', 'El pedido ya ha sido entregado');
 
 -- TABLA PRODUCTOS
     -- ENTRANTES FRIOS

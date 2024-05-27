@@ -91,7 +91,7 @@ function dibujarHistorico(datosPedido) {
     
     if (datosPedido.estado == "Completado") {
         let miEstado = crearElemento("li", undefined, {"class": "circle"})
-        let miBoton = crearElemento("button", "Ya se ha recogido", {
+        let miBoton = crearElemento("button", "El pedido ya ha sido entregado", {
             "type": "button", 
             "class": "btn btn-secondary", 
             "data-bs-toggle": "popover",
@@ -106,11 +106,15 @@ function dibujarHistorico(datosPedido) {
         // miFila.appendChild(fecha_recogida)
     } 
     else if (datosPedido.estado == "Pendiente") {
-        let miEstado = crearElemento("li", "No se ha entregado todavía", {"class": "estadoMensaje circle2"})
+        let miEstado = crearElemento("li", "El pedido esta en proceso, estará listo pronto.", {"class": "estadoMensaje circle2"})
+        miFila.appendChild(miEstado)
+    }
+    else if (datosPedido.estado == "Recibido") {
+        let miEstado = crearElemento("li", "El pedido ha sido recibido y está siendo procesado", {"class": "estadoMensaje circle2"})
         miFila.appendChild(miEstado)
     }
     else if(datosPedido.estado == "Cancelado") {
-        let miEstado = crearElemento("li", "No se ha entregado todavía", {"class": "estadoMensaje circle2"})
+        let miEstado = crearElemento("li", "No se acepto el pedido o ha sido cancelado por parte del Admin", {"class": "estadoMensaje circle2"})
         miFila.appendChild(miEstado)
     }
     
