@@ -29,30 +29,26 @@
             // Preparar y ejecutar la consulta para obtener fechas y pedidos
             $consulta = $conexion->prepare("
             SELECT
-                pedidos.fecha AS fecha,
-                pedidos.fk_usuario AS idUsuario,
+                pedidos.fecha_pedido AS fecha_pedido,
+                pedidos.fk_cliente AS idUsuario,
                 usuarios.email AS usuario,
-                linea_pedido.descripcion AS producto,
-                linea_pedido.cantidad AS cantidad,
-                linea_pedido.unidades AS unidades,
-                linea_pedido.observaciones AS observaciones,
+                pedidos.producto AS producto,
+                pedidos.cantidad AS cantidad,
+                pedidos.precio AS precio,
+                pedidos.observaciones AS observaciones,
                 estados.descripcion AS estado,
-                pedidos.id AS idPedido,
-                proveedores.descripcion AS nombreProveedor,
-                proveedores.telefono AS telefonoProveedor
+                pedidos.id AS idPedido
             FROM pedidos
-            JOIN usuarios ON pedidos.fk_usuario = usuarios.id
-            JOIN linea_pedido ON pedidos.id = linea_pedido.fk_pedido
             JOIN estados ON pedidos.fk_estado = estados.id
-            JOIN proveedores ON pedidos.fk_proveedor = proveedores.id
-            WHERE pedidos.fecha >= ? AND pedidos.fecha <= ?
-            ORDER BY pedidos.fecha DESC, pedidos.fk_usuario;
+            JOIN usuarios ON pedidos.fk_cliente = usuarios.id
+            WHERE pedidos.fecha_pedido >= ? AND pedidos.fecha_pedido <= ?
+            ORDER BY pedidos.fecha_pedido DESC, pedidos.fk_cliente;
             ");
             $consulta->execute([$desde, $hasta]);
 
             // Procesar los resultados
             while ($fila = $consulta->fetch()) {
-                $fecha = $fila['fecha'];
+                $fecha = $fila['fecha_pedido'];
                 $idUsuario = $fila['idUsuario'];
                 $usuario = $fila['usuario'];
 
@@ -75,13 +71,9 @@
                     'idPedido' => $fila['idPedido'],
                     'producto' => $fila['producto'],
                     'cantidad' => $fila['cantidad'],
-                    'unidades' => $fila['unidades'],
+                    'precio' => $fila['precio'],
                     'observaciones' => $fila['observaciones'],
-                    'estado' => $fila['estado'],
-                    'proveedor' => [
-                        "nombre" => $fila['nombreProveedor'],
-                        "telefono" => $fila['telefonoProveedor'],
-                    ]
+                    'estado' => $fila['estado']
                 ];
             }
 

@@ -8,38 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnInicio").onclick = function() {
         window.location.href = "../../index.html"
     }
-    
-    document.getElementById("btnCarta").onclick = function() {
-        window.location.href = "../usuario/carta.html"
-    }
-    
-    document.getElementById("btnMenu").onclick = function() {
-        window.location.href = "../usuario/menu.html"
-    }
-    
-    document.getElementById("btnVinos").onclick = function() {
-        window.location.href = "../usuario/vinos.html"
-    }
-
-    document.getElementById("btnContacto").onclick = function() {
-        window.location.href = "../../contacto.html"
-    }
-    
-    document.getElementById("btnReserva").onclick = function() {
-        window.location.href = "../../reserva.html"
-    }
-    
-    document.getElementById("btnIniciarSesion").onclick = function() {
-        window.location.href = "../login.html"
-    }
-
-    document.getElementById("btnCesta").onclick = function() {
-        window.location.href = "../cesta.html"
-    }
-
-    document.getElementById("btnHistorialPedidos").onclick = function() {
-        window.location.href = "../historial_pedidos.html"
-    }
 
     document.getElementById("btnAdminPedidos").onclick = function() {
         window.location.href = "./admin_gestion_pedidos.html"
@@ -78,7 +46,7 @@ function comprobarExisteEmail() {
 
     let miPeticion = new XMLHttpRequest()
 
-    miPeticion.open("POST", "./PHP/redireccion.php", true)
+    miPeticion.open("POST", "../../PHP/redireccion.php", true)
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
@@ -125,21 +93,11 @@ function comprobarEsAdmin() {
 
 function mostrarBotonesSesion(haIniciadoSesion) {
     if (haIniciadoSesion) {
-        document.getElementById("btnIniciarSesion").style.display = "none"
         document.getElementById("btnCerrarSesion").style.display = "block"
-        document.getElementById("btnHistorialPedidos").style.display = "block"
-        document.getElementById("btnCesta").onclick = function() {
-            window.location.href = "./cesta.html"
-        }
     } else {
-        document.getElementById("btnIniciarSesion").style.display = "block"
         document.getElementById("btnCerrarSesion").style.display = "none"
-        document.getElementById("btnHistorialPedidos").style.display = "none"
         document.getElementById("btnAdminPedidos").style.display = "none"
         document.getElementById("btnAdminUsuarios").style.display = "none"
-        document.getElementById("btnCesta").onclick = function() {
-            window.location.href = "../login.html"
-        }
     }
 }
 
@@ -529,64 +487,64 @@ function obtenerPedidos(desde,hasta, callback) {
     miPeticion.send(datos);
 }
 
-function tramitarSolicitud(idSolicitud ,callback) {
-    let miPeticion = new XMLHttpRequest();
+// function tramitarSolicitud(idSolicitud ,callback) {
+//     let miPeticion = new XMLHttpRequest();
 
-    miPeticion.open("POST", "../../PHP/admin_gestionPedidos.php", true);
+//     miPeticion.open("POST", "../../PHP/admin_gestionPedidos.php", true);
 
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            console.log(miPeticion.responseText);
-            // console.log(JSON.parse(miPeticion.responseText));
-            callback(miPeticion.responseText);
-        }
-    }
+//     miPeticion.onreadystatechange = function() {
+//         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
+//             console.log(miPeticion.responseText);
+//             // console.log(JSON.parse(miPeticion.responseText));
+//             callback(miPeticion.responseText);
+//         }
+//     }
 
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    let datos = "tramitarSolicitud=" + idSolicitud;
-    miPeticion.send(datos);
-}
+//     let datos = "tramitarSolicitud=" + idSolicitud;
+//     miPeticion.send(datos);
+// }
 
-function actualizarSolicitud(datosSolicitud ,callback) {
-    let miPeticion = new XMLHttpRequest();
+// function actualizarSolicitud(datosSolicitud ,callback) {
+//     let miPeticion = new XMLHttpRequest();
 
-    miPeticion.open("POST", "../../PHP/admin_gestionPedidos.php", true);
+//     miPeticion.open("POST", "../../PHP/admin_gestionPedidos.php", true);
 
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            // console.log(miPeticion.responseText);
-            // console.log(JSON.parse(miPeticion.responseText));
-            callback(miPeticion.responseText);
-        }
-    }
+//     miPeticion.onreadystatechange = function() {
+//         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
+//             // console.log(miPeticion.responseText);
+//             // console.log(JSON.parse(miPeticion.responseText));
+//             callback(miPeticion.responseText);
+//         }
+//     }
 
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    datosSolicitud = JSON.stringify(datosSolicitud);
-    let datos = "actualizarSolicitud=" + datosSolicitud;
-    miPeticion.send(datos);
-}
+//     datosSolicitud = JSON.stringify(datosSolicitud);
+//     let datos = "actualizarSolicitud=" + datosSolicitud;
+//     miPeticion.send(datos);
+// }
 
-function hacerPedidoObtenerSolicitudes(datosSolicitud ,callback) {
-    let miPeticion = new XMLHttpRequest();
+// function hacerPedidoObtenerSolicitudes(datosSolicitud ,callback) {
+//     let miPeticion = new XMLHttpRequest();
 
-    miPeticion.open("POST", "../../PHP/gestionar_pedidos.php", true);
+//     miPeticion.open("POST", "../../PHP/gestionar_pedidos.php", true);
 
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            // console.log(miPeticion.responseText);
-            // console.log(JSON.parse(miPeticion.responseText));
-            callback(miPeticion.responseText);
-        }
-    }
+//     miPeticion.onreadystatechange = function() {
+//         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
+//             // console.log(miPeticion.responseText);
+//             // console.log(JSON.parse(miPeticion.responseText));
+//             callback(miPeticion.responseText);
+//         }
+//     }
 
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    datosSolicitud = JSON.stringify(datosSolicitud);
-    let datos = "hacerPedidoObtenerSolicitudes=" + datosSolicitud;
-    miPeticion.send(datos);
-}
+//     datosSolicitud = JSON.stringify(datosSolicitud);
+//     let datos = "hacerPedidoObtenerSolicitudes=" + datosSolicitud;
+//     miPeticion.send(datos);
+// }
 
 function actualizarPedido(datosSolicitud ,callback) {
     let miPeticion = new XMLHttpRequest();
@@ -624,46 +582,6 @@ function obtenerEstado(datosSolicitud ,callback) {
     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     let datos = "obtenerEstado=" + datosSolicitud;
-    miPeticion.send(datos);
-}
-
-function obtenerProveedores(callback) {
-    let miPeticion = new XMLHttpRequest();
-
-    miPeticion.open("POST", "../../PHP/gestionar_pedidos.php", true);
-
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            // console.log(miPeticion.responseText);
-            // console.log(JSON.parse(miPeticion.responseText));
-            callback(miPeticion.responseText);
-        }
-    }
-
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-
-    let datos = "obtenerProveedores=";
-    miPeticion.send(datos);
-}
-
-function hacerPedido(datosSolicitud ,callback) {
-    let miPeticion = new XMLHttpRequest();
-
-    miPeticion.open("POST", "../../PHP/gestionar_pedidos.php", true);
-
-    miPeticion.onreadystatechange = function() {
-        if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            // console.log(miPeticion.responseText);
-            // console.log(JSON.parse(miPeticion.responseText));
-            callback(miPeticion.responseText);
-        }
-    }
-
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    datosSolicitud = JSON.stringify(datosSolicitud);
-    let datos = "hacerPedido=" + datosSolicitud;
     miPeticion.send(datos);
 }
 
@@ -814,14 +732,11 @@ function dibujarPedidos(jsonPedidos) {
                 let ulPedido = crearElemento("ul",undefined, {"id":"pedido-" + pedido.idPedido});
                 let liProducto = crearElemento("li", 'Producto: ' + pedido.producto);
                 let liCantidad = crearElemento("li", 'Cantidad: ' + pedido.cantidad);
-                let liUnidades = crearElemento("li", 'Unidades: ' + pedido.unidades);
+                let liPrecio = crearElemento("li", 'Precio: ' + pedido.precio);
                 let liObservaciones = crearElemento("li", 'Observaciones: ' + pedido.observaciones);
-                let liProveedor = crearElemento("li","Proveedor: " + pedido.proveedor.nombre + "  tlf: " + pedido.proveedor.telefono);
                 
                 let liSuEstado = crearElemento("li", "Estado: " + pedido.estado);
-                if(pedido.estado === "En espera") {
-                    liSuEstado.className = "enEspera";
-                } else if(pedido.estado === "Pendiente") {
+                if(pedido.estado === "Pendiente") {
                     liSuEstado.className = "pendiente";
                 } else if(pedido.estado === "Completado") {
                     liSuEstado.className = "completado";
@@ -850,9 +765,8 @@ function dibujarPedidos(jsonPedidos) {
 
                 ulPedido.appendChild(liProducto);
                 ulPedido.appendChild(liCantidad);
-                ulPedido.appendChild(liUnidades);
+                ulPedido.appendChild(liPrecio);
                 ulPedido.appendChild(liObservaciones);
-                ulPedido.appendChild(liProveedor);
                 ulPedido.appendChild(liSuEstado);
                 ulPedido.appendChild(liEstados);
                 liPedidos.appendChild(ulPedido);

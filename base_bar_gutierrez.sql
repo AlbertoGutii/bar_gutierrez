@@ -51,8 +51,10 @@ CREATE TABLE IF NOT EXISTS pedidos (
     fecha_recogida DATETIME NOT NULL,
     fk_cliente INT NOT NULL,
     observaciones CHAR(100) NOT NULL,
-    entregado BINARY(1) NOT NULL,
+    fk_estado INT NOT NULL,
     FOREIGN KEY (fk_cliente) REFERENCES usuarios (id)
+    ON UPDATE CASCADE
+    FOREIGN KEY (fk_estado) REFERENCES estados (id)
     ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
@@ -67,6 +69,13 @@ CREATE TABLE IF NOT EXISTS detalle_pedido (
     ON UPDATE CASCADE,
     FOREIGN KEY (fk_producto) REFERENCES productos (id)
     ON UPDATE CASCADE
+) ENGINE = INNODB;
+
+-- TABLA ESTADOS
+CREATE TABLE IF NOT EXISTS estados (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    descripcion CHAR(20) NOT NULL,
+    observaciones CHAR(100) NULL
 ) ENGINE = INNODB;
 
 -- TABLA RESERVAS

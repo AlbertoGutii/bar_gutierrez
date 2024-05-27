@@ -89,7 +89,7 @@ function dibujarHistorico(datosPedido) {
     let miFecha = crearElemento("li", datosPedido.fecha_pedido, {"class": "fecha"})
     miFila.appendChild(miFecha)
     
-    if (datosPedido.entregado == '\u0001' || datosPedido.entregado == 1) {
+    if (datosPedido.estado == "Completado") {
         let miEstado = crearElemento("li", undefined, {"class": "circle"})
         let miBoton = crearElemento("button", "Ya se ha recogido", {
             "type": "button", 
@@ -104,7 +104,12 @@ function dibujarHistorico(datosPedido) {
         
         // let fecha_recogida = crearElemento("li", datosPedido.fecha_recogida, {"class": "fecha"})
         // miFila.appendChild(fecha_recogida)
-    } else if (datosPedido.entregado == 0 || datosPedido.entregado == '\u0000') {
+    } 
+    else if (datosPedido.estado == "Pendiente") {
+        let miEstado = crearElemento("li", "No se ha entregado todavía", {"class": "estadoMensaje circle2"})
+        miFila.appendChild(miEstado)
+    }
+    else if(datosPedido.estado == "Cancelado") {
         let miEstado = crearElemento("li", "No se ha entregado todavía", {"class": "estadoMensaje circle2"})
         miFila.appendChild(miEstado)
     }

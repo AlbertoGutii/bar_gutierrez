@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Libreria flatpickr para controlar fechas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
@@ -20,6 +21,9 @@
             <button class="logo" id="btnLogo">
                 <img src="../../imagenes/pagina/logo.jpg" id="logito" alt="logo">
             </button>
+        </div>
+        <div id="contenedor-hacer-pedido">
+            <input type="button" id="btnVerPedidos" value="Ver Pedidos">
         </div>
         <div id="contenedor-buscar">
             <label for="inFecha_desde">Desde: </label>
@@ -40,10 +44,10 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><button class="dropdown-item" id="btnAdminPedidos">Gestionar Pedidos</></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" id="btnAdminUsuarios">Gestionar Usuarios</a></li>
+                <li><button class="dropdown-item" id="btnAdminUsuarios">Gestionar Usuarios</button></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" style="
-                    padding-right: 70px" id="btnCerrarSesion">Cerrar sesión</a></li>
+                <li><button class="dropdown-item" style="
+                    padding-right: 70px" id="btnCerrarSesion">Cerrar sesión</button></li>
                 </ul>
             </div>
         </div>  

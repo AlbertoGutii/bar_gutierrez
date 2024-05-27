@@ -13,12 +13,22 @@
         $usuario = $datosSolicitud->emailUsuario;
 
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
-        $resultado = $conexion -> prepare("SELECT * FROM pedidos 
-        where 
+        $resultado = $conexion -> prepare("SELECT 
+            pedidos.id,
+            pedidos.fecha_pedido,
+            pedidos.fk_cliente,
+            pedidos.producto,
+            pedidos.cantidad,
+            pedidos.precio,
+            pedidos.observaciones,
+            estados.descripcion AS estado
+        FROM pedidos
+        JOIN estados ON pedidos.fk_estado = estados.id
+        WHERE
             fecha_pedido >= ? AND fecha_pedido <= ?
-            AND
+        AND
             fk_cliente = (SELECT id FROM usuarios WHERE email = ?) 
-            ORDER BY fecha_pedido DESC;");
+        ORDER BY fecha_pedido DESC;");
         $resultado -> execute(array($desde, $hasta,$usuario));
         $solicitudes = array();
         while($fila = $resultado -> fetch()) {
@@ -30,7 +40,7 @@
                 'producto' => $fila['producto'],
                 'cantidad' => $fila['cantidad'],
                 'observaciones' => $fila['observaciones'],
-                'entregado' => $fila['entregado']
+                'estado' => $fila['estado']
             );
 
             $solicitudes[] = $solicitud;
