@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
     fecha_recogida DATETIME NOT NULL,
     fk_cliente INT NOT NULL,
     observaciones CHAR(100) NOT NULL,
-    fk_estado INT NOT NULL DEFAULT 0,
+    fk_estado INT NOT NULL DEFAULT 2,
     FOREIGN KEY (fk_cliente) REFERENCES usuarios (id)
     ON UPDATE CASCADE,
     FOREIGN KEY (fk_estado) REFERENCES estados (id)
