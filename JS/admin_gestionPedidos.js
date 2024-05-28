@@ -30,8 +30,6 @@ function principal() {
     rellenarPedidos()
     let botonBuscar = document.getElementById("btnBuscar")
     botonBuscar.addEventListener("click",manejadorClickBuscar)
-    // let botonVerPedidos = document.getElementById("btnVerPedidos")
-    // botonVerPedidos.addEventListener("click",manejadorClickMostrarPedidos)
 }
 
 // ===========FUNCIONES GENERALES=========================================
@@ -224,7 +222,7 @@ function manejadorClickActualizarPedido(e) {
     let contenedorPedido = this.parentElement.parentElement.parentElement.parentElement
     let idPedido = contenedorPedido.id.split("-")[1]
     let idEstado = this.className
-    let liEstadoPedido = contenedorPedido.childNodes[5]
+    let liEstadoPedido = contenedorPedido.childNodes[4]
     console.log(idEstado)
     console.log(idPedido)
     console.log(liEstadoPedido)
