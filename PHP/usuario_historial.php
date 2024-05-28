@@ -20,6 +20,7 @@
             pedidos.producto,
             pedidos.cantidad,
             pedidos.precio,
+            pedidos.fecha_recogida,
             pedidos.observaciones,
             estados.descripcion AS estado
         FROM pedidos
