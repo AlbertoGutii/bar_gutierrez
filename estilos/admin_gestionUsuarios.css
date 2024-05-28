@@ -1,31 +1,17 @@
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: #f0f0f0;
-}
-
-.logo {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: none;
-}
-
-.logo:active > img{
-    transform: scale(0.95);
-}
-
-.logo:focus {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.logo img {
-    width: 80px;
-    height: auto;
-    display: block;
 }
 
 .logo-container,
@@ -75,114 +61,110 @@ header {
     /* Ajusta los estilos del menú desplegable según sea necesario */
 }
 
+.logo {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.logo:active > img{
+    transform: scale(0.95);
+}
+
+.logo:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
 /* Estilos para la cabecera */
 #cabecera {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px; /* Eliminamos el padding para que se ajuste al tamaño de los elementos */
+    padding: 10px;
     background-color: #007bff9c;
     color: #fff;
     border: 1px solid #ccc;
     list-style-type: none;
     margin: 0;
     font-weight: bolder;
-    font-size: 16px; /* Ajustamos el tamaño de la fuente para que sea igual al de las listas */
-    z-index: 1000;
+    font-size: 16px;
     margin-bottom: 10px;
 }
 
-/* Estilo para cada elemento dentro de la cabecera */
+/* Estilos para los elementos de la cabecera */
 #cabecera li {
-    flex: 1; /* Distribuir el espacio disponible de manera equitativa */
-    padding: 10px; /* Añadimos un poco de espacio interno */
-    text-align: center; /* Centramos el texto */
-    border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
-    margin: 0; /* Añadimos margen cero para evitar espacios adicionales */
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #ccc;
 }
 
-/* Estilo para el último elemento dentro de la cabecera */
 #cabecera li:last-child {
-    border-right: none; /* Quitamos la línea divisoria en el último elemento */
+    border-right: none;
 }
 
-ul {
-    list-style-type: none;
+/* Estilos para el contenedor de usuarios */
+#contenedor-usuarios {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilos para las filas de usuarios */
+#contenedor-usuarios ul {
+    list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+}
+
+#contenedor-usuarios ul li {
     display: flex;
-    align-items: center;
-}
-
-/* Estilo para cada elemento dentro de un usuario */
-ul li {
-    flex: 1; /* Distribuir el espacio disponible de manera equitativa */
-    padding: 10px; /* Añadimos un poco de espacio interno */
-    text-align: center; /* Centramos el texto */
-    border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
-    position: relative; /* Posición relativa para los elementos */
-    /* overflow: hidden; */
-}
-
-/* Estilo para el contenido que se desborde */
-/* Muestra el contenido que desborda al pasar el cursor */
-/* ul li:hover {
-    overflow: visible;
-} */
-
-/* Estilo para el contenido desbordado */
-/* ul li:hover::after {
-    content: attr(title);
-    position: absolute;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
     padding: 10px;
-    z-index: 1;
-    top: 100%;
-    left: 0;
-    white-space: nowrap;
-    max-width: 200px;
-} */
+    text-align: center;
+    border-right: 1px solid #ccc;
+    position: relative;
+}
 
-#contenedor-buscar {
+#contenedor-usuarios ul li:last-child {
+    border-right: none;
     display: flex;
-    align-items: center;
+    gap: 5px;
+    justify-content: center;
 }
 
-#txtBuscar {
-    margin-right: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#btnMostrarAddUsuarios {
-    padding: 8px 20px;
-    font-size: 16px;
-    background-color: #007bff; /* Mismo color que el botón de añadir */
-    color: #fff;
+/* Estilos para los botones */
+#contenedor-usuarios input[type="button"] {
+    padding: 5px 10px;
+    background-color: #007bff;
     border: none;
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
 }
 
-#btnModificar {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #0056b3
-}
-
-#btnMostrarAddUsuarios:hover,
-#btnModificar:hover {
-    background-color: #0056b3; /* Cambio de color al pasar el cursor */
+#contenedor-usuarios input[type="button"]:hover {
+    background-color: #0056b3;
 }
 
 /* Estilos para los modales */
 .modal-content {
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
@@ -229,20 +211,13 @@ ul li {
 }
 
 .modal-body input[type="text"] {
-    width: calc(100% - 22px); /* Ancho ajustado para tener en cuenta el padding y el borde */
+    width: calc(100% - 22px);
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
 
 /* Estilos generales */
-.container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Estilos para el botón de ir arriba */
 #btnScrollToTop {
     display: none;
     position: fixed;
@@ -262,51 +237,37 @@ ul li {
 #btnScrollToTop:hover {
     background-color: #0056b3;
 }
-/* Estilos para el botón de ir arriba */
-#btnScrollToTop {
-    display: none;
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    z-index: 999;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    padding: 10px 12px;
-    border-radius: 50%;
-}
-
-#btnScrollToTop:hover {
-    background-color: #0056b3;
-}
-
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 1128px) {
-    ul {
+    #contenedor-usuarios ul {
         flex-direction: column;
         align-items: stretch;
     }
     
-    ul li {
-        border-right: 1px solid #ccc; /* Quitamos la línea divisoria en todos los elementos */
+    #contenedor-usuarios ul li {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #contenedor-usuarios ul li:last-child {
+        border-bottom: none;
+    }
+
+    #cabecera {
+        flex-direction: column;
+        align-items: stretch;
     }
 
     #cabecera li {
-        flex: 1; /* Distribuir el espacio disponible de manera equitativa */
-        padding: 10px; /* Añadimos un poco de espacio interno */
-        text-align: center; /* Centramos el texto */
         border-right: none;
-        border-bottom: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
-        margin: 0; /* Añadimos margen cero para evitar espacios adicionales */
+        border-bottom: 1px solid #ccc;
     }
-    #cabecera li:nth-last-child(-n+4) {
-        display: none;
+
+    #cabecera li:last-child {
+        border-bottom: none;
     }
-    
+
     header {
         flex-direction: column;
         align-items: stretch;
@@ -328,4 +289,3 @@ ul li {
         margin-top: 10px;
     }
 }
-

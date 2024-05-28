@@ -148,235 +148,451 @@ function crearElemento(etiqueta, texto, atributos) {
     return elementoNuevo
 }
 
+function recuperarUsuarios(emailUsuario) {
+    let miDiv = document.getElementById("contenedor-usuarios");
+    miDiv.innerHTML = "";
+    console.log("recupero");
+    obtenerUsuarios(emailUsuario, function(respuesta) {
+        respuesta = JSON.parse(respuesta);
+        let miDiv = document.getElementById("contenedor-usuarios");
+        miDiv.innerHTML = "";
+        let miCabecera = crearElemento("ul", undefined, { "id": "cabecera" });
+        miCabecera.classList.add('cabecera');
+        let miNombreCabecera = crearElemento("li", "Nombre");
+        let miEmailCabecera = crearElemento("li", "Email");
+        let miTelefonoCabecera = crearElemento("li", "Teléfono");
+        let miCambioCabecera = crearElemento("li", "Cargo");
+        let miHabilitadoCabecera = crearElemento("li", "Habilitado/Deshabilitado");
+        let miAccionesCabecera = crearElemento("li", "Acciones");
+        miCabecera.appendChild(miNombreCabecera);
+        miCabecera.appendChild(miEmailCabecera);
+        miCabecera.appendChild(miTelefonoCabecera);
+        miCabecera.appendChild(miCambioCabecera);
+        miCabecera.appendChild(miHabilitadoCabecera);
+        miCabecera.appendChild(miAccionesCabecera);
+        miDiv.appendChild(miCabecera);
+        for (let i = 0; i < respuesta.length; i++) {
+            miDiv.appendChild(dibujarUsuario(respuesta[i]));
+        }
+        document.body.appendChild(miDiv);
+    });
+}
+
 function dibujarUsuario(datosUsuario) {
-    let miFila = crearElemento("ul",undefined,{"id":datosUsuario.email})
-    let miNombre = crearElemento("li",datosUsuario.nombre)
-    miFila.appendChild(miNombre)
-    let miCorreo = crearElemento("li",datosUsuario.email)  
-    miFila.appendChild(miCorreo)
-    let miTelefono = crearElemento("li",datosUsuario.telefono)    
-    miFila.appendChild(miTelefono)
-    let cargo
-    if(datosUsuario.cargo === "1") {
-        cargo = "Administrador"
-    } else {
-        cargo = "Usuario"
-    }
-    let miCargo = crearElemento("li",cargo)    
-    miFila.appendChild(miCargo)
+    let miFila = crearElemento("ul", undefined, { "id": datosUsuario.email });
+    let miNombre = crearElemento("li", datosUsuario.nombre);
+    miFila.appendChild(miNombre);
+    let miCorreo = crearElemento("li", datosUsuario.email);
+    miFila.appendChild(miCorreo);
+    let miTelefono = crearElemento("li", datosUsuario.telefono);
+    miFila.appendChild(miTelefono);
+    let cargo = datosUsuario.cargo === "1" ? "Administrador" : "Usuario";
+    let miCargo = crearElemento("li", cargo);
+    miFila.appendChild(miCargo);
+    let estado = datosUsuario.estado === "0" ? "Deshabilitado" : "Habilitado";
+    let miEstado = crearElemento("li", estado);
+    miFila.appendChild(miEstado);
+
+    let acciones = crearElemento("li");
+    acciones.classList.add('acciones');
+
+    let idMagico = datosUsuario.id;
     
-    let estado
-    if(datosUsuario.estado === "0") {
-        estado = "Deshabilitado"
-    } else {
-        estado = "Habilitado"
-    }
-    let miEstado = crearElemento("li",estado)
-    miFila.appendChild(miEstado)
-    // Boton Modificar Datos
-    let filita = crearElemento("li",undefined)
-    let idMagico = datosUsuario.id
-    let boton = crearElemento("input",undefined,{"type":"button",
-        "id":"btnModificar",
-        "value":"Modificar Datos",
+    let botonModificar = crearElemento("input", undefined, {
+        "type": "button",
+        "id": "btnModificar",
+        "value": "Modificar Datos",
         "data-bs-toggle": "modal",
         "data-bs-target": "#modal-" + idMagico
-    })
-    // Añado el modal al boton modificar
-    let miModal = dibujarModal(idMagico,datosUsuario)
-    let miModalSeguro = dibujarModalSeguro(idMagico)
-    filita.appendChild(boton)
-    miFila.appendChild(filita)
-    // Boton Habilitar
-    filita = crearElemento("li",undefined)
-    boton = crearElemento("input",undefined,{"type":"button","class":"btnHabilitar","value":"Habilitar/Deshabilitar"})
-    boton.addEventListener("click",manejadorClickHabilitar)
-    filita.appendChild(boton)
-    miFila.appendChild(filita)
-    // Boton Reiniciar
-    filita = crearElemento("li",undefined)
-    boton = crearElemento("input",undefined,{"type":"button","class":"btnReiniciar","value":"Reiniciar Contraseña"})
-    boton.addEventListener("click",manejadorClickReiniciarContrasenia)
-    filita.appendChild(boton)
-    miFila.appendChild(filita)
-    // Boton Cambiar Cargo
-    filita = crearElemento("li",undefined)
-    boton = crearElemento("input",undefined,{"type":"button","class":"btnCargo","value":"Cambiar Cargo"})
-    boton.addEventListener("click",manejadorClickCambiarCargo)
-    filita.appendChild(boton)
-    miFila.appendChild(filita)
-    miFila.appendChild(miModal)
-    miFila.appendChild(miModalSeguro)
-    return miFila
+    });
+    acciones.appendChild(botonModificar);
+
+    let botonHabilitar = crearElemento("input", undefined, {
+        "type": "button",
+        "class": "btnHabilitar",
+        "value": "Habilitar/Deshabilitar"
+    });
+    botonHabilitar.addEventListener("click", manejadorClickHabilitar);
+    acciones.appendChild(botonHabilitar);
+
+    let botonReiniciar = crearElemento("input", undefined, {
+        "type": "button",
+        "class": "btnReiniciar",
+        "value": "Reiniciar Contraseña"
+    });
+    botonReiniciar.addEventListener("click", manejadorClickReiniciarContrasenia);
+    acciones.appendChild(botonReiniciar);
+
+    let botonCargo = crearElemento("input", undefined, {
+        "type": "button",
+        "class": "btnCargo",
+        "value": "Cambiar Cargo"
+    });
+    botonCargo.addEventListener("click", manejadorClickCambiarCargo);
+    acciones.appendChild(botonCargo);
+
+    miFila.appendChild(acciones);
+
+    let miModal = dibujarModal(idMagico, datosUsuario);
+    let miModalSeguro = dibujarModalSeguro(idMagico);
+    miFila.appendChild(miModal);
+    miFila.appendChild(miModalSeguro);
+
+    return miFila;
 }
 
-function dibujarModal(idModal, datosUsuario) {
-    let miDiv = crearElemento("div",undefined,{"id":"modal-" +idModal, "class": "modal"})
-    let modalDialog = crearElemento("div",undefined,{"class": "modal-dialog"})
-    let modalContent = crearElemento("div",undefined, {"class": "modal-content"})
-    // Contenido Header
-    let modalHeader = crearElemento("div",undefined, {"class": "modal-header"})
-    let modalTitulo = crearElemento("h1","Modificar Usuario", {"class" : "modal-title"})
-    let modalCierre = crearElemento("button",undefined,{
-        "type" : "button",
-        "class" : "btn-close",
-        "data-bs-dismiss" : "modal",
-        "aria-label" : "Close"
-    })
-    modalHeader.appendChild(modalTitulo)
-    modalHeader.appendChild(modalCierre)
-    // Contenido Body
-    // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    let modalBody = crearElemento("div",undefined, {"class": "modal-body"})
+// function dibujarUsuario(datosUsuario) {
+//     let miFila = crearElemento("ul",undefined,{"id":datosUsuario.email})
+//     let miNombre = crearElemento("li",datosUsuario.nombre)
+//     miFila.appendChild(miNombre)
+//     let miCorreo = crearElemento("li",datosUsuario.email)  
+//     miFila.appendChild(miCorreo)
+//     let miTelefono = crearElemento("li",datosUsuario.telefono)    
+//     miFila.appendChild(miTelefono)
+//     let cargo
+//     if(datosUsuario.cargo === "1") {
+//         cargo = "Administrador"
+//     } else {
+//         cargo = "Usuario"
+//     }
+//     let miCargo = crearElemento("li",cargo)    
+//     miFila.appendChild(miCargo)
+    
+//     let estado
+//     if(datosUsuario.estado === "0") {
+//         estado = "Deshabilitado"
+//     } else {
+//         estado = "Habilitado"
+//     }
+//     let miEstado = crearElemento("li",estado)
+//     miFila.appendChild(miEstado)
+//     // Boton Modificar Datos
+//     let filita = crearElemento("li",undefined)
+//     let idMagico = datosUsuario.id
+//     let boton = crearElemento("input",undefined,{"type":"button",
+//         "id":"btnModificar",
+//         "value":"Modificar Datos",
+//         "data-bs-toggle": "modal",
+//         "data-bs-target": "#modal-" + idMagico
+//     })
+//     // Añado el modal al boton modificar
+//     let miModal = dibujarModal(idMagico,datosUsuario)
+//     let miModalSeguro = dibujarModalSeguro(idMagico)
+//     filita.appendChild(boton)
+//     miFila.appendChild(filita)
+//     // Boton Habilitar
+//     filita = crearElemento("li",undefined)
+//     boton = crearElemento("input",undefined,{"type":"button","class":"btnHabilitar","value":"Habilitar/Deshabilitar"})
+//     boton.addEventListener("click",manejadorClickHabilitar)
+//     filita.appendChild(boton)
+//     miFila.appendChild(filita)
+//     // Boton Reiniciar
+//     filita = crearElemento("li",undefined)
+//     boton = crearElemento("input",undefined,{"type":"button","class":"btnReiniciar","value":"Reiniciar Contraseña"})
+//     boton.addEventListener("click",manejadorClickReiniciarContrasenia)
+//     filita.appendChild(boton)
+//     miFila.appendChild(filita)
+//     // Boton Cambiar Cargo
+//     filita = crearElemento("li",undefined)
+//     boton = crearElemento("input",undefined,{"type":"button","class":"btnCargo","value":"Cambiar Cargo"})
+//     boton.addEventListener("click",manejadorClickCambiarCargo)
+//     filita.appendChild(boton)
+//     miFila.appendChild(filita)
+//     miFila.appendChild(miModal)
+//     miFila.appendChild(miModalSeguro)
+//     return miFila
+// }
 
-    // Entrada nombre
-    let labelNombre = crearElemento("label","Nombre",{"for":"inNombre"})
-    let inputNombre = crearElemento("input",undefined,{
-        "type" : "text",
-        "id": "inNombre" + idModal,
-        "placeholder" : datosUsuario.nombre
-    })
-    modalBody.appendChild(labelNombre)
-    modalBody.appendChild(inputNombre)
-    // Entrada email
-    let labelEmail = crearElemento("label","Email",{"for":"inEmail"})
-    let inputEmail = crearElemento("input",undefined,{
-        "type" : "text",
-        "id": "inEmail" + idModal,
-        "placeholder" : datosUsuario.email
-    })
-    modalBody.appendChild(labelEmail)
-    modalBody.appendChild(inputEmail)
-    // Entrada telefono
-    let labelTelefono = crearElemento("label","Teléfono",{"for":"inTelefono"})
-    let inputTelefono = crearElemento("input",undefined,{
-        "type" : "text",
-        "id": "inTelefono" + idModal,
-        "placeholder" : datosUsuario.telefono
-    })
-    modalBody.appendChild(labelTelefono)
-    modalBody.appendChild(inputTelefono)
-    // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-    // Contenido footer
-    let modalFooter = crearElemento("div",undefined, {"class": "modal-footer"})
-    // Pongo al boton modificar el id del modal ¿estas seguro?
-    let modalModificar = crearElemento("button", "Modificar Datos", {
-        "type" : "button",
-        "class" : "btn btn-primary",
-        "id" : idModal,
+// function recuperarUsuarios(emailUsuario) {
+//     let miDiv = document.getElementById("contenedor-usuarios")
+//     miDiv.innerHTML = ""
+//     console.log("recupweo")
+//     obtenerUsuarios(emailUsuario,function(respuesta) {
+//         respuesta = JSON.parse(respuesta)
+//         // recorro el json
+//         let miDiv = document.getElementById("contenedor-usuarios")
+//         miDiv.innerHTML =""
+//         let miCabecera = crearElemento("ul",undefined,{
+//             "id":"cabecera"
+//         })
+//         let miNombreCabecera = crearElemento("li","Nombre") 
+//         let miEmailCabecera = crearElemento("li","Email") 
+//         let miTelefonoCabecera = crearElemento("li","Teléfono") 
+//         let miCambioCabecera = crearElemento("li","Cargo") 
+//         let miHabilitadoCabecera = crearElemento("li","Habilitado/Deshabilitado")
+//         let miCabeceraVacia = crearElemento("li","")
+//         // let miCabeceraVacia1 = crearElemento("li","")
+//         // let miCabeceraVacia2 = crearElemento("li","")
+//         // let miCabeceraVacia3 = crearElemento("li","")
+//         miCabecera.appendChild(miNombreCabecera) 
+//         miCabecera.appendChild(miEmailCabecera) 
+//         miCabecera.appendChild(miTelefonoCabecera) 
+//         miCabecera.appendChild(miCambioCabecera) 
+//         miCabecera.appendChild(miHabilitadoCabecera) 
+//         miCabecera.appendChild(miCabeceraVacia) 
+//         // miCabecera.appendChild(miCabeceraVacia1) 
+//         // miCabecera.appendChild(miCabeceraVacia2) 
+//         // miCabecera.appendChild(miCabeceraVacia3) 
+//         miDiv.appendChild(miCabecera)
+//         document.body.appendChild(miDiv)
+//         for(let i = 0; i< respuesta.length; i++) {
+//             miDiv.appendChild(dibujarUsuario(respuesta[i]))
+//         }
+//         document.body.appendChild(miDiv)
+//     })
+// }
+
+function dibujarModal(idMagico, datosUsuario) {
+    let modal = crearElemento("div", undefined, {
+        "id": "modal-" + idMagico,
+        "class": "modal"
+    });
+    let modalDialog = crearElemento("div", undefined, { "class": "modal-dialog" });
+    let modalContent = crearElemento("div", undefined, { "class": "modal-content" });
+    let modalHeader = crearElemento("div", undefined, { "class": "modal-header" });
+    let modalTitle = crearElemento("h1", "Modificar Usuario", { "class": "modal-title" });
+    let btnClose = crearElemento("button", undefined, {
+        "type": "button",
+        "class": "btn-close",
+        "data-bs-dismiss": "modal",
+        "aria-label": "Close"
+    });
+
+    modalHeader.appendChild(modalTitle);
+    modalHeader.appendChild(btnClose);
+
+    let modalBody = crearElemento("div", undefined, { "class": "modal-body" });
+    let labelNombre = crearElemento("label", "Nombre", { "for": "inNombre" });
+    let inputNombre = crearElemento("input", undefined, {
+        "type": "text",
+        "id": "inNombre" + idMagico,
+        "placeholder": datosUsuario.nombre
+    });
+    let labelEmail = crearElemento("label", "Email", { "for": "inEmail" });
+    let inputEmail = crearElemento("input", undefined, {
+        "type": "text",
+        "id": "inEmail" + idMagico,
+        "placeholder": datosUsuario.email
+    });
+    let labelTelefono = crearElemento("label", "Teléfono", { "for": "inTelefono" });
+    let inputTelefono = crearElemento("input", undefined, {
+        "type": "text",
+        "id": "inTelefono" + idMagico,
+        "placeholder": datosUsuario.telefono
+    });
+
+    modalBody.appendChild(labelNombre);
+    modalBody.appendChild(inputNombre);
+    modalBody.appendChild(labelEmail);
+    modalBody.appendChild(inputEmail);
+    modalBody.appendChild(labelTelefono);
+    modalBody.appendChild(inputTelefono);
+
+    let modalFooter = crearElemento("div", undefined, { "class": "modal-footer" });
+    let btnModificar = crearElemento("button", "Modificar Datos", {
+        "type": "button",
+        "class": "btn btn-primary",
+        "id": idMagico,
         "data-bs-toggle": "modal",
-        "data-bs-target": "#modal-" + idModal + "-seguro"
-    })
-    modalModificar.addEventListener("click",manejadorClickModificar)
-    modalFooter.appendChild(modalModificar)
+        "data-bs-target": "#modal-" + idMagico + "-seguro"
+    });
 
-    modalContent.appendChild(modalHeader)
-    modalContent.appendChild(modalBody)
-    modalContent.appendChild(modalFooter)
-    modalDialog.appendChild(modalContent)
-    miDiv.appendChild(modalDialog)
+    btnModificar.addEventListener("click", manejadorClickModificar)
+    modalFooter.appendChild(btnModificar);
 
-    //añado modal estas seguro 
-    // miDiv.appendChild(dibujarModalSeguro(idModal))
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalContent.appendChild(modalFooter);
+    modalDialog.appendChild(modalContent);
+    modal.appendChild(modalDialog);
 
-    return miDiv
+    return modal;
 }
 
-function dibujarModalSeguro(idModalSeguro) {
-    let miDiv = crearElemento("div",undefined,{"id":"modal-" +idModalSeguro + "-seguro", "class": "modal"})
-    let modalDialog = crearElemento("div",undefined,{"class": "modal-dialog"})
-    let modalContent = crearElemento("div",undefined, {"class": "modal-content"})
-    // Contenido Header
-    let modalHeader = crearElemento("div",undefined, {"class": "modal-header"})
-    let modalCierre = crearElemento("button",undefined,{
-        "type" : "button",
-        "class" : "btn-close",
-        "data-bs-dismiss" : "modal",
-        "aria-label" : "Close"
-    })
-    modalHeader.appendChild(modalCierre)
-    // Contenido Body
-    // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    let modalBody = crearElemento("div",undefined, {"class": "modal-body"})
-    let miPregunta = crearElemento("h5","¿Estas seguro que quieres los siguientes datos para el usuario?")
-    let miNombre = crearElemento("p",undefined,{"id" : "inNombre" + idModalSeguro + "-seguro"})
-    let miEmail = crearElemento("p",undefined,{"id" : "inEmail" + idModalSeguro + "-seguro"})
-    let miTelefono = crearElemento("p",undefined,{"id" : "inTelefono" + idModalSeguro + "-seguro"})
-    modalBody.appendChild(miPregunta)
-    modalBody.appendChild(miNombre)
-    modalBody.appendChild(miEmail)
-    modalBody.appendChild(miTelefono)
-    // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-    // Contenido footer
-    let modalFooter = crearElemento("div",undefined, {"class": "modal-footer"})
-    // Pongo al boton modificar el id del modal ¿estas seguro?
-    let botonSi = crearElemento("button", "Si", {
-        "type" : "button",
-        "id" : "btnSi" + idModalSeguro,
-        "class" : "btn btn-primary",
-        "data-bs-dismiss" : "modal",
-        "aria-label" : "Close"
-    })
-    let botonNo = crearElemento("button", "No", {
-        "type" : "button",
-        "class" : "btn btn-secondary",
+
+// function dibujarModal(idModal, datosUsuario) {
+//     let miDiv = crearElemento("div",undefined,{"id":"modal-" +idModal, "class": "modal"})
+//     let modalDialog = crearElemento("div",undefined,{"class": "modal-dialog"})
+//     let modalContent = crearElemento("div",undefined, {"class": "modal-content"})
+//     // Contenido Header
+//     let modalHeader = crearElemento("div",undefined, {"class": "modal-header"})
+//     let modalTitulo = crearElemento("h1","Modificar Usuario", {"class" : "modal-title"})
+//     let modalCierre = crearElemento("button",undefined,{
+//         "type" : "button",
+//         "class" : "btn-close",
+//         "data-bs-dismiss" : "modal",
+//         "aria-label" : "Close"
+//     })
+//     modalHeader.appendChild(modalTitulo)
+//     modalHeader.appendChild(modalCierre)
+//     // Contenido Body
+//     // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//     let modalBody = crearElemento("div",undefined, {"class": "modal-body"})
+
+//     // Entrada nombre
+//     let labelNombre = crearElemento("label","Nombre",{"for":"inNombre"})
+//     let inputNombre = crearElemento("input",undefined,{
+//         "type" : "text",
+//         "id": "inNombre" + idModal,
+//         "placeholder" : datosUsuario.nombre
+//     })
+//     modalBody.appendChild(labelNombre)
+//     modalBody.appendChild(inputNombre)
+//     // Entrada email
+//     let labelEmail = crearElemento("label","Email",{"for":"inEmail"})
+//     let inputEmail = crearElemento("input",undefined,{
+//         "type" : "text",
+//         "id": "inEmail" + idModal,
+//         "placeholder" : datosUsuario.email
+//     })
+//     modalBody.appendChild(labelEmail)
+//     modalBody.appendChild(inputEmail)
+//     // Entrada telefono
+//     let labelTelefono = crearElemento("label","Teléfono",{"for":"inTelefono"})
+//     let inputTelefono = crearElemento("input",undefined,{
+//         "type" : "text",
+//         "id": "inTelefono" + idModal,
+//         "placeholder" : datosUsuario.telefono
+//     })
+//     modalBody.appendChild(labelTelefono)
+//     modalBody.appendChild(inputTelefono)
+//     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+//     // Contenido footer
+//     let modalFooter = crearElemento("div",undefined, {"class": "modal-footer"})
+//     // Pongo al boton modificar el id del modal ¿estas seguro?
+//     let modalModificar = crearElemento("button", "Modificar Datos", {
+//         "type" : "button",
+//         "class" : "btn btn-primary",
+//         "id" : idModal,
+//         "data-bs-toggle": "modal",
+//         "data-bs-target": "#modal-" + idModal + "-seguro"
+//     })
+//     modalModificar.addEventListener("click",manejadorClickModificar)
+//     modalFooter.appendChild(modalModificar)
+
+//     modalContent.appendChild(modalHeader)
+//     modalContent.appendChild(modalBody)
+//     modalContent.appendChild(modalFooter)
+//     modalDialog.appendChild(modalContent)
+//     miDiv.appendChild(modalDialog)
+
+//     //añado modal estas seguro 
+//     // miDiv.appendChild(dibujarModalSeguro(idModal))
+
+//     return miDiv
+// }
+
+function dibujarModalSeguro(idMagico) {
+    let modal = crearElemento("div", undefined, {
+        "id": "modal-" + idMagico + "-seguro",
+        "class": "modal"
+    });
+    let modalDialog = crearElemento("div", undefined, { "class": "modal-dialog" });
+    let modalContent = crearElemento("div", undefined, { "class": "modal-content" });
+    let modalHeader = crearElemento("div", undefined, { "class": "modal-header" });
+    let btnClose = crearElemento("button", undefined, {
+        "type": "button",
+        "class": "btn-close",
+        "data-bs-dismiss": "modal",
+        "aria-label": "Close"
+    });
+
+    modalHeader.appendChild(btnClose);
+
+    let modalBody = crearElemento("div", undefined, { "class": "modal-body" });
+    let pregunta = crearElemento("h5", "¿Estas seguro que quieres los siguientes datos para el usuario?");
+    let nombreSeguro = crearElemento("p", undefined, { "id": "inNombre" + idMagico + "-seguro" });
+    let emailSeguro = crearElemento("p", undefined, { "id": "inEmail" + idMagico + "-seguro" });
+    let telefonoSeguro = crearElemento("p", undefined, { "id": "inTelefono" + idMagico + "-seguro" });
+
+    modalBody.appendChild(pregunta);
+    modalBody.appendChild(nombreSeguro);
+    modalBody.appendChild(emailSeguro);
+    modalBody.appendChild(telefonoSeguro);
+
+    let modalFooter = crearElemento("div", undefined, { "class": "modal-footer" });
+    let btnConfirmar = crearElemento("button", "Modificar Datos", {
+        "type": "button",
+        "id": "btnSi" + idMagico,
+        "class": "btn btn-primary"
+    });
+    let btnCancelar = crearElemento("button", "Cancelar", {
+        "type": "button",
+        "class": "btn btn-secondary",
         "data-bs-toggle": "modal",
-        "data-bs-target": "#modal-" + idModalSeguro
-    })
-    botonSi.addEventListener("click", manejadorClickActualizarBD)
-    modalFooter.appendChild(botonSi)
-    modalFooter.appendChild(botonNo)
+        "data-bs-target": "#modal-" + idMagico
+    });
 
-    modalContent.appendChild(modalHeader)
-    modalContent.appendChild(modalBody)
-    modalContent.appendChild(modalFooter)
-    modalDialog.appendChild(modalContent)
-    miDiv.appendChild(modalDialog)
+    btnConfirmar.addEventListener("click", manejadorClickActualizarBD)
+    modalFooter.appendChild(btnConfirmar);
+    modalFooter.appendChild(btnCancelar);
 
-    //añado modal estas seguro 
-    // miDiv.appendChild(dibujarModalSeguro(idModal))
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalContent.appendChild(modalFooter);
+    modalDialog.appendChild(modalContent);
+    modal.appendChild(modalDialog);
 
-    return miDiv
+    return modal;
 }
 
-function recuperarUsuarios(emailUsuario) {
-    let miDiv = document.getElementById("contenedor-usuarios")
-    miDiv.innerHTML = ""
-    console.log("recupweo")
-    obtenerUsuarios(emailUsuario,function(respuesta) {
-        respuesta = JSON.parse(respuesta)
-        // recorro el json
-        let miDiv = document.getElementById("contenedor-usuarios")
-        miDiv.innerHTML =""
-        let miCabecera = crearElemento("ul",undefined,{
-            "id":"cabecera"
-        })
-        let miNombreCabecera = crearElemento("li","Nombre") 
-        let miEmailCabecera = crearElemento("li","Email") 
-        let miTelefonoCabecera = crearElemento("li","Teléfono") 
-        let miCambioCabecera = crearElemento("li","Cargo") 
-        let miHabilitadoCabecera = crearElemento("li","Habilitado/Deshabilitado")
-        let miCabeceraVacia = crearElemento("li","")
-        // let miCabeceraVacia1 = crearElemento("li","")
-        // let miCabeceraVacia2 = crearElemento("li","")
-        // let miCabeceraVacia3 = crearElemento("li","")
-        miCabecera.appendChild(miNombreCabecera) 
-        miCabecera.appendChild(miEmailCabecera) 
-        miCabecera.appendChild(miTelefonoCabecera) 
-        miCabecera.appendChild(miCambioCabecera) 
-        miCabecera.appendChild(miHabilitadoCabecera) 
-        miCabecera.appendChild(miCabeceraVacia) 
-        // miCabecera.appendChild(miCabeceraVacia1) 
-        // miCabecera.appendChild(miCabeceraVacia2) 
-        // miCabecera.appendChild(miCabeceraVacia3) 
-        miDiv.appendChild(miCabecera)
-        document.body.appendChild(miDiv)
-        for(let i = 0; i< respuesta.length; i++) {
-            miDiv.appendChild(dibujarUsuario(respuesta[i]))
-        }
-        document.body.appendChild(miDiv)
-    })
-}
+
+// function dibujarModalSeguro(idModalSeguro) {
+//     let miDiv = crearElemento("div",undefined,{"id":"modal-" +idModalSeguro + "-seguro", "class": "modal"})
+//     let modalDialog = crearElemento("div",undefined,{"class": "modal-dialog"})
+//     let modalContent = crearElemento("div",undefined, {"class": "modal-content"})
+//     // Contenido Header
+//     let modalHeader = crearElemento("div",undefined, {"class": "modal-header"})
+//     let modalCierre = crearElemento("button",undefined,{
+//         "type" : "button",
+//         "class" : "btn-close",
+//         "data-bs-dismiss" : "modal",
+//         "aria-label" : "Close"
+//     })
+//     modalHeader.appendChild(modalCierre)
+//     // Contenido Body
+//     // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//     let modalBody = crearElemento("div",undefined, {"class": "modal-body"})
+//     let miPregunta = crearElemento("h5","¿Estas seguro que quieres los siguientes datos para el usuario?")
+//     let miNombre = crearElemento("p",undefined,{"id" : "inNombre" + idModalSeguro + "-seguro"})
+//     let miEmail = crearElemento("p",undefined,{"id" : "inEmail" + idModalSeguro + "-seguro"})
+//     let miTelefono = crearElemento("p",undefined,{"id" : "inTelefono" + idModalSeguro + "-seguro"})
+//     modalBody.appendChild(miPregunta)
+//     modalBody.appendChild(miNombre)
+//     modalBody.appendChild(miEmail)
+//     modalBody.appendChild(miTelefono)
+//     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+//     // Contenido footer
+//     let modalFooter = crearElemento("div",undefined, {"class": "modal-footer"})
+//     // Pongo al boton modificar el id del modal ¿estas seguro?
+//     let botonSi = crearElemento("button", "Si", {
+//         "type" : "button",
+//         "id" : "btnSi" + idModalSeguro,
+//         "class" : "btn btn-primary",
+//         "data-bs-dismiss" : "modal",
+//         "aria-label" : "Close"
+//     })
+//     let botonNo = crearElemento("button", "No", {
+//         "type" : "button",
+//         "class" : "btn btn-secondary",
+//         "data-bs-toggle": "modal",
+//         "data-bs-target": "#modal-" + idModalSeguro
+//     })
+//     botonSi.addEventListener("click", manejadorClickActualizarBD)
+//     modalFooter.appendChild(botonSi)
+//     modalFooter.appendChild(botonNo)
+
+//     modalContent.appendChild(modalHeader)
+//     modalContent.appendChild(modalBody)
+//     modalContent.appendChild(modalFooter)
+//     modalDialog.appendChild(modalContent)
+//     miDiv.appendChild(modalDialog)
+
+//     //añado modal estas seguro 
+//     // miDiv.appendChild(dibujarModalSeguro(idModal))
+
+//     return miDiv
+// }
 
 function obtenerUsuarios(emailUsuario,callback) {
     let miEmail = localStorage.getItem("email")
@@ -604,7 +820,7 @@ function dibujarModalAddUsuarioSeguro() {
 
 // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓MANEJADORES ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 function manejadorClickBuscar(e) {
-    console.log("busco el camino a la vida")
+    e.preventDefault()
     correo = this.previousElementSibling.value
     // console.log(this.previousElementSibling.value)
     recuperarUsuarios(correo)
@@ -647,7 +863,7 @@ function cerrarModales() {
 }
 
 function manejadorClickSiAdd(e) {
-    console.log("si mi pana")
+    console.log("si")
     cerrarModales()
     // Recupero los datos del nuevo usuario
     let nombreUsuario = document.getElementById("inNombreAdd-seguro").innerHTML
@@ -668,7 +884,7 @@ function manejadorClickAddUsuario(e) {
 }
 
 function manejadorClickActualizarBD(e) {
-    console.log("actualiza puto id:", this.id)
+    console.log("actualiza id:", this.id)
     modificarUsuario(this.id)
 
 }
