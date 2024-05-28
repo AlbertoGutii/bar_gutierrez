@@ -55,7 +55,7 @@
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
 
-        $resultado = $conexion -> prepare("SELECT * FROM usuarios WHERE email = ? AND activo=1;");
+        $resultado = $conexion -> prepare("SELECT * FROM usuarios WHERE activo='1' AND email = ?;");
         $resultado -> execute(array($email));
         $existe = $resultado -> fetch();
 

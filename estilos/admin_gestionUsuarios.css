@@ -83,6 +83,19 @@ header {
     display: block;
 }
 
+/* Estilo para cada elemento dentro de un usuario */
+ul li {
+    flex: 1; /* Distribuir el espacio disponible de manera equitativa */
+    padding: 10px; /* Añadimos un poco de espacio interno */
+    text-align: center; /* Centramos el texto */
+    border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
+}
+
+/* Estilo para el último elemento dentro de un usuario */
+ul li:last-child {
+    border-right: none; /* Quitamos la línea divisoria en el último elemento */
+}
+
 /* Estilos para la cabecera */
 #cabecera {
     display: flex;

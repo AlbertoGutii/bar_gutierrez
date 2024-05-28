@@ -90,10 +90,6 @@ function comprobarInicioSesion(e) {
                 console.log("contraseña: ", contrasenia, " email: ",email)
                 contraseniaExiste(contrasenia, function(respuesta) {
                     if(respuesta === "1") {
-                        // Y si el login es correcto iniciamos sesion
-                        // la dirección de a que página tenemos que ir nos lo entrega el servidor
-                        // (El servidor hace la comprobación de si la contraseña es nueva, tenemos que ir
-                        // a la pagina de usuario o de admin)
                         iniciarSesion(email, contrasenia)
                     } 
                     else {
