@@ -80,13 +80,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0; /* Eliminamos el padding para que se ajuste al tamaño de los elementos */
+    padding: 10px; /* Eliminamos el padding para que se ajuste al tamaño de los elementos */
     background-color: #007bff9c;
     color: #fff;
     border: 1px solid #ccc;
     list-style-type: none;
     margin: 0;
-    flex: 1;
     font-weight: bolder;
     font-size: 16px; /* Ajustamos el tamaño de la fuente para que sea igual al de las listas */
     z-index: 1000;
@@ -124,13 +123,14 @@ ul li {
     text-align: center; /* Centramos el texto */
     border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
     position: relative; /* Posición relativa para los elementos */
-    overflow: hidden; /* Ocultamos el contenido que se desborde */
+    /* overflow: hidden; */
 }
 
 /* Estilo para el contenido que se desborde */
-ul li:hover {
-    overflow: visible; /* Muestra el contenido que desborda al pasar el cursor */
-}
+/* Muestra el contenido que desborda al pasar el cursor */
+/* ul li:hover {
+    overflow: visible;
+} */
 
 /* Estilo para el contenido desbordado */
 /* ul li:hover::after {
