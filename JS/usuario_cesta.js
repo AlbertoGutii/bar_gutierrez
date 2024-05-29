@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //* Función principal
 function principal() {
     comprobarExisteEmail()
+
     let container = document.getElementById("container")
     let productosNode = recuperarPedido()
     console.log(productosNode)
@@ -278,30 +279,30 @@ function crearPedido(callback) {
 
     miPeticion.onreadystatechange = function () {
         if(miPeticion.readyState == 4 && miPeticion.status == 200) {
-            console.log(miPeticion.responseText);
-            callback(miPeticion.responseText);
+            console.log(miPeticion.responseText)
+            callback(miPeticion.responseText)
         }   
     }
 
-    miPeticion.open("POST","../../PHP/usuario_cesta.php",true);
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    let productos = localStorage.getItem('productos');
-    let observaciones = document.getElementById("inObservaciones");
+    miPeticion.open("POST","../../PHP/usuario_cesta.php",true)
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let productos = localStorage.getItem('productos')
+    let observaciones = document.getElementById("inObservaciones")
     if(observaciones.value === '') {
-        observaciones.value = observaciones.placeholder;
+        observaciones.value = observaciones.placeholder
     }
     
     let misDatos = {
         "email" : localStorage.getItem("email"),
         "productos" : JSON.parse(productos),
         "observaciones" : observaciones.value
-    };
-    misDatos = JSON.stringify(misDatos);
-    miPeticion.send("crearPedido=" + misDatos);
+    }
+    misDatos = JSON.stringify(misDatos)
+    miPeticion.send("crearPedido=" + misDatos)
 }
 
 function manejadorInputCantidad() {
-    validarInputNumeros(this);
+    validarInputNumeros(this)
 }
 
 function manejadorClickSumar() {
@@ -350,7 +351,7 @@ function manejadorClickRealizarPedido() {
     let cardsProductos = document.getElementById("contenedor-productos").querySelectorAll(".card")
     let productosString = localStorage.getItem("productos")
     let productosJSON = JSON.parse(productosString) 
-    for(let i = 0; i < cardsProductos.length; i++) {
+    for(let i = 0; i< cardsProductos.length; i++) {
         let cardProducto = cardsProductos[i]
         let idProducto = cardProducto.id
         let cantidadNueva = cardProducto.querySelector("#cantidad_" + idProducto).value

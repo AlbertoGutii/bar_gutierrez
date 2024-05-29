@@ -1,6 +1,15 @@
 window.onload = principal
 
 document.addEventListener("DOMContentLoaded", function() {
+    window.onscroll = function() {
+        scrollFunction()
+    } 
+    setInterval(circuloCesta, 1000)
+    
+    popUpAñadido()
+    
+    popUpError()
+
     document.getElementById("btnLogo").onclick = function() {
         window.location.href = "../../index.html"
     }
@@ -62,6 +71,16 @@ function principal() {
     document.body.appendChild(productos)
 }
 
+function circuloCesta() {
+    productos = localStorage.getItem("productos")
+    productos = JSON.parse(productos)
+    cantidad = Object.keys(productos).length
+    console.log(cantidad)
+    // circuloPuto = document.getElementById('circulo').style
+    // circuloPuto.content = cantidad
+    $('#circulo').attr("title", cantidad)
+}
+
 //* funcion para crear elementos
 function crearElemento(etiqueta, texto, atributos) {
     let elementoNuevo = document.createElement(etiqueta)
@@ -75,6 +94,57 @@ function crearElemento(etiqueta, texto, atributos) {
         }
     }
     return elementoNuevo
+}
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("btnScrollToTop").style.display = "block";
+    } else {
+        document.getElementById("btnScrollToTop").style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    document.body.scrollTop = 0; // Para Safari
+    document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+}
+
+function dibujarModalError(idModal, titulo,elementosCuerpo,elementosFooter) {
+    let miDiv = crearElemento("div",undefined,{"id":"modal-" +idModal, "class": "modal"})
+    let modalDialog = crearElemento("div",undefined,{"class": "modal-dialog"})
+    let modalContent = crearElemento("div",undefined, {"class": "modal-content"})
+    // Contenido Header
+    let modalHeader = crearElemento("div",undefined, {"class": "modal-header"})
+    let modalTitulo = crearElemento("h1", titulo, {"class" : "modal-title"})
+    modalHeader.appendChild(modalTitulo)
+
+    if(elementosCuerpo !== undefined) {
+        modalBody.appendChild(elementosCuerpo)
+    }
+
+    if(elementosFooter !== undefined) {
+        modalFooter.appendChild(elementosFooter)
+    }
+
+    modalContent.appendChild(modalHeader)
+    modalDialog.appendChild(modalContent)
+    miDiv.appendChild(modalDialog)
+
+    return miDiv
+}
+
+function popUpAñadido() {
+    idModal = "Popup-add"
+    tituloModal = "Producto añadido"
+    miModal = dibujarModalError(idModal,tituloModal)
+    document.body.appendChild(miModal)
+}
+
+function popUpError(){
+    idModal = "Popup-error"
+    tituloModal = "Introduce una cantidad"
+    miModal = dibujarModalError(idModal,tituloModal)
+    document.body.appendChild(miModal)
 }
 
 //* funcion para obtener los productos de la base de datos
@@ -330,16 +400,24 @@ function validarInputNumeros(elemento) {
 function manejadorClickAñadirProducto(idProducto)
 {
     let miCantidad = document.getElementById("cantidad_"+idProducto).value
-    if (miCantidad === "" || miCantidad === null) 
+    if (miCantidad === "" || miCantidad === null || miCantidad <= 0) 
     {
+        $("#modal-Popup-error").modal('show')
+        setTimeout(function() {
+            $("#modal-Popup-error").modal('hide')
+        }, 1000)
         console.log("PRODUCTO NO AÑADIDO")
-        
     } 
     else 
-    {   
-        //* ESTILO MENSAJE DE ERRORES
+    {
+        console.log("PRODUCTO AÑADIDO")        
+        $("#modal-Popup-add").modal('show')
+        
         almacenarProductos(idProducto, miCantidad)
-        console.log("PRODUCTO AÑADIDO")
+
+        setTimeout(function() {
+        $("#modal-Popup-add").modal('hide')
+        }, 1000)
         
     }
 }
