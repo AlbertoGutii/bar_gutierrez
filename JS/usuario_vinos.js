@@ -133,7 +133,7 @@ function dibujarProductos(datosProducto) {
 
     // Cantidad del producto
     let quantityInput = document.createElement("input");
-    quantityInput.setAttribute("type", "number");
+    quantityInput.setAttribute("type", "text");
     quantityInput.setAttribute("placeholder", "Cantidad");
     quantityInput.setAttribute("id", "cantidad_" + datosProducto.id);
     quantityInput.classList.add("card-quantity");
