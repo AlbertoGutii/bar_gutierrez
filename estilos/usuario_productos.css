@@ -175,6 +175,73 @@ header {
 .dropdown {
   position: relative;
 }
+
+/* Estilos para la modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0); /* Fondo transparente */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-header {
+  padding: 10px 16px;
+  background-color: #fefefe;
+  color: black;
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+/* Estilos para el botón de ir arriba */
+#btnScrollToTop {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 999;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 50%;
+}
+
+#btnScrollToTop:hover {
+  background-color: #0056b3;
+}
+
+#circulo::after {
+    content: attr(title);
+    display: inline-block;
+    position: relative;
+    /* top: -2vh; */
+    left: -0.4vw;
+    background: #58aba1;
+    color: black;
+    border-radius: 50%;
+    width: 1.8em;
+    height: 1.8em;
+    text-align: center;
+    padding-top: inherit;
+}
 /** FIN DEL HEADER */
 
 /** CONTENEDOR PRODUCTOS */
@@ -360,3 +427,46 @@ header {
     margin-top: 20px;
     font-size: 0.8em;
 } */
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    body .menu .navbar ul {
+        display: none !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    .menu label {
+        display: block !important;
+    }
+
+    .menu label img {
+        width: 100px !important; /* Ajusta el tamaño del icono según sea necesario */
+    }
+
+    .menu label:hover + .navbar ul {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    #pie_pagina div {
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        width: 60px !important;
+    }
+
+    #pie_pagina {
+        padding: 10px !important;
+    }
+
+    #pie_pagina div {
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+}
