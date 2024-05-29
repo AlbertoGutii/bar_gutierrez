@@ -205,7 +205,11 @@ function dibujarUsuario(datosUsuario) {
         "data-bs-toggle": "modal",
         "data-bs-target": "#modal-" + idMagico
     });
-    acciones.appendChild(botonModificar);
+    // Añado el modal al boton modificar
+    let miModal = dibujarModal(idMagico,datosUsuario);
+    let miModalSeguro = dibujarModalSeguro(idMagico)
+    acciones.appendChild(botonModificar)
+    miFila.appendChild(acciones)
 
     let botonHabilitar = crearElemento("input", undefined, {
         "type": "button",
@@ -233,8 +237,8 @@ function dibujarUsuario(datosUsuario) {
 
     miFila.appendChild(acciones);
 
-    let miModal = dibujarModal(idMagico, datosUsuario);
-    let miModalSeguro = dibujarModalSeguro(idMagico);
+    miModal = dibujarModal(idMagico, datosUsuario);
+    miModalSeguro = dibujarModalSeguro(idMagico);
     miFila.appendChild(miModal);
     miFila.appendChild(miModalSeguro);
 
@@ -340,7 +344,9 @@ function dibujarModalSeguro(idMagico) {
     let btnConfirmar = crearElemento("button", "Modificar Datos", {
         "type": "button",
         "id": "btnSi" + idMagico,
-        "class": "btn btn-primary"
+        "class": "btn btn-primary",
+        "data-bs-dismiss" : "modal",
+        "aria-label" : "Close"
     });
     let btnCancelar = crearElemento("button", "Cancelar", {
         "type": "button",
