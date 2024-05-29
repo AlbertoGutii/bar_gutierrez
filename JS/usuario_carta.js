@@ -137,6 +137,7 @@ function dibujarProductos(datosProducto) {
     quantityInput.setAttribute("placeholder", "Cantidad");
     quantityInput.setAttribute("id", "cantidad_" + datosProducto.id);
     quantityInput.classList.add("card-quantity");
+    quantityInput.addEventListener("input", manejadorInputCantidad)
     cardDiv.appendChild(quantityInput);
 
     // Precio y botón
@@ -310,14 +311,19 @@ function manejadorInputCantidad() {
     validarInputNumeros(this)
 }
 
-function validarInputNumeros(valor) {
-    if (!isNaN(valor) && parseFloat(valor) > 0) 
-    {
-        return true
+function validarInputNumeros(elemento) {
+    let regex = /^\d+$/
+    let valor = elemento.value
+    console.log(valor)
+
+    if (regex.test(valor)) {
+        if (valor.length >= 2 && valor[0] === "0") {
+            elemento.value = valor.slice(1)
+        }
     } 
     else 
     {
-        return false
+        elemento.value = 0
     }
 }
 
