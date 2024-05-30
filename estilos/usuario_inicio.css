@@ -155,7 +155,7 @@ header {
   z-index: 1000;
 }
 
-#subConfiguracion input[type="button"] {
+#subConfiguracion button {
   background-color: transparent;
   border: none;
   padding: 5px 10px;
@@ -165,12 +165,20 @@ header {
   text-align: justify;
 }
 
-#subConfiguracion input[type="button"]:hover {
-  background-color: #ddd;
+#subConfiguracion li button:hover {
+  background-color:  #4c8582;
 }
 
 .dropdown:hover #subConfiguracion {
   display: block;
+  top: 32px;
+  padding: 5px 0;
+}
+
+.dropdown:hover #subConfiguracion {
+    display: block;
+    top: 32px;
+    padding: 5px 0;
 }
 
 .dropdown {

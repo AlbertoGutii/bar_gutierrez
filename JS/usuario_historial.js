@@ -91,15 +91,17 @@ function dibujarHistorico(datosPedido) {
     
     if (datosPedido.estado == "Completado") {
         let miEstado = crearElemento("li", undefined, {"class": "circle"})
-        let miBoton = crearElemento("button", "El pedido ya ha sido entregado", {
-            "type": "button", 
-            "class": "btn btn-secondary", 
-            "data-bs-toggle": "popover",
-            "data-bs-trigger": "focus",
-            "data-bs-placement": "left", 
-            "title": "Recogida: " + datosPedido.fecha_recogida
-        })
-        miEstado.appendChild(miBoton)
+        // Botón de popover
+        let popoverButton = document.createElement("button")
+        popoverButton.setAttribute("type", "button")
+        popoverButton.classList.add("btn", "btn-secondary")
+        popoverButton.setAttribute("data-bs-container", "body")
+        popoverButton.setAttribute("data-bs-toggle", "popover")
+        popoverButton.setAttribute("data-bs-placement", "right")
+        popoverButton.setAttribute("data-bs-trigger", "click");
+        popoverButton.setAttribute("data-bs-content", datosPedido.fecha_recogida)
+        popoverButton.textContent = "Ya ha sido recogido"
+        miEstado.appendChild(popoverButton)
         miFila.appendChild(miEstado)
         
         // let fecha_recogida = crearElemento("li", datosPedido.fecha_recogida, {"class": "fecha"})
@@ -126,6 +128,11 @@ function dibujarHistorico(datosPedido) {
     
     let miUnidad = crearElemento("li", datosPedido.observaciones, {"class": "observacion"})
     miFila.appendChild(miUnidad)
+
+    // Inicializar popover
+    $(function () {
+        $('[data-bs-toggle="popover"]').popover()
+    })
 
     return miFila
 }

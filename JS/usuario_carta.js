@@ -278,6 +278,7 @@ function dibujarProductos(datosProducto) {
     popoverButton.setAttribute("data-bs-container", "body");
     popoverButton.setAttribute("data-bs-toggle", "popover");
     popoverButton.setAttribute("data-bs-placement", "bottom");
+    popoverButton.setAttribute("data-bs-trigger", "hover");
     popoverButton.setAttribute("data-bs-content", datosProducto.descripcion);
     popoverButton.textContent = datosProducto.nombre;
 
