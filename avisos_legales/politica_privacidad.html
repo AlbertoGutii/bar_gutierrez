@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politica de privacidad</title>
+    <link rel="stylesheet" href="../estilos/usuario_inicio.css">
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JS/usuario_avisos.js"></script>
     <link rel="shortcut icon" href="../imagenes/svg/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../estilos/usuario_inicio.css">
 </head>
 <body>
     <!--* BARRA DE NAVEGACION -->
@@ -54,7 +58,7 @@
                     </li>
                     <!--* ICONOS DE CONFIGURACION Y CESTA -->
                     <li id="iconos">
-                        <button id="btnCesta">
+                        <button type="button" id="btnCesta" class="btn btn-primary position">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" color="#000000" fill="none">
                                 <path d="M8 16L16.7201 15.2733C19.4486 15.046 20.0611 14.45 20.3635 11.7289L21 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                 <path d="M6 6H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -63,8 +67,10 @@
                                 <path d="M8 20L15 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                 <path d="M2 2H2.966C3.91068 2 4.73414 2.62459 4.96326 3.51493L7.93852 15.0765C8.08887 15.6608 7.9602 16.2797 7.58824 16.7616L6.63213 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                             </svg>
-                        </button>
-                        <span id="circulo"></span>
+                            <span id="circulo" class="position-absolute top-0 start-100 translate-middle badge rounded-fill">
+                              <!-- <span class="visually-hidden">productos en la cesta</span> -->
+                            </span>
+                          </button>
                     </li>
                     <li id="iconos" class="dropdown">
                         <a style="cursor: pointer;">
