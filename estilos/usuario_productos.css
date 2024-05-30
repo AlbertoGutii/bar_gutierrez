@@ -278,10 +278,11 @@ header {
 
 #contenedor-productos {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: space-around;
-    padding: 20px;
-    gap: 20px;
+    align-items: center;
+    gap: 40px 27px;
+    /* padding: 20px; */
 }
 
 .card-img img {
@@ -289,15 +290,16 @@ header {
     height: 130px;
     border-radius: 20px;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* Card */
-.card {
+#carta {
     width: calc(35% - 150px);
-    height: auto;
-    padding: .8em;
-    background: #3ea594;
+    /* width: 340px; */
+    flex-grow: 4;
+    flex-basis: content;
+    padding: 5px;
+    background: #4c8582;
     position: relative;
     overflow: visible;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);

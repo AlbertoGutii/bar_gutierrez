@@ -11,6 +11,7 @@
         $resultado = $conexion->prepare("SELECT 
             p.id,
             p.nombre,
+            p.descripcion,
             c.categoria,
             p.foto,
             p.precio
@@ -27,6 +28,7 @@
             $productos = array(
                 'id' => $fila['id'],
                 'nombre' => $fila['nombre'],
+                'descripcion' => $fila['descripcion'],
                 'categoria' => $fila['categoria'],
                 'foto' => $fila['foto'],
                 'precio' => $fila['precio']

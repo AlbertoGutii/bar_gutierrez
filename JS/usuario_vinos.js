@@ -75,7 +75,6 @@ function circuloCesta() {
     productos = localStorage.getItem("productos")
     productos = JSON.parse(productos)
     cantidad = Object.keys(productos).length
-    console.log(cantidad)
     // circuloPuto = document.getElementById('circulo').style
     // circuloPuto.content = cantidad
     $('#circulo').attr("title", cantidad)
@@ -172,6 +171,7 @@ function obtenerProductos(callback)
 function dibujarProductos(datosProducto) {
     let cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
+    cardDiv.setAttribute("id", "carta");
 
     // Imagen del producto
     let imgDiv = document.createElement("div");
@@ -190,15 +190,23 @@ function dibujarProductos(datosProducto) {
     // Información del producto
     let infoDiv = document.createElement("div");
     infoDiv.classList.add("card-info");
+    
     let titlePara = document.createElement("p");
     titlePara.classList.add("text-title");
     titlePara.setAttribute("id", "nombre_producto");
-    titlePara.textContent = datosProducto.nombre;
-    let bodyPara = document.createElement("p");
-    bodyPara.classList.add("text-body");
-    bodyPara.textContent = datosProducto.descripcion;
+    
+    // Botón de popover
+    let popoverButton = document.createElement("button");
+    popoverButton.setAttribute("type", "button");
+    popoverButton.classList.add("btn", "btn-secondary");
+    popoverButton.setAttribute("data-bs-container", "body");
+    popoverButton.setAttribute("data-bs-toggle", "popover");
+    popoverButton.setAttribute("data-bs-placement", "bottom");
+    popoverButton.setAttribute("data-bs-content", datosProducto.descripcion);
+    popoverButton.textContent = datosProducto.nombre;
+
+    titlePara.appendChild(popoverButton);
     infoDiv.appendChild(titlePara);
-    infoDiv.appendChild(bodyPara);
     cardDiv.appendChild(infoDiv);
 
     // Cantidad del producto
@@ -207,7 +215,7 @@ function dibujarProductos(datosProducto) {
     quantityInput.setAttribute("placeholder", "Cantidad");
     quantityInput.setAttribute("id", "cantidad_" + datosProducto.id);
     quantityInput.classList.add("card-quantity");
-    quantityInput.addEventListener("input", manejadorInputCantidad)
+    quantityInput.addEventListener("input", manejadorInputCantidad);
     cardDiv.appendChild(quantityInput);
 
     // Precio y botón
@@ -240,9 +248,14 @@ function dibujarProductos(datosProducto) {
     footerDiv.appendChild(buttonDiv);
     cardDiv.appendChild(footerDiv);
 
-    // console.log(cardDiv);
+    // Inicializar popover
+    $(function () {
+        $('[data-bs-toggle="popover"]').popover();
+    });
+
     return cardDiv;
 }
+
 
 //* funcion para recuperar los productos del php
 function recuperarProductos() {
