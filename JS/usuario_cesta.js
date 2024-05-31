@@ -80,12 +80,10 @@ function crearElemento(etiqueta, texto, atributos) {
 
 // Función para dibujar el modal de resumen de pedido
 function dibujarModalResumenPedido(productos) {
-    // Crear contenedor principal del modal
     let miDiv = crearElemento("div", undefined, { "id": "modalResumen-pedido", "class": "modal" });
     let modalDialog = crearElemento("div", undefined, { "class": "modal-dialog" });
     let modalContent = crearElemento("div", undefined, { "class": "modal-content" });
 
-    // Contenido Header
     let modalHeader = crearElemento("div", undefined, { "class": "modal-header" });
     let modalTitulo = crearElemento("h1", "Resumen de Pedido", { "class": "modal-title" });
     let modalCierre = crearElemento("button", undefined, {
@@ -97,17 +95,13 @@ function dibujarModalResumenPedido(productos) {
     modalHeader.appendChild(modalTitulo);
     modalHeader.appendChild(modalCierre);
 
-    // Contenido Body
     let modalBody = crearElemento("div", undefined, { "class": "modal-body" });
 
-    // Pregunta de Confirmación
     let confirmacion = crearElemento("h4", "¿Estás seguro que quieres realizar el siguiente pedido?");
     modalBody.appendChild(confirmacion);
 
-    // Lista de Productos
     let listaProductos = crearElemento("div", undefined, { "id": "listaProductos" });
 
-    // Añadir productos dinámicamente
     let precioTotal = 0;
     productos.forEach(producto => {
         let productoElemento = crearElemento("h5", `${producto.nombre}: ${producto.cantidad} unidades => ${producto.precio * producto.cantidad} €`, { "class": "producto" });
@@ -116,14 +110,11 @@ function dibujarModalResumenPedido(productos) {
     });
     modalBody.appendChild(listaProductos);
 
-    // Precio Total
     let totalElemento = crearElemento("h5", `Total: ${precioTotal} €`, { "id": "precioTotal" });
     modalBody.appendChild(totalElemento);
 
-    // Contenido Footer
     let modalFooter = crearElemento("div", undefined, { "class": "modal-footer" });
 
-    // Botones de Confirmación
     let btnConfirmarPedido = crearElemento("button", "Confirmar Pedido", {
         "type": "button",
         "class": "btn btn-primary",
@@ -266,7 +257,6 @@ function dibujarProductos(datosProducto) {
     footerDiv.appendChild(deleteButton)
     cardDiv.appendChild(footerDiv)
 
-    // Inicializar popover
     $(function () {
         $('[data-bs-toggle="popover"]').popover()
     })
@@ -321,7 +311,6 @@ function recuperarPedido(longitud) {
                         "id": "btnPedido",
                         "class": "btn_bonito"
                     })
-                    // Cambio aquí: pasar una referencia a la función manejadorResumenPedido
                     botonPedido.addEventListener("click", function() { manejadorResumenPedido(respuesta) })
                     divPagar.appendChild(inObservaciones)
                     divPagar.appendChild(botonPedido)
@@ -334,21 +323,18 @@ function recuperarPedido(longitud) {
             return miDiv
         }
     } else {
-        console.error("El elemento con ID 'contenedor-productos' no se encontró en el DOM.")
+        // console.error("El elemento con ID 'contenedor-productos' no se encontró en el DOM.")
         return document.createElement("div")
     }
 }
 
 
 function manejadorResumenPedido(respuesta) {
-    // Crear y añadir el modal al DOM
     let modalElement = dibujarModalResumenPedido(respuesta);
     document.body.appendChild(modalElement);
 
-    // Inicializar el modal de Bootstrap
     let modalResumenPedido = new bootstrap.Modal(modalElement);
 
-    // Mostrar el modal
     modalResumenPedido.show();
 }
 
@@ -374,7 +360,6 @@ function validarInputNumeros(elemento) {
 }
 
 function crearPedido(callback) {
-    // enviar a PHP
     let miPeticion = new XMLHttpRequest()
 
     miPeticion.onreadystatechange = function () {
@@ -426,21 +411,17 @@ function manejadorClickPapelera() {
 
     let idProducto = cardDiv.id
 
-    // Eliminar el producto del DOM
     cardDiv.remove()
 
-    // Eliminar el producto del almacenamiento local
     let productosString = localStorage.getItem("productos")
     if (productosString) {
         let productosJSON = JSON.parse(productosString)
         console.log("Eliminando producto del almacenamiento local:", idProducto)
         delete productosJSON[idProducto]
 
-        // Actualizar el almacenamiento local
         productosString = JSON.stringify(productosJSON)
         localStorage.setItem("productos", productosString)
 
-        // Si el carrito está vacío, limpiar el contenedor de productos
         if (Object.keys(productosJSON).length === 0) {
             document.getElementById("contenedor-productos").innerHTML = ""
         }
