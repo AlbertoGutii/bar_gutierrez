@@ -116,18 +116,18 @@ header {
   z-index: 1000;
 }
 
-#submenu input[type="button"] {
-  background-color: transparent;
-  border: none;
-  padding: 10px 20px;
-  text-decoration: none;
-  display: block;
-  width: 100%;
-  text-align: justify;
+#submenu li button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: justify;
 }
-
-#submenu input[type="button"]:hover {
-  background-color: #ddd;
+  
+#submenu li button:hover {
+    background-color:  #4c8582;
 }
 
 .dropdown:hover #submenu {
@@ -155,12 +155,11 @@ header {
   z-index: 1000;
 }
 
-#subConfiguracion button {
+#subConfiguracion li button {
   background-color: transparent;
   border: none;
-  padding: 5px 10px;
+  padding: 10px 10px;
   text-decoration: none;
-  display: block;
   width: 100%;
   text-align: justify;
 }
@@ -173,12 +172,6 @@ header {
   display: block;
   top: 32px;
   padding: 5px 0;
-}
-
-.dropdown:hover #subConfiguracion {
-    display: block;
-    top: 32px;
-    padding: 5px 0;
 }
 
 .dropdown {

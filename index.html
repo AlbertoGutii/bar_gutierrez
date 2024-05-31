@@ -36,15 +36,18 @@
                     </li>
                     <li class="dropdown">
                         <input type="button" value="Carta">
-                            <ul id="submenu">
+                            <ul class="dropdown-menu" id="submenu">
                                 <li>
-                                    <input type="button" id="btnCarta" value="Carta">
+                                    <h6 class="dropdown-header">Productos</h6>
                                 </li>
                                 <li>
-                                    <input type="button" id="btnMenu" value="Menú">
+                                    <button class="dropdown-item" style="padding-right: 70px" id="btnCarta">Carta</button>
                                 </li>
                                 <li>
-                                    <input type="button" id="btnVinos" value="Vinos">
+                                    <button class="dropdown-item" style="padding-right: 70px" id="btnMenu">Menú</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" style="padding-right: 70px" id="btnVinos">Vinos</button>
                                 </li>
                             </ul>
                         </input>
@@ -85,25 +88,13 @@
                                         <button class="dropdown-item" id="btnIniciarSesion">Iniciar Sesión</button>
                                     </li>
                                     <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
                                         <button class="dropdown-item" id="btnHistorialPedidos">Historial de Pedidos</button>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
                                     </li>
                                     <li>
                                         <button class="dropdown-item" id="btnAdminUsuarios">Gestionar Usuarios</button>
                                     </li>
                                     <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" id="btnAdminUsuarios">Gestionar Pedidos</button>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
+                                        <button class="dropdown-item" id="btnAdminPedidos">Gestionar Pedidos</button>
                                     </li>
                                     <li>
                                         <button class="dropdown-item" style="padding-right: 70px" id="btnCerrarSesion">Cerrar sesión</button>
