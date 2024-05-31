@@ -176,6 +176,73 @@ header {
 .dropdown {
   position: relative;
 }
+
+/* Estilos para la modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0); /* Fondo transparente */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-header {
+  padding: 10px 16px;
+  background-color: #fefefe;
+  color: black;
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+/* Estilos para el botón de ir arriba */
+#btnScrollToTop {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 999;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 50%;
+}
+
+#btnScrollToTop:hover {
+  background-color: #0056b3;
+}
+
+#circulo::after {
+    content: attr(title);
+    display: inline-block;
+    position: relative;
+    /* top: -2vh; */
+    left: -0.4vw;
+    background: #58aba1;
+    color: black;
+    border-radius: 50%;
+    width: 1.8em;
+    height: 1.8em;
+    text-align: center;
+    padding-top: inherit;
+}
 /** FIN DEL HEADER */
 
 /** CONTENEDOR PRODUCTOS */
@@ -186,7 +253,8 @@ header {
     align-items: center;
     text-align: center;
     width: 100%;
-    padding: 10px 0px;
+    padding: 10px 10px;
+    gap: 35px;
     /* background: #8597e7; */
 }
 
@@ -212,10 +280,11 @@ header {
 
 #contenedor-productos {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: space-around;
-    padding: 20px;
-    gap: 20px;
+    align-items: center;
+    gap: 40px 27px;
+    /* padding: 20px; */
 }
 
 #divPagar {
@@ -235,15 +304,16 @@ header {
     height: 130px;
     border-radius: 20px;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* Card */
-.card {
-    width: calc(50% - 50px);
-    height: auto;
-    padding: .8em;
-    background: #3ea594;
+.carta {
+    width: calc(35% - 150px);
+    /* width: 340px; */
+    flex-grow: 4;
+    flex-basis: content;
+    padding: 5px;
+    background: #4c8582;
     position: relative;
     overflow: visible;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -276,11 +346,29 @@ header {
     border-top: 1px solid #ddd;
 }
 
-/* Text */
-.text-title {
+.card-footer span {
     font-weight: 900;
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 1.5;
+}
+
+/* Text */
+.text-title button {
+    font-weight: 900;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.text-title button {
+    background-color: #4c8582;
+    color: black;
+    border: none;
+}
+
+.text-title button:hover {
+    color: black;
+    border: transparent;
+    background-color: #ffcaa6;
 }
 
 .text-body {
@@ -321,7 +409,7 @@ header {
 }
 
 /*? boton realizar pedido */
-.btn {
+.btn_bonito {
     padding: 1.1em 2em;
     background: none;
     border: 2px solid #fff;
@@ -337,7 +425,7 @@ header {
     box-shadow: 0 2px 0 2px #000;
 }
 
-.btn:before {
+.btn_bonito:before {
     content: "";
     position: absolute;
     width: 100px;
@@ -348,18 +436,18 @@ header {
     transition: all 0.5s;
 }
 
-.btn:hover {
+.btn_bonito:hover {
     background-color: #750000;
     color: #fff;
     box-shadow: 0 2px 0 2px #0d3b66;
 }
 
-.btn:hover::before {
+.btn_bonito:hover::before {
     transform: skewX(30deg) translate(150%, -50%);
     transition-delay: 0.1s;
 }
 
-.btn:active {
+.btn_bonito:active {
     transform: scale(0.9);
 }
 /** FIN DEL CONTENEDOR PRODUCTOS */

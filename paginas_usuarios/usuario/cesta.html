@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cesta</title>
-    <link rel="stylesheet" href="../../estilos/usuario_cesta.css">
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../estilos/usuario_cesta.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -70,7 +70,6 @@
                                 <path d="M2 2H2.966C3.91068 2 4.73414 2.62459 4.96326 3.51493L7.93852 15.0765C8.08887 15.6608 7.9602 16.2797 7.58824 16.7616L6.63213 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                             </svg>
                         </button>
-                        <span id="circulo"></span>
                     </li>
                     <li id="iconos" class="dropdown">
                         <a style="cursor: pointer;">
@@ -107,13 +106,14 @@
     </header>
     
     
-    <!--* AQUI IRIA EL FORMULARIO PARA PAGAR -->
     <div class="container" id="container">
         <h1>Tu cesta:</h1>
         <div id="contenedor-productos">
             
         </div>
     </div>
+
+    <div id="contenedorModalesAdd" class="container"></div>
     
     
     <!--* PIE DE PAGINA -->

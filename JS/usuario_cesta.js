@@ -78,10 +78,83 @@ function crearElemento(etiqueta, texto, atributos) {
     return elementoNuevo
 }
 
+// Función para dibujar el modal de resumen de pedido
+function dibujarModalResumenPedido(productos) {
+    // Crear contenedor principal del modal
+    let miDiv = crearElemento("div", undefined, { "id": "modalResumen-pedido", "class": "modal" });
+    let modalDialog = crearElemento("div", undefined, { "class": "modal-dialog" });
+    let modalContent = crearElemento("div", undefined, { "class": "modal-content" });
+
+    // Contenido Header
+    let modalHeader = crearElemento("div", undefined, { "class": "modal-header" });
+    let modalTitulo = crearElemento("h1", "Resumen de Pedido", { "class": "modal-title" });
+    let modalCierre = crearElemento("button", undefined, {
+        "type": "button",
+        "class": "btn-close",
+        "data-bs-dismiss": "modal",
+        "aria-label": "Close"
+    });
+    modalHeader.appendChild(modalTitulo);
+    modalHeader.appendChild(modalCierre);
+
+    // Contenido Body
+    let modalBody = crearElemento("div", undefined, { "class": "modal-body" });
+
+    // Pregunta de Confirmación
+    let confirmacion = crearElemento("h4", "¿Estás seguro que quieres realizar el siguiente pedido?");
+    modalBody.appendChild(confirmacion);
+
+    // Lista de Productos
+    let listaProductos = crearElemento("div", undefined, { "id": "listaProductos" });
+
+    // Añadir productos dinámicamente
+    let precioTotal = 0;
+    productos.forEach(producto => {
+        let productoElemento = crearElemento("h5", `${producto.nombre}: ${producto.cantidad} unidades => ${producto.precio * producto.cantidad} €`, { "class": "producto" });
+        listaProductos.appendChild(productoElemento);
+        precioTotal += producto.precio * producto.cantidad;
+    });
+    modalBody.appendChild(listaProductos);
+
+    // Precio Total
+    let totalElemento = crearElemento("h5", `Total: ${precioTotal} €`, { "id": "precioTotal" });
+    modalBody.appendChild(totalElemento);
+
+    // Contenido Footer
+    let modalFooter = crearElemento("div", undefined, { "class": "modal-footer" });
+
+    // Botones de Confirmación
+    let btnConfirmarPedido = crearElemento("button", "Confirmar Pedido", {
+        "type": "button",
+        "class": "btn btn-primary",
+        "id": "btnConfirmarPedido",
+        "data-bs-dismiss": "modal",
+    });
+    let btnCancelarPedido = crearElemento("button", "Cancelar", {
+        "type": "button",
+        "class": "btn btn-secondary",
+        "id": "btnCancelarPedido",
+        "data-bs-dismiss": "modal",
+        "aria-label": "Close"
+    });
+    btnConfirmarPedido.addEventListener("click", manejadorClickRealizarPedido)
+    modalFooter.appendChild(btnConfirmarPedido);
+    modalFooter.appendChild(btnCancelarPedido);
+
+    // Construir el modal completo
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalContent.appendChild(modalFooter);
+    modalDialog.appendChild(modalContent);
+    miDiv.appendChild(modalDialog);
+
+    return miDiv;
+}
+
 function dibujarProductos(datosProducto) {
     let cardDiv = document.createElement("div")
     cardDiv.setAttribute("id", datosProducto.id)
-    cardDiv.classList.add("card")
+    cardDiv.classList.add("carta")
 
     let imgDiv = document.createElement("div")
     imgDiv.classList.add("card-img")
@@ -101,13 +174,20 @@ function dibujarProductos(datosProducto) {
     let titlePara = document.createElement("p")
     titlePara.classList.add("text-title")
     titlePara.setAttribute("id", "nombre_producto")
-    titlePara.textContent = datosProducto.nombre
-    let bodyPara = document.createElement("p")
-    bodyPara.classList.add("text-body")
-    if(datosProducto.descripcion !== null)
-    bodyPara.textContent = datosProducto.descripcion
+    
+    // Botón de popover
+    let popoverButton = document.createElement("button")
+    popoverButton.setAttribute("type", "button")
+    popoverButton.classList.add("btn", "btn-secondary")
+    popoverButton.setAttribute("data-bs-container", "body")
+    popoverButton.setAttribute("data-bs-toggle", "popover")
+    popoverButton.setAttribute("data-bs-placement", "bottom")
+    popoverButton.setAttribute("data-bs-trigger", "hover")
+    popoverButton.setAttribute("data-bs-content", datosProducto.descripcion)
+    popoverButton.textContent = datosProducto.nombre
+
+    titlePara.appendChild(popoverButton)
     infoDiv.appendChild(titlePara)
-    infoDiv.appendChild(bodyPara)
     cardDiv.appendChild(infoDiv)
 
     let decreaseButton = document.createElement("input")
@@ -149,7 +229,7 @@ function dibujarProductos(datosProducto) {
     footerDiv.appendChild(priceSpan)
 
     let deleteButton = document.createElement("button")
-    deleteButton.classList.add("delete-button")
+    deleteButton.classList.add("card-button")
     let deleteSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg")
     deleteSVG.setAttribute("xmlns", "http://www.w3.org/2000/svg")
     deleteSVG.setAttribute("viewBox", "0 0 24 24")
@@ -186,6 +266,11 @@ function dibujarProductos(datosProducto) {
     footerDiv.appendChild(deleteButton)
     cardDiv.appendChild(footerDiv)
 
+    // Inicializar popover
+    $(function () {
+        $('[data-bs-toggle="popover"]').popover()
+    })
+
     return cardDiv
 }
 
@@ -209,7 +294,6 @@ function enviarProductos(callback)
 function recuperarPedido(longitud) {
     let miDiv = document.getElementById("contenedor-productos")
     let container = document.getElementById("container")
-    let precioTotal = 0
     if (miDiv) 
     {
         if (localStorage.getItem("productos") !== null) 
@@ -222,12 +306,10 @@ function recuperarPedido(longitud) {
                 for (let i = 0; i < respuesta.length; i++) 
                 {
                     miDiv.appendChild(dibujarProductos(respuesta[i]))
-                    precioTotal += respuesta[i].precio * respuesta[i].cantidad
                 }
                 if (Object.keys(respuesta).length > 0) 
                 {
                     let divPagar = crearElemento("div", undefined, { "id": "divPagar" })
-                    let totalPedido = crearElemento("h2", "TOTAL: " + precioTotal + "€", {"id":"precio_total"})
                     let inObservaciones = crearElemento("textarea", undefined, {
                         "rows": "4",
                         "cols": "50",
@@ -237,10 +319,10 @@ function recuperarPedido(longitud) {
                     let botonPedido = crearElemento("button", "Realizar Pedido", {
                         "type": "button",
                         "id": "btnPedido",
-                        "class": "btn"
+                        "class": "btn_bonito"
                     })
-                    botonPedido.addEventListener("click", manejadorClickRealizarPedido)
-                    divPagar.appendChild(totalPedido)
+                    // Cambio aquí: pasar una referencia a la función manejadorResumenPedido
+                    botonPedido.addEventListener("click", function() { manejadorResumenPedido(respuesta) })
                     divPagar.appendChild(inObservaciones)
                     divPagar.appendChild(botonPedido)
                     container.appendChild(divPagar)
@@ -255,6 +337,24 @@ function recuperarPedido(longitud) {
         console.error("El elemento con ID 'contenedor-productos' no se encontró en el DOM.")
         return document.createElement("div")
     }
+}
+
+
+function manejadorResumenPedido(respuesta) {
+    // Crear y añadir el modal al DOM
+    let modalElement = dibujarModalResumenPedido(respuesta);
+    document.body.appendChild(modalElement);
+
+    // Inicializar el modal de Bootstrap
+    let modalResumenPedido = new bootstrap.Modal(modalElement);
+
+    // Mostrar el modal
+    modalResumenPedido.show();
+}
+
+function cerrarModales() {
+    $('#modal-Add-Usuario').modal('hide')
+    $('#modalAdd-seguro').modal('hide')
 }
 
 function validarInputNumeros(elemento) {
@@ -366,6 +466,7 @@ function manejadorClickRealizarPedido() {
     }
     crearPedido(function(respuesta) {
         if(respuesta === "1") {
+            cerrarModales()
             console.log("se hizo el pedido")
             localStorage.removeItem("productos")
             window.location.href = "../../index.html"
