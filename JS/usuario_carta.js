@@ -104,7 +104,7 @@ function principal() {
 function circuloCesta() {
     productos = localStorage.getItem("productos")
     productos = JSON.parse(productos)
-    cantidad = Object.keys(productos).length()
+    cantidad = Object.keys(productos).length
     $('#circulo').attr("title", cantidad)
 }
 
@@ -197,24 +197,24 @@ function obtenerProductos(callback)
 }
 
 function filtrarProductos(categoria) {
-    let miPeticion = new XMLHttpRequest();
+    let miPeticion = new XMLHttpRequest()
 
-    miPeticion.open("POST", "../../PHP/usuario_productos.php", true);
+    miPeticion.open("POST", "../../PHP/usuario_productos.php", true)
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            let respuesta = JSON.parse(miPeticion.responseText);
-            let contenedorProductos = document.getElementById("contenedor-productos");
-            contenedorProductos.innerHTML = ""; 
+            let respuesta = JSON.parse(miPeticion.responseText)
+            let contenedorProductos = document.getElementById("contenedor-productos")
+            contenedorProductos.innerHTML = "" 
             respuesta.forEach(function(producto) {
-                contenedorProductos.appendChild(dibujarProductos(producto));
-            });
+                contenedorProductos.appendChild(dibujarProductos(producto))
+            })
         }
-    };
+    }
 
-    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    let datos = "categoria=" + encodeURIComponent(categoria);
-    miPeticion.send(datos);
+    miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let datos = "categoria=" + encodeURIComponent(categoria)
+    miPeticion.send(datos)
 }
 
 function dibujarProductos(datosProducto) {

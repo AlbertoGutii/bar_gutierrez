@@ -305,6 +305,9 @@ header {
     background-color: #58aba1;
     color: black;
     border: none;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 1.5;
 }
 
 #botoncitos li button:hover {
@@ -371,7 +374,7 @@ header {
 
 .card-footer span {
     font-weight: 900;
-    font-size: 1em;
+    font-size: 1.2em;
     line-height: 1.5;
 }
 

@@ -1,7 +1,5 @@
 <?php
 
-    //* RECUPERAR PRODUCTOS BASE DE DATOS
-
     if (isset($_POST['obtenerProductos'])) {
         obtenerProductos();
     }
