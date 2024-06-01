@@ -50,21 +50,38 @@
     function obtenerProductos() {
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
-        $resultado = $conexion->prepare("SELECT 
-            p.id,
-            p.nombre,
-            p.descripcion,
-            c.categoria,
-            p.foto,
-            p.precio
-        FROM
-            productos p
-        INNER JOIN
-            categorias c ON p.fk_categoria = c.id
-        WHERE
-            p.tipo = 'plato'");
-
-        $resultado -> execute();
+        if($_POST['obtenerProductos'] != "") {
+            $resultado = $conexion->prepare("SELECT 
+                p.id,
+                p.nombre,
+                p.descripcion,
+                c.categoria,
+                p.foto,
+                p.precio
+            FROM
+                productos p
+            INNER JOIN
+                categorias c ON p.fk_categoria = c.id
+            WHERE
+                p.tipo = 'plato' AND p.nombre LIKE CONCAT(?,'%');");
+            $resultado -> execute(array($_POST['obtenerProductos']));
+        }
+        else {
+            $resultado = $conexion->prepare("SELECT 
+                p.id,
+                p.nombre,
+                p.descripcion,
+                c.categoria,
+                p.foto,
+                p.precio
+            FROM
+                productos p
+            INNER JOIN
+                categorias c ON p.fk_categoria = c.id
+            WHERE
+                p.tipo = 'plato';");
+            $resultado -> execute();
+        }
         $datos = array();
         while($fila = $resultado -> fetch()) {
             $productos = array(

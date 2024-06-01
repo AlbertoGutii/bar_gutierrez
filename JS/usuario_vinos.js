@@ -88,6 +88,8 @@ document.addEventListener("DOMContentLoaded", function() {
 function principal() {
     comprobarExisteEmail()
 
+    let miBoton = document.getElementById("btnBuscar")
+    miBoton.addEventListener("click", manejadorClickBuscar)
 
     let productos = recuperarProductos()
     document.body.appendChild(productos)
@@ -167,7 +169,7 @@ function popUpError(){
 }
 
 //* funcion para obtener los productos de la base de datos
-function obtenerProductos(callback)
+function obtenerProductos(nombreProducto, callback)
 {
     let miPeticion = new XMLHttpRequest()
 
@@ -184,6 +186,10 @@ function obtenerProductos(callback)
     miPeticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
 
     let datos = "obtenerVinos="
+    if(nombreProducto) {
+        nombreProducto.toLowerCase()
+        datos = "obtenerVinos=" + nombreProducto
+    }
     
     miPeticion.send(datos)
 }
@@ -300,15 +306,16 @@ function dibujarProductos(datosProducto) {
 
 
 //* funcion para recuperar los productos del php
-function recuperarProductos() {
+function recuperarProductos(nombreProducto) {
     let miDiv = document.getElementById("contenedor-productos")
     // vaciamos el div
     miDiv.innerHTML = ""
     
 
-    obtenerProductos(function(respuesta) {
+    obtenerProductos(nombreProducto, function(respuesta) {
         // console.log(respuesta)
         respuesta = JSON.parse(respuesta)
+        console.log(respuesta)
         // recorro el JSON
         for(let i = 0; i<respuesta.length; i++)
         {
@@ -354,6 +361,13 @@ function almacenarProductos(idProducto, miCantidad)
     localStorage.setItem('productos', JSON.stringify(productos))
     // para que el cajon de texto vuelve a esta vacio
     document.getElementById("cantidad_"+idProducto).value = null
+}
+
+function manejadorClickBuscar(e) {
+    e.preventDefault()
+    vino = this.previousElementSibling.value
+    // console.log(this.previousElementSibling.value)
+    recuperarProductos(vino)
 }
 
 function comprobarExisteEmail() {
