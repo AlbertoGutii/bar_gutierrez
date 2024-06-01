@@ -57,25 +57,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function principal() {
     comprobarExisteEmail()
-    iniciarCarrusel()
+    // iniciarCarrusel()
 }
 
-function iniciarCarrusel() {
-    let slideIndex = 0
-    let slides = document.getElementsByClassName('slide')
+// function iniciarCarrusel() {
+//     let slideIndex = 0
+//     let slides = document.getElementsByClassName('slide')
 
-    for (let i = 1; i < slides.length; i++) {
-        slides[i].style.display = "none"
-    }
+//     for (let i = 1; i < slides.length; i++) {
+//         slides[i].style.display = "none"
+//     }
 
-    function mostrarSiguienteSlide() {
-        slides[slideIndex].style.display = "none"
-        slideIndex = (slideIndex + 1) % slides.length
-        slides[slideIndex].style.display = "flex"
-    }
+//     function mostrarSiguienteSlide() {
+//         slides[slideIndex].style.display = "none"
+//         slideIndex = (slideIndex + 1) % slides.length
+//         slides[slideIndex].style.display = "flex"
+//     }
 
-    setInterval(mostrarSiguienteSlide, 2500)
-}
+//     setInterval(mostrarSiguienteSlide, 2500)
+// }
 
 function comprobarExisteEmail() {
     let miEmail = localStorage.getItem("email")

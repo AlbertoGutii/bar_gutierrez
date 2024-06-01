@@ -112,26 +112,38 @@
     <div>    
         <!--* CARRUSEL CON IMAGENES -->
         <div id="carrusel">
-            <div class="slide">
-                <img src="./imagenes/bar/entrada_calle.jpg" id="entrada_calle" alt="entrada_calle"/>
-            </div>
-            <div class="slide">
-                <img src="./imagenes/bar/barra.jpg" alt="barra"/>
-            </div>
-            <div class="slide">
-                <img src="./imagenes/bar/barra_comedor_fuera.jpg" alt="barra_comedor_fuera"/>
-            </div>
-            <div class="slide">
-                <img src="./imagenes/bar/comedor_dentro.jpg" alt="comedor_dentro"/>
-            </div>
-            <div class="slide">
-                <img src="./imagenes/bar/comedor_dentro_2.jpg" alt="comedor_dentro_2"/>
-            </div>
-            <div class="slide">
-                <img src="./imagenes/bar/comedor_dentro_3.jpg" alt="comedor_dentro_3"/>
-            </div>
-            <div class="slide">
-                <img src="./imagenes/bar/comedor_dentro_4.jpg" alt="comedor_dentro_4"/>
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="1000">
+                        <img src="./imagenes/bar/entrada_calle.jpg" id="entrada_calle" alt="entrada_calle"/>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="./imagenes/bar/barra.jpg" class="d-block w-100" alt="barra"/>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./imagenes/bar/barra_comedor_fuera.jpg" class="d-block w-100" alt="barra_comedor_fuera"/>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./imagenes/bar/comedor_dentro.jpg" class="d-block w-100" alt="comedor_dentro"/>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./imagenes/bar/comedor_dentro_2.jpg" class="d-block w-100" alt="comedor_dentro_2"/>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./imagenes/bar/comedor_dentro_3.jpg" class="d-block w-100" alt="comedor_dentro_3"/>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./imagenes/bar/comedor_dentro_4.jpg" class="d-block w-100" alt="comedor_dentro_4"/>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
         </div>
     
