@@ -1,6 +1,12 @@
 window.onload = principal
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Inicializar popover
+    $(function () {
+        $('[data-bs-toggle="popover"]').popover()
+    })
+
+
     document.getElementById("btnLogo").onclick = function() {
         window.location.href = "./index.html"
     }
