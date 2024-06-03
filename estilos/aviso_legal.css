@@ -1,0 +1,366 @@
+/** ESTILOS GENERALES */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* width: 100vw; */
+  height: 100vh;
+}
+
+/** INICIO HEADER */
+header {
+    display: flex;
+    background-color: gray;
+    justify-content: center;
+    align-items: center; 
+    padding: 10px 0;
+    transition: 0.3s ease all;
+}
+
+.logo {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.logo:active > img{
+    transform: scale(0.95);
+}
+
+.logo:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
+/*? MENU CONTAINER2 */
+.menu {
+    position: relative;
+}
+
+.menu .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*? MUEVE LOS ELEMENTOS DE LA BARRA */
+.menu .navbar ul {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 30px;
+}
+
+.menu .navbar ul li a:hover {
+    color: var(--light-text-color);
+}
+
+#menu {
+    display: none;
+}
+
+/*? ICONO MOVIL */
+.menu-icono {
+    width: 90px;
+    height: 80px;
+}
+
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+
+.navbar ul li #icoPersona:hover label {
+    display: flex;
+}
+
+#barraNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#barraNav li {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+#barraNav li input[type=button] {
+    background-color: transparent;
+    border: none;
+    color: var(--title-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#barraNav li input[type=button]:hover {
+    text-decoration: underline;
+}
+
+/** SUBMENU CARTA */
+#submenu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  top: 25px;
+  z-index: 1000;
+}
+
+#submenu li button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: justify;
+}
+  
+#submenu li button:hover {
+    background-color:  #4c8582;
+}
+
+.dropdown:hover #submenu {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+
+#btnCesta {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/** SUBMENU CARTA */
+/** SUBMENU SVG */
+#subConfiguracion {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  top: 35px;
+  z-index: 1000;
+}
+
+#subConfiguracion li button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 10px;
+  text-decoration: none;
+  width: 100%;
+  text-align: justify;
+}
+
+#subConfiguracion li button:hover {
+  background-color:  #4c8582;
+}
+
+.dropdown:hover #subConfiguracion {
+  display: block;
+  top: 32px;
+  padding: 5px 0;
+}
+
+.dropdown {
+  position: relative;
+}
+/*! FIN ESTILOS ICONOS BORRADOS */
+/** FIN DEL HEADER */
+
+/** INFORMACION DE NEGOCIO */
+/* Estilo para el contenedor principal de la información */
+#info {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el encabezado */
+#info h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los párrafos de la información */
+#info p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Estilo para la lista ordenada */
+#info ol {
+    margin-left: 20px;
+    padding-left: 20px;
+    list-style-type: decimal;
+}
+
+/* Estilo para los elementos de la lista */
+#info ol li {
+    margin-bottom: 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Estilo para los enlaces */
+#info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#info a:hover {
+    text-decoration: underline;
+}
+
+/** ESTILO FOOTER */
+#pie_pagina {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: justify;
+}
+
+#pie_pagina div {
+    display: flex;
+    gap: 90px;
+    align-content: center;
+    justify-content: space-around;
+    margin: 0 15px;
+}
+
+.datos_enlaces_bar {
+    margin-bottom: 20px;
+    /* display: flex; */
+}
+
+.datos_enlaces_bar h3 {
+    font-size: 1.2em;
+}
+
+.datos_enlaces_bar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.datos_enlaces_bar li {
+    margin-bottom: 5px;
+}
+
+.datos_enlaces_bar li:last-child {
+    margin-bottom: 0;
+}
+
+.datos_enlaces_bar a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.datos_enlaces_bar a:hover {
+    color: #ffd700;
+}
+
+/* #pie_pagina p {
+    margin-top: 20px;
+    font-size: 0.8em;
+} */
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .menu .navbar ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .menu label {
+        display: block;
+    }
+
+    .menu label img {
+        width: 100px; /* Ajusta el tamaño del icono según sea necesario */
+    }
+
+    .menu label:hover + .navbar ul {
+        display: flex;
+        align-items: center;
+    }
+
+    #pie_pagina div {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    #info {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    #info h3 {
+        font-size: 20px;
+    }
+
+    #info p, #info ol li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        width: 60px;
+    }
+    
+    #info {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 10px;
+    }
+
+    #info div {
+        margin: 20px 10px;
+    }
+
+    #info h3 {
+        font-size: 20px;
+    }
+
+    #info p {
+        font-size: 14px;
+    }
+
+    #pie_pagina {
+        padding: 10px;
+    }
+
+    #pie_pagina div {
+        flex-direction: column;
+        gap: 2px;
+    }
+}
+
