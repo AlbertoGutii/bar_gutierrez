@@ -103,7 +103,13 @@ header {
 }
 
 #barraNav li input[type=button]:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    color: #f9f9f9;
+}
+
+.dropdown:focus-within svg,
+.dropdown:hover svg {
+    color: #f9f9f9;
 }
 
 /** SUBMENU CARTA */
@@ -142,6 +148,10 @@ header {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+#btnCesta:hover svg {
+    color: #f9f9f9;
 }
 
 /** SUBMENU CARTA */
