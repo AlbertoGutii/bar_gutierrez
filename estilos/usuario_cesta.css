@@ -23,6 +23,11 @@ header {
     padding: 0;
     cursor: pointer;
     outline: none;
+    border-radius: 50%;
+}
+
+.logo img {
+    border-radius: 50%;
 }
 
 .logo:active > img{
