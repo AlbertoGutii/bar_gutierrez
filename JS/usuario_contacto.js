@@ -1,11 +1,15 @@
 window.onload = principal
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Inicializar popover
-    $(function () {
-        $('[data-bs-toggle="popover"]').popover()
-    })
 
+    // Obtener el formulario
+    const form = document.querySelector('.contact-form')
+
+    // Añadir el evento submit al formulario
+    form.addEventListener('submit', function(event) {
+        event.preventDefault() // Evitar el envío del formulario
+        dibujarModal() // Llamar a la función para dibujar el modal
+    })
 
     document.getElementById("btnLogo").onclick = function() {
         window.location.href = "./index.html"
@@ -63,6 +67,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function principal() {
     comprobarExisteEmail()
+}
+
+function dibujarModal() {
+    // Crear elementos del modal
+    const modalBackdrop = document.createElement('div')
+    modalBackdrop.className = 'modal-backdrop'
+
+    const modalContainer = document.createElement('div')
+    modalContainer.className = 'modal-container'
+
+    const modalContent = document.createElement('div')
+    modalContent.className = 'modal-content'
+
+    const modalHeader = document.createElement('div')
+    modalHeader.className = 'modal-header'
+
+    const modalTitle = document.createElement('h5')
+    modalTitle.className = 'modal-title'
+    modalTitle.textContent = 'Gracias por contactar'
+
+    const modalBody = document.createElement('div')
+    modalBody.className = 'modal-body'
+    modalBody.textContent = 'Muchas gracias por contactar con nosotros. En breve recibirá una respuesta.'
+
+    const modalFooter = document.createElement('div')
+    modalFooter.className = 'modal-footer'
+
+    const closeButton = document.createElement('button')
+    closeButton.className = 'btn btn-secondary'
+    closeButton.textContent = 'Cerrar'
+    closeButton.addEventListener('click', function() {
+        document.body.removeChild(modalBackdrop)
+        document.body.removeChild(modalContainer)
+    })
+
+    // Armar el modal
+    modalHeader.appendChild(modalTitle)
+    modalFooter.appendChild(closeButton)
+    modalContent.appendChild(modalHeader)
+    modalContent.appendChild(modalBody)
+    modalContent.appendChild(modalFooter)
+    modalContainer.appendChild(modalContent)
+    document.body.appendChild(modalBackdrop)
+    document.body.appendChild(modalContainer)
+
+    document.head.appendChild(style)
 }
 
 function comprobarExisteEmail() {
