@@ -5,12 +5,13 @@ body {
   padding: 0;
   /* width: 100vw; */
   height: 100vh;
+  background-color: #D4DCFF !important;
 }
 
 /** INICIO HEADER */
 header {
     display: flex;
-    background-color: gray;
+    background-color: #5d8583;
     justify-content: center;
     align-items: center; 
     padding: 10px 0;
