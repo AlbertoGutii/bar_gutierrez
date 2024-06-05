@@ -76,6 +76,7 @@ function comprobarExisteEmail() {
             if (miPeticion.responseText === "0") {
                 mostrarBotonesSesion(false)
             } else {
+                mostrarMensajeBienvenida(miEmail)
                 comprobarEsAdmin()
             }
         }
@@ -114,21 +115,51 @@ function comprobarEsAdmin() {
 }
 
 function mostrarBotonesSesion(haIniciadoSesion) {
+    const inicioSesion = document.getElementById("inicioSesion");
+    const subMenuPerfil = document.getElementById("subMenuPerfil");
+    const btnIniciarSesion = document.getElementById("btnIniciarSesion");
+    const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+    const btnHistorialPedidos = document.getElementById("btnHistorialPedidos");
+    const btnAdminPedidos = document.getElementById("btnAdminPedidos");
+    const btnAdminUsuarios = document.getElementById("btnAdminUsuarios");
+    const btnEliminarCuenta = document.getElementById("btnEliminarCuenta");
+    const btnCesta = document.getElementById("btnCesta");
+
     if (haIniciadoSesion) {
-        document.getElementById("btnIniciarSesion").style.display = "none"
-        document.getElementById("btnCerrarSesion").style.display = "block"
-        document.getElementById("btnHistorialPedidos").style.display = "block"
-        document.getElementById("btnCesta").onclick = function() {
-            window.location.href = "../paginas_usuarios/usuario/cesta.html"
+        if (inicioSesion) inicioSesion.style.display = "none";
+        if (subMenuPerfil) subMenuPerfil.style.display = "block";
+        if (btnIniciarSesion) btnIniciarSesion.style.display = "none";
+        if (btnCerrarSesion) btnCerrarSesion.style.display = "block";
+        if (btnHistorialPedidos) btnHistorialPedidos.style.display = "block";
+        if (btnEliminarCuenta) btnEliminarCuenta.style.display = "block";
+        if (btnCesta) {
+            btnCesta.onclick = function() {
+                window.location.href = "../paginas_usuarios/usuario/cesta.html";
+            };
         }
     } else {
-        document.getElementById("btnIniciarSesion").style.display = "block"
-        document.getElementById("btnCerrarSesion").style.display = "none"
-        document.getElementById("btnHistorialPedidos").style.display = "none"
-        document.getElementById("btnAdminPedidos").style.display = "none"
-        document.getElementById("btnAdminUsuarios").style.display = "none"
-        document.getElementById("btnCesta").onclick = function() {
-            window.location.href = "../paginas_usuarios/login.html"
+        if (inicioSesion) inicioSesion.style.display = "block";
+        if (subMenuPerfil) subMenuPerfil.style.display = "none";
+        if (btnIniciarSesion) btnIniciarSesion.style.display = "block";
+        if (btnCerrarSesion) btnCerrarSesion.style.display = "none";
+        if (btnHistorialPedidos) btnHistorialPedidos.style.display = "none";
+        if (btnAdminPedidos) btnAdminPedidos.style.display = "none";
+        if (btnAdminUsuarios) btnAdminUsuarios.style.display = "none";
+        if (btnEliminarCuenta) btnEliminarCuenta.style.display = "none";
+        if (btnCesta) {
+            btnCesta.onclick = function() {
+                window.location.href = "../paginas_usuarios/login.html";
+            };
         }
+    }
+}
+
+function mostrarMensajeBienvenida(email) {
+    let mensajeBienvenida = document.getElementById("welcomeMessage");
+    let nombreUsuario = document.getElementById("userName");
+
+    if (mensajeBienvenida && nombreUsuario) {
+        mensajeBienvenida.style.display = "inline";
+        nombreUsuario.innerText = email;
     }
 }

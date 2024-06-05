@@ -159,6 +159,6 @@ function mostrarMensajeBienvenida(email) {
 
     if (mensajeBienvenida && nombreUsuario) {
         mensajeBienvenida.style.display = "inline";
-        nombreUsuario.innerText = email;  // Aquí puedes reemplazar el email por el nombre del usuario si lo tienes disponible
+        nombreUsuario.innerText = email;
     }
 }

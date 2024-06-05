@@ -311,7 +311,7 @@ function recuperarPedido(longitud) {
                         "id": "btnPedido",
                         "class": "btn_bonito"
                     })
-                    botonPedido.addEventListener("click", function() { manejadorResumenPedido(respuesta) })
+                    botonPedido.addEventListener("click", manejadorResumenPedido)
                     divPagar.appendChild(inObservaciones)
                     divPagar.appendChild(botonPedido)
                     container.appendChild(divPagar)
@@ -329,14 +329,41 @@ function recuperarPedido(longitud) {
 }
 
 
-function manejadorResumenPedido(respuesta) {
-    let modalElement = dibujarModalResumenPedido(respuesta);
-    document.body.appendChild(modalElement);
+function manejadorResumenPedido() {
+    let productos = JSON.parse(localStorage.getItem('productos'));
+    if (!productos) {
+        console.error("No se encontraron productos en el localStorage.");
+        return;
+    }
 
-    let modalResumenPedido = new bootstrap.Modal(modalElement);
+    let idsProductos = Object.keys(productos);
 
-    modalResumenPedido.show();
+    enviarProductos(function(respuesta) {
+        let productosActualizados = JSON.parse(respuesta);
+        let productosResumen = [];
+
+        // Construir un array de productos para el modal de resumen
+        idsProductos.forEach(id => {
+            let producto = productosActualizados.find(p => p.id == id);
+            if (producto) {
+                productosResumen.push({
+                    nombre: producto.nombre,
+                    cantidad: productos[id].cantidad,
+                    precio: producto.precio
+                });
+            }
+        });
+
+        // Dibujar y mostrar el modal de resumen
+        let modalElement = dibujarModalResumenPedido(productosResumen);
+        document.body.appendChild(modalElement);
+
+        let modalResumenPedido = new bootstrap.Modal(modalElement);
+        modalResumenPedido.show();
+    });
 }
+
+
 
 function cerrarModales() {
     $('#modal-Add-Usuario').modal('hide')
@@ -391,42 +418,72 @@ function manejadorInputCantidad() {
 }
 
 function manejadorClickSumar() {
-    let inputCantidad = this.parentElement.querySelector('.card-quantity')
-    let cantidad = parseFloat(inputCantidad.value)
-    inputCantidad.value = cantidad + 1
+    let cardDiv = this.closest('.carta');
+    let inputCantidad = cardDiv.querySelector('.card-quantity');
+    let cantidad = parseFloat(inputCantidad.value);
+    inputCantidad.value = cantidad + 1;
+
+    // Obtener el ID del producto
+    let idProducto = cardDiv.id;
+
+    // Actualizar la cantidad en localStorage
+    let productosString = localStorage.getItem("productos");
+    let productosJSON = JSON.parse(productosString);
+    productosJSON[idProducto].cantidad = parseInt(productosJSON[idProducto].cantidad) + 1;
+    productosString = JSON.stringify(productosJSON);
+    localStorage.setItem("productos", productosString);
 }
 
 function manejadorClickRestar() {
-    let inputCantidad = this.parentElement.querySelector('.card-quantity')
-    let cantidad = parseFloat(inputCantidad.value)
+    let cardDiv = this.closest('.carta');
+    let inputCantidad = cardDiv.querySelector('.card-quantity');
+    let cantidad = parseFloat(inputCantidad.value);
     if (cantidad > 0) {
-        inputCantidad.value = cantidad - 1
+        inputCantidad.value = cantidad - 1;
+
+        // Obtener el ID del producto
+        let idProducto = cardDiv.id;
+
+        // Actualizar la cantidad en localStorage
+        let productosString = localStorage.getItem("productos");
+        let productosJSON = JSON.parse(productosString);
+        productosJSON[idProducto].cantidad = parseInt(productosJSON[idProducto].cantidad) - 1;
+        productosString = JSON.stringify(productosJSON);
+        localStorage.setItem("productos", productosString);
     }
 }
 
 function manejadorClickPapelera() {
-    console.log("Click en papelera detectado.")
-    let cardDiv = this.closest('.card')
-    if (!cardDiv) return
+    console.log("Click en papelera detectado.");
+    
+    // Encuentra el contenedor de la tarjeta del producto
+    let cardDiv = this.closest('.carta');  // Cambiado a 'carta' que parece ser la clase correcta según dibujarProductos
+    if (!cardDiv) return;
 
-    let idProducto = cardDiv.id
+    // Obtiene el ID del producto
+    let idProducto = cardDiv.id;
 
-    cardDiv.remove()
+    // Elimina la tarjeta del producto del DOM
+    cardDiv.remove();
 
-    let productosString = localStorage.getItem("productos")
+    // Elimina el producto del localStorage
+    let productosString = localStorage.getItem("productos");
     if (productosString) {
-        let productosJSON = JSON.parse(productosString)
-        console.log("Eliminando producto del almacenamiento local:", idProducto)
-        delete productosJSON[idProducto]
+        let productosJSON = JSON.parse(productosString);
+        console.log("Eliminando producto del almacenamiento local:", idProducto);
+        delete productosJSON[idProducto];
 
-        productosString = JSON.stringify(productosJSON)
-        localStorage.setItem("productos", productosString)
+        // Guarda de nuevo el localStorage
+        productosString = JSON.stringify(productosJSON);
+        localStorage.setItem("productos", productosString);
 
+        // Si no hay productos restantes, limpia el contenedor de productos
         if (Object.keys(productosJSON).length === 0) {
-            document.getElementById("contenedor-productos").innerHTML = ""
+            document.getElementById("contenedor-productos").innerHTML = "";
         }
     }
 }
+
 
 function manejadorClickRealizarPedido() {
     let cardsProductos = document.getElementById("contenedor-productos").querySelectorAll(".card")
@@ -474,6 +531,7 @@ function comprobarExisteEmail() {
             if (miPeticion.responseText === "0") {
                 mostrarBotonesSesion(false)
             } else {
+                mostrarMensajeBienvenida(miEmail)
                 comprobarEsAdmin()
             }
         }
@@ -512,21 +570,51 @@ function comprobarEsAdmin() {
 }
 
 function mostrarBotonesSesion(haIniciadoSesion) {
+    const inicioSesion = document.getElementById("inicioSesion");
+    const subMenuPerfil = document.getElementById("subMenuPerfil");
+    const btnIniciarSesion = document.getElementById("btnIniciarSesion");
+    const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+    const btnHistorialPedidos = document.getElementById("btnHistorialPedidos");
+    const btnAdminPedidos = document.getElementById("btnAdminPedidos");
+    const btnAdminUsuarios = document.getElementById("btnAdminUsuarios");
+    const btnEliminarCuenta = document.getElementById("btnEliminarCuenta");
+    const btnCesta = document.getElementById("btnCesta");
+
     if (haIniciadoSesion) {
-        document.getElementById("btnIniciarSesion").style.display = "none"
-        document.getElementById("btnCerrarSesion").style.display = "block"
-        document.getElementById("btnHistorialPedidos").style.display = "block"
-        document.getElementById("btnCesta").onclick = function() {
-            window.location.href = "./cesta.html"
+        if (inicioSesion) inicioSesion.style.display = "none";
+        if (subMenuPerfil) subMenuPerfil.style.display = "block";
+        if (btnIniciarSesion) btnIniciarSesion.style.display = "none";
+        if (btnCerrarSesion) btnCerrarSesion.style.display = "block";
+        if (btnHistorialPedidos) btnHistorialPedidos.style.display = "block";
+        if (btnEliminarCuenta) btnEliminarCuenta.style.display = "block";
+        if (btnCesta) {
+            btnCesta.onclick = function() {
+                window.location.href = "./cesta.html";
+            };
         }
     } else {
-        document.getElementById("btnIniciarSesion").style.display = "block"
-        document.getElementById("btnCerrarSesion").style.display = "none"
-        document.getElementById("btnHistorialPedidos").style.display = "none"
-        document.getElementById("btnAdminPedidos").style.display = "none"
-        document.getElementById("btnAdminUsuarios").style.display = "none"
-        document.getElementById("btnCesta").onclick = function() {
-            window.location.href = "../login.html"
+        if (inicioSesion) inicioSesion.style.display = "block";
+        if (subMenuPerfil) subMenuPerfil.style.display = "none";
+        if (btnIniciarSesion) btnIniciarSesion.style.display = "block";
+        if (btnCerrarSesion) btnCerrarSesion.style.display = "none";
+        if (btnHistorialPedidos) btnHistorialPedidos.style.display = "none";
+        if (btnAdminPedidos) btnAdminPedidos.style.display = "none";
+        if (btnAdminUsuarios) btnAdminUsuarios.style.display = "none";
+        if (btnEliminarCuenta) btnEliminarCuenta.style.display = "none";
+        if (btnCesta) {
+            btnCesta.onclick = function() {
+                window.location.href = "../login.html";
+            };
         }
+    }
+}
+
+function mostrarMensajeBienvenida(email) {
+    let mensajeBienvenida = document.getElementById("welcomeMessage");
+    let nombreUsuario = document.getElementById("userName");
+
+    if (mensajeBienvenida && nombreUsuario) {
+        mensajeBienvenida.style.display = "inline";
+        nombreUsuario.innerText = email;
     }
 }

@@ -19,18 +19,18 @@
         
         // Consulta SQL para obtener tanto los productos como los vinos según sus IDs
         $resultado = $conexion->prepare("SELECT 
-        p.id,
-        p.nombre,
-        p.descripcion,
-        c.categoria,
-        p.foto,
-        p.precio
-    FROM
-        productos p
-    INNER JOIN
-        categorias c ON p.fk_categoria = c.id
-    WHERE
-        p.id = ?;");
+            p.id,
+            p.nombre,
+            p.descripcion,
+            c.categoria,
+            p.foto,
+            p.precio
+        FROM
+            productos p
+        INNER JOIN
+            categorias c ON p.fk_categoria = c.id
+        WHERE
+            p.id = ?;");
         
         // Array para almacenar los datos de los productos
         $datos = array();
