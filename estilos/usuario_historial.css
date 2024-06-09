@@ -396,6 +396,11 @@ header {
     gap: 5px;
 }
 
+#btnBuscar {
+    background-color: #4c8582;
+    border: none;
+}
+
 .circle::before{
     content: "";
     display: inline-block;
@@ -472,22 +477,22 @@ header {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
 
 #contenedor-historico ul li {
-    flex: 1; /* Distribuir el espacio disponible de manera equitativa */
-    padding: 10px; /* Añadimos un poco de espacio interno */
-    text-align: center; /* Centramos el texto */
-    border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
+    flex: 1; 
+    padding: 10px; 
+    text-align: center;
+    border-right: 1px solid #000000;
 }
 
 /* Estilo para el último elemento dentro de un usuario */
 #contenedor-historico ul li:last-child {
-    border-right: none; /* Quitamos la línea divisoria en el último elemento */
+    border-right: none;
 }
 /** FIN ESTILO BUSCADOR FECHAS */
 
@@ -558,7 +563,7 @@ header {
     }
 
     .menu label img {
-        width: 100px; /* Ajusta el tamaño del icono según sea necesario */
+        width: 100px;
     }
 
     .menu label:hover + .navbar ul {
@@ -596,7 +601,7 @@ header {
     }
 
     #contenedor-historico ul li {
-        border-right: none; /* Quitamos la línea divisoria en todos los elementos */
+        border-right: none;
     }
 
     .flatpickr-input {
