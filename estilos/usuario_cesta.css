@@ -697,3 +697,73 @@ header {
     margin-top: 20px;
     font-size: 0.8em;
 } */
+
+@media (max-width: 768px) {
+    header {
+        justify-content: flex-start;
+    }
+
+    .menu {
+        padding: 10px;
+    }
+
+    .menu label {
+        display: initial;
+    }
+
+    .back {
+        padding: 20px 0;
+    }
+
+    .menu .navbar #barraNav {
+        position: relative;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--body-color);
+        transition: 0.3s ease all;
+        display: none;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .navbar img {
+        display: none;
+    }
+
+    .menu label {
+        display: block;
+    }
+
+    .menu label img {
+        width: 100px;
+    }
+
+    #menu:checked ~ .navbar #barraNav {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    #pie_pagina div {
+        flex-direction: column;
+        gap: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        width: 60px !important;
+    }
+
+    #pie_pagina {
+        padding: 10px !important;
+    }
+
+    #pie_pagina div {
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+}
