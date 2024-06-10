@@ -586,8 +586,8 @@ header {
 }
 
 .card-button:hover {
-    border: 1px solid #ffcaa6;
-    background-color: #ffcaa6;
+    border: 1px solid #ff2200;
+    background-color: #ea1616;
 }
 
 /* Quantity Input */
@@ -613,7 +613,7 @@ header {
     overflow: hidden;
     transition: all 0.3s;
     border-radius: 12px;
-    background-color: #ca7b7b;
+    background-color: #58aba1;
     font-weight: bolder;
     box-shadow: 0 2px 0 2px #000;
 }
@@ -623,15 +623,15 @@ header {
     position: absolute;
     width: 100px;
     height: 120%;
-    background-color: #8a3838;
+    background-color: #ffcaa6;
     top: 50%;
     transform: skewX(30deg) translate(-150%, -50%);
     transition: all 0.5s;
 }
 
 .btn_bonito:hover {
-    background-color: #750000;
-    color: #fff;
+    background-color: #e3b394;
+    color: #000000;
     box-shadow: 0 2px 0 2px #0d3b66;
 }
 

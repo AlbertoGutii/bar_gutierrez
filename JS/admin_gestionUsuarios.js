@@ -472,17 +472,11 @@ function dibujarModalAddUsuario() {
     let modalBody = crearElemento("div", undefined, { "class": "modal-body" })
 
     // Entrada Cargo
-    let labelCargo = crearElemento("label", "Cargo", { "for": "inCargoAdd" })
-    let selectCargo = crearElemento("select", undefined, { "id": "inCargoAdd" })
-    let optionAdmin = crearElemento("option", "Admin")
-    let optionUsuario = crearElemento("option", "Usuario")
-    selectCargo.appendChild(optionAdmin)
-    selectCargo.appendChild(optionUsuario)
-    modalBody.appendChild(labelCargo)
-    modalBody.appendChild(selectCargo)
+    let usuarioCargo = crearElemento("p", "Admin", {"style": "font-weight: 600", "id": "inCargoAdd"})
+    modalBody.appendChild(usuarioCargo)
 
     // Entrada Nombre
-    let labelNombreAdd = crearElemento("label", "Nombre", { "for": "inNombreAdd" })
+    let labelNombreAdd = crearElemento("label", "Nombre", { "for": "inNombreAdd", "style": "font-weight: 600"})
     let inputNombreAdd = crearElemento("input", undefined, {
         "type": "text",
         "id": "inNombreAdd",
@@ -492,7 +486,7 @@ function dibujarModalAddUsuario() {
     modalBody.appendChild(inputNombreAdd)
 
     // Entrada Email
-    let labelEmailAdd = crearElemento("label", "Email", { "for": "inEmailAdd" })
+    let labelEmailAdd = crearElemento("label", "Email", { "for": "inEmailAdd", "style": "font-weight: 600"})
     let inputEmailAdd = crearElemento("input", undefined, {
         "type": "text",
         "id": "inEmailAdd",
@@ -502,7 +496,7 @@ function dibujarModalAddUsuario() {
     modalBody.appendChild(inputEmailAdd)
 
     // Entrada Teléfono
-    let labelTelefonoAdd = crearElemento("label", "Teléfono", { "for": "inTelefonoAdd" })
+    let labelTelefonoAdd = crearElemento("label", "Teléfono", { "for": "inTelefonoAdd", "style": "font-weight: 600"})
     let inputTelefonoAdd = crearElemento("input", undefined, {
         "type": "text",
         "id": "inTelefonoAdd",

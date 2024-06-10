@@ -63,6 +63,10 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "../../index.html"
     }
 
+    document.getElementById("btnAllProducts").addEventListener("click", function() {
+        filtrarProductos("todos")
+    })
+
     document.getElementById("btnClaro").addEventListener("click", function() {
         filtrarProductos("Claro Ribera del Duero")
     })

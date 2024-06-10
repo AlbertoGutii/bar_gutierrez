@@ -5,7 +5,12 @@
     }
 
     if (isset($_POST['categoria'])) {
-        filtrarProductosPorCategoria($_POST['categoria']);
+        if($_POST['categoria'] == "todos") {
+            obtenerVinos();
+        }
+        else {
+            filtrarProductosPorCategoria($_POST['categoria']);
+        }
     }
     
     function filtrarProductosPorCategoria($categoria) {

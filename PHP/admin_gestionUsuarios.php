@@ -86,7 +86,7 @@
         $email = $_POST['reiniciaContrasenia'];
         $conexion = new PDO('mysql:host=localhost;dbname=bar_gutierrez', 'dwes', 'abc123.');
 
-        $resultado = $conexion -> prepare("UPDATE usuarios SET password = ? WHERE email = ?;");
+        $resultado = $conexion -> prepare("UPDATE usuarios SET password = ? WHERE email = ? and admin = 1;");
         $contrasenia = hash('sha256', 'contraseña123');
         $resultado -> execute(array($contrasenia, $email));
     }
