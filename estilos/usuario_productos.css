@@ -612,8 +612,8 @@ header {
 }
 
 .card-button:hover {
-    border: 1px solid #ff2200;
-    background-color: #ea1616;
+    border: 1px solid #ffcaa6;
+    background-color: #ffcaa6;
 }
 
 /* Quantity Input */
