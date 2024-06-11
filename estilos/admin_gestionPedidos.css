@@ -1,3 +1,8 @@
+body {
+    background-color: #D4DCFF !important;
+    font-family: Arial, sans-serif;
+}
+
 /* Estilos para el header */
 header {
     display: flex;
@@ -109,11 +114,21 @@ ul li img {
     border: 1px solid #ccc;
 }
 
+#btnBuscar {
+    padding: 8px 20px;
+    font-size: 16px;
+    background-color: #D4DCFF;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 #btnMostrarAddProducto,
 #btnModificar {
     padding: 8px 20px;
     font-size: 16px;
-    background-color: #007bff; /* Mismo color que el botón de añadir */
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -122,13 +137,13 @@ ul li img {
 
 #btnMostrarAddProducto:hover,
 #btnModificar:hover {
-    background-color: #0056b3; /* Cambio de color al pasar el cursor */
+    background-color: #0056b3;
 }
 
 /* Estilos para los modales */
 .modal-content {
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
@@ -175,7 +190,7 @@ ul li img {
 }
 
 .modal-body input[type="text"] {
-    width: calc(100% - 22px); /* Ancho ajustado para tener en cuenta el padding y el borde */
+    width: calc(100% - 22px);
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -220,6 +235,7 @@ ul li img {
     width: 10px;
     height: 10px;
 }
+
 .cancelado::before {
     content: "";
     display: inline-block;
@@ -230,6 +246,7 @@ ul li img {
     width: 10px;
     height: 10px;
 }
+
 .enEspera::before {
     content: "";
     display: inline-block;
@@ -240,6 +257,7 @@ ul li img {
     width: 10px;
     height: 10px;
 }
+
 .pendiente::before {
     content: "";
     display: inline-block;
@@ -268,6 +286,7 @@ ul li img {
         width: 10px;
         height: 10px;
     }
+
     .cancelado::before {
         content: "";
         display: inline-block;
@@ -279,6 +298,7 @@ ul li img {
         width: 10px;
         height: 10px;
     }
+
     .enEspera::before {
         content: "";
         display: inline-block;
@@ -290,6 +310,7 @@ ul li img {
         width: 10px;
         height: 10px;
     }
+
     .pendiente::before {
         content: "";
         display: inline-block;
@@ -301,36 +322,34 @@ ul li img {
         width: 10px;
         height: 10px;
     }
+
     header {
         flex-direction: column;
         align-items: center;
-        padding: 10px; /* Reducimos el padding para dispositivos móviles */
+        padding: 10px;
     }
     
-    /* Ajustar el tamaño del logo */
     .logo-container {
-        margin-bottom: 10px; /* Añadimos un margen inferior */
-    }
-    .logo-container img {
-        max-width: 100px; /* Ajustamos el tamaño máximo del logo */
+        margin-bottom: 10px;
     }
 
-    /* Alinear contenedor de buscar verticalmente */
+    .logo-container img {
+        max-width: 100px;
+    }
+
     #contenedor-buscar {
         margin-bottom: 10px;
     }
 
-    /* Alinear dropdown de usuario */
     .persona-logo-container {
         margin-top: 10px;
     }
 
-    /* Estilos para los botones */
     input[type="button"] {
         width: 100%;
-        margin-bottom: 5px; /* Añadimos un pequeño margen inferior entre los botones */
+        margin-bottom: 5px;
     }
-    /* Ocultar contenedor de hacer pedido */
+
     #contenedor-hacer-pedido {
         display: none;
     }
@@ -341,7 +360,7 @@ ul li img {
     }
 
     ul li {
-        border-right: none; /* Quitamos la línea divisoria en todos los elementos */
+        border-right: none; 
     }
 
     #contenedor-buscar {
@@ -355,17 +374,17 @@ ul li img {
     }
 
     #contenedor-hacer-pedido {
-        display: flex; /* Asegurarse de que el contenedor sea visible */
-        justify-content: space-between; /* Distribuir elementos horizontalmente */
-        align-items: center; /* Alinear elementos verticalmente */
-        width: 100%; /* Ajustar al ancho completo del contenedor padre */
-        margin-bottom: 10px; /* Agregar margen inferior para separar de otros elementos */
+        display: flex; 
+        justify-content: space-between;
+        align-items: center;
+        width: 100%; 
+        margin-bottom: 10px;
     }
 
     /* Estilos para los botones dentro del contenedor de hacer pedido */
     #btnVerPedidos,
     #btnVerSolicitudes {
-        width: 45%; /* Ajustar el ancho de los botones */
+        width: 45%;
     }
 
     #btnMostrarAddProducto,
@@ -373,24 +392,25 @@ ul li img {
         width: 100%;
         margin-top: 10px;
     }
-    /* Estilos para el botón de ir arriba */
-#btnScrollToTop {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 50%;
-}
 
-#btnScrollToTop:hover {
-    background-color: #0056b3;
-}
+    /* Estilos para el botón de ir arriba */
+    #btnScrollToTop {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+    }
+
+    #btnScrollToTop:hover {
+        background-color: #0056b3;
+    }
 }

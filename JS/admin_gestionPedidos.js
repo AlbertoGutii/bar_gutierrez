@@ -122,7 +122,7 @@ function fechasDefecto() {
               longhand: ['Enero', 'Febrero', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             },
           }
-      })
+    })
     flatpickr("#inFecha_desde", {
         altInput: true,
         altFormat: "F j, Y",
@@ -140,7 +140,7 @@ function fechasDefecto() {
               longhand: ['Enero', 'Febrero', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             },
           }
-      })
+    })
     //   ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 }
 function validarInputNumeros(elemento) {
@@ -210,12 +210,6 @@ function manejadorClickBuscar() {
         rellenarPedidos(desde,hasta)
     } 
 }
-
-// function manejadorClickMostrarPedidos() {
-//     console.log("Muestro Pedidos(llamo manejador)")
-//     sessionStorage.setItem("dondeEstoy", "pedidos")
-//     rellenarPedidos()
-// }
 
 function manejadorClickActualizarPedido(e) {
     console.log("actualizo estado(llamado manejador)")

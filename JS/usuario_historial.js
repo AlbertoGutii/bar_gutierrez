@@ -66,7 +66,7 @@ function principal() {
     let miBoton = document.getElementById("btnBuscar")
     miBoton.addEventListener("click", manejadorClickBuscar)
 
-    recuperarHistorico() // Llama a recuperarHistorico sin retornar nodo
+    recuperarHistorico() 
 }
 
 function crearElemento(etiqueta, texto, atributos) {

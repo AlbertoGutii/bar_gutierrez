@@ -25,18 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function principal()
 {
-    // miDiv.appendChild(dibujarUsuario())
-    // document.body.appendChild(miDiv)
 
     let miBoton = document.getElementById("btnBuscar")
     miBoton.addEventListener("click", manejadorClickBuscar)
-    // let botonAdd = document.getElementById("btnAddUsuario")
-    
-    // let botonNoAdd = document.getElementById("btnNoAdd")
 
-
-    // botonNoAdd.addEventListener("click",manejadorClickNoAdd)
-    // botonAdd.addEventListener("click",manejadorClickAdd)
     dibujarModalesAdd()
     recuperarUsuarios()
     let botonMostrarAdd = document.getElementById("btnMostrarAddUsuarios")
@@ -433,9 +425,6 @@ function addUsuario(nombreUsuario,cargoUsuario,emailUsuario,telefonoUsuario) {
 
     miPeticion.onreadystatechange = function() {
         if (miPeticion.readyState == 4 && miPeticion.status == 200) {
-            // console.log(miPeticion.responseText)
-            // callback(miPeticion.responseText)
-            // dibujarModalesAdd()
             recuperarUsuarios()
         }
     }

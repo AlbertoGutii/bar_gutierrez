@@ -323,7 +323,6 @@ function recuperarPedido(longitud) {
             return miDiv
         }
     } else {
-        // console.error("El elemento con ID 'contenedor-productos' no se encontró en el DOM.")
         return document.createElement("div")
     }
 }
@@ -457,7 +456,7 @@ function manejadorClickPapelera() {
     console.log("Click en papelera detectado.");
     
     // Encuentra el contenedor de la tarjeta del producto
-    let cardDiv = this.closest('.carta');  // Cambiado a 'carta' que parece ser la clase correcta según dibujarProductos
+    let cardDiv = this.closest('.carta');
     if (!cardDiv) return;
 
     // Obtiene el ID del producto

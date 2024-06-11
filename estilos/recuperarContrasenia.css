@@ -32,13 +32,13 @@ p {
     text-align: left;
     display: block;
     margin-left: 5%;
-    font-size: 20px; /* Aumentamos el tamaño del texto */
-    margin-bottom: 10px; /* Espacio entre etiquetas */
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .login-box input[type="text"],
 .login-box input[type="password"] {
-    width: calc(100% - 20px); /* Hacemos que el ancho del input sea el 100% menos el espacio de los bordes */
+    width: calc(100% - 20px);
     height: 45px;
     padding: 10px;
     margin: 8px 0;
@@ -48,7 +48,7 @@ p {
 }
 
 .login-box input[type="button"] {
-    width: calc(100% - 20px); /* Hacemos que el ancho del botón sea el 100% menos el espacio de los bordes */
+    width: calc(100% - 20px); 
     height: 45px;
     background-color: #4caf50;
     color: white;
@@ -56,7 +56,7 @@ p {
     border-radius: 20px;
     cursor: pointer;
     padding: 10px;
-    margin-top: 15px; /* Ajustamos el margen superior */
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
@@ -72,7 +72,7 @@ p {
 
 .password-specs p {
     font-weight: bold;
-    margin-bottom: 5px; /* Agregamos margen inferior al título */
+    margin-bottom: 5px; 
 }
 
 .password-specs ul {
@@ -88,7 +88,7 @@ p {
 .password-specs li::before {
     content: "•";
     margin-right: 5px;
-    vertical-align: middle; /* Alineamos los puntos verticalmente */
+    vertical-align: middle; 
 }
 
 

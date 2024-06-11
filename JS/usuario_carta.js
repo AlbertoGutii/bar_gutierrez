@@ -368,9 +368,7 @@ function almacenarProductos(idProducto, miCantidad)
         }
     }
 
-    // Almacenamos el objeto
     localStorage.setItem('productos', JSON.stringify(productos))
-    // para que el cajon de texto vuelve a esta vacio
     document.getElementById("cantidad_"+idProducto).value = null
 }
 

@@ -1,9 +1,14 @@
+body {
+    background-color: #D4DCFF !important;
+    font-family: Arial, sans-serif;
+
+}
+
 /* Estilos para el contenedor principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
 }
 
 header {
@@ -46,11 +51,21 @@ header {
     border: 1px solid #ccc;
 }
 
+#btnBuscar {
+    padding: 8px 20px;
+    font-size: 16px;
+    background-color: #D4DCFF;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 #btnMostrarAddUsuarios {
     padding: 8px 20px;
     font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #D4DCFF;
+    color: #000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -58,7 +73,6 @@ header {
 
 .dropdown-menu {
     background-color: #fff;
-    /* Ajusta los estilos del menú desplegable según sea necesario */
 }
 
 .logo {
@@ -90,15 +104,15 @@ header {
 
 /* Estilo para cada elemento dentro de un usuario */
 ul li {
-    flex: 1; /* Distribuir el espacio disponible de manera equitativa */
-    padding: 10px; /* Añadimos un poco de espacio interno */
-    text-align: center; /* Centramos el texto */
-    border-right: 1px solid #ccc; /* Añadimos una línea divisoria entre elementos */
+    flex: 1; 
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #ccc;
 }
 
 /* Estilo para el último elemento dentro de un usuario */
 ul li:last-child {
-    border-right: none; /* Quitamos la línea divisoria en el último elemento */
+    border-right: none;
 }
 
 /* Estilos para la cabecera */
@@ -107,8 +121,8 @@ ul li:last-child {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #007bff9c;
-    color: #fff;
+    background-color: #b3b3b3;
+    color: #000;
     border: 1px solid #ccc;
     list-style-type: none;
     margin: 0;
@@ -168,7 +182,7 @@ ul li:last-child {
 /* Estilos para los botones */
 #contenedor-usuarios input[type="button"] {
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: #4c8582;
     border: none;
     color: #fff;
     border-radius: 5px;
@@ -176,7 +190,8 @@ ul li:last-child {
 }
 
 #contenedor-usuarios input[type="button"]:hover {
-    background-color: #0056b3;
+    background-color: #ffcaa6;
+    color: #000;
 }
 
 /* Estilos para los modales */

@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Añadir el evento submit al formulario
     form.addEventListener('submit', function(event) {
-        event.preventDefault() // Evitar el envío del formulario
-        dibujarModal() // Llamar a la función para dibujar el modal
+        event.preventDefault() 
+        dibujarModal()
     })
 
     document.getElementById("btnLogo").onclick = function() {
