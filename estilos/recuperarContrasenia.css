@@ -21,7 +21,7 @@ p {
 
 .login-box {
     width: 400px; /* Aumentamos el ancho de la caja */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: white;
     padding: 40px; /* Aumentamos el espacio interno */
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -43,7 +43,7 @@ p {
     padding: 10px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 20px;
 }
 
