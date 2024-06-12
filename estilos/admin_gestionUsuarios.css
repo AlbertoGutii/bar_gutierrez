@@ -272,7 +272,7 @@ ul li:last-child {
 }
 
 /* Estilos para dispositivos móviles */
-@media (max-width: 1128px) {
+@media (max-width: 768px) {
     #contenedor-usuarios ul {
         flex-direction: column;
         align-items: stretch;
@@ -320,5 +320,9 @@ ul li:last-child {
     #btnModificarDatos {
         width: 100%;
         margin-top: 10px;
+    }
+
+    #btnMostrarAddUsuarios {
+        margin-left: 0px !important;
     }
 }

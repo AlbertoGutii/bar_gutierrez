@@ -751,6 +751,10 @@ header {
         flex-direction: column;
         gap: 2px;
     }
+
+    #inObservaciones {
+        width: 250px;
+    }
 }
 
 @media (max-width: 480px) {

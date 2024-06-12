@@ -723,6 +723,11 @@ header {
         width: 100px;
     }
 
+    #botoncitos {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
     #menu:checked ~ .navbar #barraNav {
         display: flex;
         flex-direction: column;
